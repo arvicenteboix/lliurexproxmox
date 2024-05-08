@@ -3,7 +3,7 @@
 # Metainformació del document
 title: "INTRODUCCIÓN A LLIUREX"
 author: [Creado por José A. Murcia, Àngels Piera i Albert Fletes \newline Adaptado por Alfredo Vicente, Revisado por Sergio Balaguer]
-date: "01-05-2024"
+date: "05-05-2024"
 subject: "Proxmox"
 keywords: [Red, Instalación]
 subtitle: "Introducción a conceptos básicos de LliureX"
