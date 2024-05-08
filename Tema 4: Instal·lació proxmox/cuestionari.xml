@@ -1,0 +1,213 @@
+<quiz>
+    <question type="multichoice">
+        <name>
+            <text>1. Què és AMT?</text>
+        </name>
+        <questiontext>
+            <text><![CDATA[<p>Què és AMT?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text>Un sistema de virtualització</text>
+        </answer>
+        <answer fraction="0">
+            <text>Una ferramenta de configuració de BIOS</text>
+        </answer>
+        <answer fraction="100">
+            <text>Una tecnologia d'Intel per a connexions remotas</text>
+        </answer>
+        <answer fraction="0">
+            <text>Un programa de virtualització</text>
+        </answer>
+    </question>
+    
+
+
+<question type="multichoice">
+    <name>
+        <text>2. Per què és recomanable habilitar AMT abans d'instal·lar Proxmox?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Per què és recomanable habilitar AMT abans d'instal·lar Proxmox?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Solament per connectar-se a la BIOS</text>
+    </answer>
+    <answer fraction="100">
+        <text>Per poder realitzar una instal·lació remota amb meshcomander</text>
+    </answer>
+    <answer fraction="0">
+        <text>Per activar funcionalitats avançades de la BIOS</text>
+    </answer>
+    <answer fraction="0">
+        <text>Per configurar l'aplicació Meshcommander</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>3. Què cal fer per accedir a la configuració del AMT a la BIOS?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Què cal fer per accedir a la configuració del AMT a la BIOS?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text>Polsar F2 en el setup de l'ordinador</text>
+    </answer>
+    <answer fraction="0">
+        <text>Polsar F12 a l'arrencada</text>
+    </answer>
+    <answer fraction="0">
+        <text>Polsar Del en el primer inici</text>
+    </answer>
+    <answer fraction="0">
+        <text>Enviar un comandament de la consola</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>4. Per a què serveix la opció "Activate Network Access" en la configuració del AMT?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Per a què serveix la opció "Activate Network Access" en la configuració del AMT?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Per activar l'accés al servidor a través de VNC</text>
+    </answer>
+    <answer fraction="0">
+        <text>Per configurar les opcions de xarxa de l'hipervisor</text>
+    </answer>
+    <answer fraction="0">
+        <text>Per actualitzar el firmware de l'AMT</text>
+    </answer>
+    <answer fraction="0">
+        <text>Per reiniciar el servidor</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>5. Quina és la contrasenya d'administrador per accedir a la configuració del AMT?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Quina és la contrasenya d'administrador per accedir a la configuració del AMT?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>password</text>
+    </answer>
+    <answer fraction="0">
+        <text>admin123</text>
+    </answer>
+    <answer fraction="0">
+        <text>root</text>
+    </answer>
+    <answer fraction="100">
+        <text>admin</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>6. Quina funcionalitat habilita meshcomander?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Quina funcionalitat habilita meshcomander?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Virtualitzar servidors en el núvol</text>
+    </answer>
+    <answer fraction="100">
+        <text>Mantindre l'hipervisor muntat sense monitor ni teclat</text>
+    </answer>
+    <answer fraction="0">
+        <text>Realitzar còpies de seguretat automàtiques</text>
+    </answer>
+    <answer fraction="0">
+        <text>Administrar les actualitzacions del sistema operatiu</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>7. Com es pot instal·lar Meshcommander en GNU/Linux?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Com es pot instal·lar Meshcommander en GNU/Linux?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text>Amb el comando npm install meshcommander</text>
+    </answer>
+    <answer fraction="0">
+        <text>Descarregant-lo des de la pàgina de Proxmox</text>
+    </answer>
+    <answer fraction="0">
+        <text>Utilitzant una imatge ISO</text>
+    </answer>
+    <answer fraction="0">
+        <text>A través de la Windows Store</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>8. Quin port s'utilitza per a connectar-se al servidor amb seguretat amb Meshcommander?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Quin port s'utilitza per a connectar-se al servidor amb seguretat amb Meshcommander?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>16990</text>
+    </answer>
+    <answer fraction="0">
+        <text>16991</text>
+    </answer>
+    <answer fraction="100">
+        <text>16992</text>
+    </answer>
+    <answer fraction="0">
+        <text>16993</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>9. Què s'activa mitjançant l'opció "Power on to IDE-R CDROM" en Remote Desktop?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Què s'activa mitjançant l'opció "Power on to IDE-R CDROM" en Remote Desktop?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>La virtualització de servidors</text>
+    </answer>
+    <answer fraction="0">
+        <text>La instal·lació de Proxmox</text>
+    </answer>
+    <answer fraction="0">
+        <text>L'accessibilitat a l'hipervisor</text>
+    </answer>
+    <answer fraction="0">
+        <text>La coneguda com a "Red privada"</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>10. Què és recomanable utilitzar per a muntar la ISO de Proxmox?</text>
+    </name>
+    <questiontext>
+        <text><![CDATA[<p>Què és recomanable utilitzar per a muntar la ISO de Proxmox?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Un DVD extern</text>
+    </answer>
+    <answer fraction="0">
+        <text>Una arxiu executar de Windows</text>
+    </answer>
+    <answer fraction="100">
+        <text>Una memòria USB d'arrancada</text>
+    </answer>
+    <answer fraction="0">
+        <text>Un servidor web</text>
+    </answer>
+</question>
+</quiz>

@@ -1,0 +1,656 @@
+<quiz>
+<question type="multichoice">
+    <name>
+        <text>1. ¿Cuál es el propósito de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es el propósito de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text><![CDATA[a. Facilitar el acceso a las TIC en la comunidad educativa.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX tiene como objetivo facilitar el acceso a las TIC en la comunidad educativa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Desarrollar software propietario.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no tiene como objetivo desarrollar software propietario.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Reducir el acceso a la educación.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX tiene como objetivo facilitar el acceso a la educación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Limitar la distribución de aplicaciones educativas.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no tiene como objetivo limitar la distribución de aplicaciones educativas.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>2. ¿Qué premio recibió LliureX en 2019?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué premio recibió LliureX en 2019?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Premio Nobel.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no recibió el Premio Nobel.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Open Awards a la innovación tecnológica en el campo de la educación.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX recibió el premio Open Awards a la innovación tecnológica en el campo de la educación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Premio Grammy.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no recibió el Premio Grammy.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Ninguno de los anteriores.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX recibió el premio Open Awards a la innovación tecnológica en el campo de la educación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>3. ¿Qué libertades del software libre se presentan en el texto?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué libertades del software libre se presentan en el texto?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text><![CDATA[a. Libertad de utilizar software con cualquier finalidad.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. El texto menciona la libertad de utilizar software con cualquier finalidad.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Libertad para manipular software propietario.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El texto no menciona la libertad para manipular software propietario.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Libertad de distribuir software ilegalmente.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El texto no menciona la libertad de distribuir software ilegalmente.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Ninguna de las anteriores.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El texto menciona la libertad de utilizar software con cualquier finalidad.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>4. ¿Qué aporta LliureX en términos de idiomas soportados?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué aporta LliureX en términos de idiomas soportados?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Solo soporta un idioma.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX soporta varios idiomas, incluyendo el valenciano.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Soporta varios idiomas, incluyendo el valenciano.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX soporta varios idiomas, incluyendo el valenciano.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. No permite la personalización de idiomas.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX permite la personalización de idiomas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Se limita al inglés como idioma principal.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX soporta varios idiomas, incluyendo el valenciano.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>5. ¿Por qué LliureX ahorra costes en las escuelas?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Por qué LliureX ahorra costes en las escuelas?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Es un sistema más costoso que otros.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no es un sistema más costoso que otros.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Requiere licencias de software adicionales.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no requiere licencias de software adicionales.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Es menos vulnerable a malware y piratas informáticos.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX es menos vulnerable a malware y piratas informáticos, lo que ayuda a ahorrar costes en las escuelas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Requiere horas adicionales de mantenimiento.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX no requiere horas adicionales de mantenimiento.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>6. ¿Cuál es una característica de LliureX en relación con los recursos informáticos del centro?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es una característica de LliureX en relación con los recursos informáticos del centro?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. No permite la reutilización de equipos viejos.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX permite la reutilización de equipos viejos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Está diseñado para consumir muchos recursos.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX está diseñado para ser eficiente en el uso de recursos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Optimiza la dotación informática del centro.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX optimiza la dotación informática del centro.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. No centraliza los datos del centro.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX puede centralizar los datos del centro.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>7. ¿Cuál es la diferencia entre los sabores de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es la diferencia entre los sabores de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. No hay diferencias entre los sabores.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Los sabores de LliureX están adaptados a diferentes contextos educativos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Cada sabor está adaptado a diferentes contextos educativos.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. Los sabores de LliureX están adaptados a diferentes contextos educativos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Los sabores solo varían en el color del escritorio.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Los sabores de LliureX están adaptados a diferentes contextos educativos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Los sabores solo influyen en las aplicaciones de música.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Los sabores de LliureX están adaptados a diferentes contextos educativos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>8. ¿Cómo ha ayudado LliureX en la inclusión educativa?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cómo ha ayudado LliureX en la inclusión educativa?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. No ha tenido impacto en la inclusión educativa.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX ha ayudado en la inclusión educativa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Ha facilitado el acceso de alumnos con necesidades especiales a las TIC.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliureX ha facilitado el acceso de alumnos con necesidades especiales a las TIC, contribuyendo a la inclusión educativa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Ha limitado el acceso de estos alumnos a la tecnología.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX ha facilitado el acceso de alumnos con necesidades especiales a las TIC, contribuyendo a la inclusión educativa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Ha restringido el uso de herramientas de accesibilidad.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliureX ha facilitado el acceso de alumnos con necesidades especiales a las TIC, contribuyendo a la inclusión educativa.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>9. ¿Dónde se pueden encontrar recursos en línea sobre LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Dónde se pueden encontrar recursos en línea sobre LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Únicamente en libros físicos.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Se pueden encontrar recursos en línea sobre LliureX a través de la página web del proyecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. A través de la página web del proyecto.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. Se pueden encontrar recursos en línea sobre LliureX a través de la página web del proyecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. En cintas de cassette.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Los recursos en línea sobre LliureX se encuentran a través de la página web del proyecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. No existen recursos en línea sobre LliureX.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. Se pueden encontrar recursos en línea sobre LliureX a través de la página web del proyecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>10. ¿Qué es LliuWin?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué es LliuWin?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Un software propietario.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliuWin no es un software propietario.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Un instalador de LliureX para Windows.]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. LliuWin es un instalador de LliureX para Windows.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Una versión de LliureX diseñada para músicos.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliuWin no es una versión de LliureX diseñada para músicos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Un programa para editar objetos digitales educativos.]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. LliuWin no es un programa para editar objetos digitales educativos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>11. ¿Qué fichero instalador debemos descargar desde la página de Github para obtener LliuWin?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué fichero instalador debemos descargar desde la página de Github para obtener LliuWin?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. lliuwin_installer_x86.exe]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El fichero instalador correcto es lliuwin_installer_x64.msi.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. lliuwin_installer_x64.msi]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. El fichero instalador correcto es lliuwin_installer_x64.msi.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. lliuwin_setup.dmg]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El fichero instalador correcto es lliuwin_installer_x64.msi.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. lliuwin_installer.deb]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. El fichero instalador correcto es lliuwin_installer_x64.msi.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>12. ¿Qué acción debemos tomar si nos aparece un mensaje de protección de Windows al ejecutar el instalador?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué acción debemos tomar si nos aparece un mensaje de protección de Windows al ejecutar el instalador?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Ignorar el mensaje y cerrar el instalador]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. La acción correcta es elegir "Ejecutar de todas formas".]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Seleccionar "Cancelar" en el mensaje]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. La acción correcta es elegir "Ejecutar de todas formas".]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Elegir "Ejecutar de todas formas".]]></text>
+        <feedback>
+            <text><![CDATA[Correcto. Si aparece un mensaje de protección de Windows al ejecutar el instalador, debemos elegir "Ejecutar de todas formas".]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Reiniciar el ordenador]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto. La acción correcta es elegir "Ejecutar de todas formas".]]></text>
+        </feedback>
+    </answer>
+</question>
+
+
+
+<question type="multichoice">
+    <name>
+        <text>13. ¿Qué nos permite hacer LliuWin Installer sobre Windows?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué nos permite hacer LliuWin Installer sobre Windows?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Convertir Windows en un sistema operativo de código abierto]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Ejecutar aplicaciones de Android en Windows]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Instalar LliureX sobre Windows sin necesidad de particionar el disco]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Personalizar el entorno de escritorio de Windows]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>14. ¿Qué debemos seleccionar al iniciar el instalador para permitir que la aplicación realice cambios al dispositivo?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué debemos seleccionar al iniciar el instalador para permitir que la aplicación realice cambios al dispositivo?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. "Sí, quiero permitir cambios"]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. "Aceptar"]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. "Siguiente"]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. "Permitir acceso"]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>15. ¿Qué acción debemos tomar una vez finalizada la descarga para terminar el asistente de configuración?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué acción debemos tomar una vez finalizada la descarga para terminar el asistente de configuración?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Apagar el equipo]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Reiniciar el equipo]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Desinstalar LliuWin]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. No es necesario hacer nada]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>16. ¿Qué escritorio se utiliza desde versión 19 de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué escritorio se utiliza desde versión 19 de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Gnome]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. KDE Plasma]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Mate]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. XFCE]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>17. ¿Qué sección del menú de inicio nos permite acceder a las aplicaciones organizadas por categorías?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué sección del menú de inicio nos permite acceder a las aplicaciones organizadas por categorías?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Menú de inicio]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Lugares o Directorios Habitules]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Preferidos]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Ninguna de las anteriores]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>18. ¿Dónde se guardan de forma predeterminada los documentos que descargamos desde el navegador u otras aplicaciones?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Dónde se guardan de forma predeterminada los documentos que descargamos desde el navegador u otras aplicaciones?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Carpeta de Documentos]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Escritorio]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Imágenes]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. Bajadas]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>19. ¿Qué tipo de paquete es utilizado por LliureX para la distribución y gestión de aplicaciones?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué tipo de paquete es utilizado por LliureX para la distribución y gestión de aplicaciones?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. .zip]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. .rar]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. .deb]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. .exe]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>20. ¿Qué herramienta en LliureX nos permite buscar e instalar paquetes en formato .deb?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué herramienta en LliureX nos permite buscar e instalar paquetes en formato .deb?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Access]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Synaptic]]></text>
+        <feedback>
+            <text><![CDATA[Correcto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Terminal]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Repos]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto.]]></text>
+        </feedback>
+    </answer>
+</question>
+</quiz>

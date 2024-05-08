@@ -1,0 +1,211 @@
+<quiz>
+    <question type="multichoice">
+        <name>
+            <text>1. Quina és una consideració important en muntar un clúster en PROXMOX?</text>
+        </name>
+        <questiontext>
+            <text>1. Quina és una consideració important en muntar un clúster en PROXMOX?</text>
+        </questiontext>
+        <answer fraction="0">
+            <text>Es necessita només un hipervisor perquè tingui sentit.</text>
+        </answer>
+        <answer fraction="0">
+            <text>No és necessari muntar un sistema d'alta disponibilitat.</text>
+        </answer>
+        <answer fraction="0">
+            <text>Els hipervisores en el clúster han de ser idèntics.</text>
+        </answer>
+        <answer fraction="100">
+            <text>Almenys es necessiten tres màquines hipervisoras.</text>
+        </answer>
+    </question>
+
+<question type="multichoice">
+    <name>
+        <text>2. Quina funció compleix un sistema d'alta disponibilitat en un clúster?</text>
+    </name>
+    <questiontext>
+        <text>2. Quina funció compleix un sistema d'alta disponibilitat en un clúster?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Evitar que hi hagi varis hipervisores.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Garantir que sempre estigui en funcionament almenys un hipervisor.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Proporcionar major rendiment a una sola màquina.</text>
+    </answer>
+    <answer fraction="0">
+        <text>No té cap utilitat addicional.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>3. Què es necessita per a muntar un sistema d'alta disponibilitat en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>3. Què es necessita per a muntar un sistema d'alta disponibilitat en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Tenir instal·lat un sistema CEPH.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Comptar amb una cabina externa.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Utilitzar solament un hipervisor.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Muntar els hipervisores amb diferents configuracions de xarxa.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>4. Quina és la quantitat mínima de hipervisores necessaris per a un sistema d'alta disponibilitat?</text>
+    </name>
+    <questiontext>
+        <text>4. Quina és la quantitat mínima de hipervisores necessaris per a un sistema d'alta disponibilitat?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>1</text>
+    </answer>
+    <answer fraction="0">
+        <text>2</text>
+    </answer>
+    <answer fraction="100">
+        <text>3</text>
+    </answer>
+    <answer fraction="0">
+        <text>4</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>5. Què s'ha de canviar si els hostnames dels nodes en PROXMOX coincideixen?</text>
+    </name>
+    <questiontext>
+        <text>5. Què s'ha de canviar si els hostnames dels nodes en PROXMOX coincideixen?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>No és necessari realitzar cap canvi.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Es canvia el nom del Datacenter.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Es modifica l'arxiu /etc/hostname i /etc/hosts.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Es reinicien els hipervisores.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>6. Què s'ha de fer una vegada que els 3 hipervisores estan funcionant per a muntar un clúster?</text>
+    </name>
+    <questiontext>
+        <text>6. Què s'ha de fer una vegada que els 3 hipervisores estan funcionant per a muntar un clúster?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Crear una màquina virtual addicional.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Anar a Clúster i pressionar Join clúster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Modificar la configuració de xarxa dels hipervisores.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Apagar un dels hipervisores.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>7. Què s'ha de fer després de donar-li nom al clúster en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>7. Què s'ha de fer després de donar-li nom al clúster en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>No és necessari realitzar cap acció addicional.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Crear enllaços a pàgines externes.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Unir-se a un domini de xarxa.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Crear un hipervisor addicional.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>8. Quin és el propòsit de la finestra "Join information" en la creació de clúster en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>8. Quin és el propòsit de la finestra "Join information" en la creació de clúster en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Agregar més memòria al clúster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Veure la informació del clúster creat.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Copiar informació per a unir altres hipervisores al clúster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Eliminar un hipervisor del clúster.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>9. Què es requereix per a muntar un sistema d'alta disponibilitat amb una cabina externa?</text>
+    </name>
+    <questiontext>
+        <text>9. Què es requereix per a muntar un sistema d'alta disponibilitat amb una cabina externa?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>2 targetes de xarxa.</text>
+    </answer>
+    <answer fraction="100">
+        <text>4 targetes de xarxa o una targeta de 10Gb.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Només una targeta de xarxa.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Un switch que suport 5Gb.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>10. Què s'ha de seleccionar en "Request state" per a l'alta disponibilitat en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>10. Què s'ha de seleccionar en "Request state" per a l'alta disponibilitat en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Stopped</text>
+    </answer>
+    <answer fraction="0">
+        <text>Unknown</text>
+    </answer>
+    <answer fraction="0">
+        <text>Pending</text>
+    </answer>
+    <answer fraction="100">
+        <text>Started</text>
+    </answer>
+</question>
+</quiz>

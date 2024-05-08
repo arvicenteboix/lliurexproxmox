@@ -1,0 +1,334 @@
+<quiz>
+    <question type="multichoice">
+        <name>
+            <text>1. Quines són les característiques del servidor MÀSTER en la configuració del hipervisor
+                 amb PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>1. Quines són les característiques del servidor MÀSTER en la configuració del hipervisor amb PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="100">
+            <text><![CDATA[a. Tindrà el LDAP i guarda el /net]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[b. Assigna DHCP als ordinadors del centre]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Assigna DHCP als ordinadors de l'aula d'informàtica]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Munta el servidor WIFI en aquesta unitat]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>2. Què es mostra en l'Esquema 1 en relació amb el switch principal del centre?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>2. Què es mostra en l'Esquema 1 en relació amb el switch principal del centre?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Connexió directa de cada targeta del hipervisor a un switch diferent]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[b. Configuració d'un LAG de 4 ports connectat a les targetes de xarxa del servidor]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Ús de VLANs per a segmentar la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Descripció de la configuració de xarxes no gestionables]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>3. Què ens permet fer el clúster en el context del hipervisor amb PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>3. Què ens permet fer el clúster en el context del hipervisor amb PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Administrar tots els servidors PROXMOX de manera individual]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[b. Moure VM d'un PROXMOX a un altre]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Crear un servidor d'alta disponibilitat]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Establir un servidor WIFI en la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>4. Què s'aconsegueix amb l'alta disponibilitat en el hipervisor PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>4. Què s'aconsegueix amb l'alta disponibilitat en el hipervisor PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Facilitar la connexió a servidors externs]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[b. Mantenir el servei de les Màquines Virtuals fins i tot si un hipervisor falla]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Crear una connexió redundant a Internet]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Augmentar la velocitat de transferència en la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>5. Quina és la funció principal d'un bond en una configuració de xarxa?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>5. Quina és la funció principal d'un bond en una configuració de xarxa?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Establir una connexió directa entre servidors]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[b. Crear un vincle redundant per a augmentar l'amplada de banda i tolerància a fallades]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Segmentar la xarxa en VLANs]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Proporcionar servei de DNS en la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>6. Per què és important configurar les màquines virtuals perquè arrenquin
+                automàticament?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>6. Per què és important configurar les màquines virtuals perquè arrenquin automàticament?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Per a estalviar energia en el servidor]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[b. Per a evitar problemes de xarxa en iniciar manualment les VM]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Perquè és un requisit obligatori en la configuració inicial]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[d. Per a retardar l'inici de les VM]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>7. Quina recomanació es dóna sobre la creació de còpies de seguretat en PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>7. Quina recomanació es dóna sobre la creació de còpies de seguretat en PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Fer còpies de seguretat durant les hores pico d'ús de la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[b. Realitzar còpies de seguretat programades, preferiblement quan no hi ha usuaris connectats]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Guardar les còpies de seguretat en discos locals de les VM]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Evitar restaurar còpies de seguretat per a mantenir la integritat de les dades]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>8. Quina és una característica clau de la configuració d'una cabina externa en
+                PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>8. Quina és una característica clau de la configuració d'una cabina externa en PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="100">
+            <text><![CDATA[a. Proporciona alta disponibilitat a les VM]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[b. És una alternativa econòmica per a emmagatzematge de dades]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Permet emmagatzemar isos, discos durs de VM i còpies de seguretat]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. S'utilitza per a ampliar la memòria RAM dels servidors]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>9. Què es recomana fer abans d'inicialitzar un servidor LliureX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>9. Què es recomana fer abans d'inicialitzar un servidor LliureX?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Actualitzar el sistema operatiu del servidor]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[b. Configurar el lliurex mirror per a replicació de dades]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[c. Comprovar l'assignació de targetes virtuals a les interfícies de xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[d. Eliminar l'accés a la xarxa per a evitar interferències]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+
+    <question type="multichoice">
+        <name>
+            <text>10. Quin és el principal avantatge de configurar un servidor Linux Bridge en
+                PROXMOX?</text>
+        </name>
+        <questiontext format="html">
+            <text><![CDATA[<p>10. Quin és el principal avantatge de configurar un servidor Linux Bridge en PROXMOX?</p>]]></text>
+        </questiontext>
+        <answer fraction="0">
+            <text><![CDATA[a. Permet connectar diverses targetes de xarxa a un mateix switch]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[b. Proporciona aïllament i segmentació de xarxa a nivell d'encaminador]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="100">
+            <text><![CDATA[c. Facilita la migració de VM entre servidors]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+        <answer fraction="0">
+            <text><![CDATA[d. Augmenta la velocitat de transferència de dades en la xarxa]]></text>
+            <feedback>
+                <text></text>
+            </feedback>
+        </answer>
+    </question>
+</quiz>

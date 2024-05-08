@@ -1,0 +1,332 @@
+<quiz>
+
+<question type="multichoice">
+    <name>
+        <text>1. ¿Cuál es la función principal del model de centre virtualitzat de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es la función principal del model de centre virtualitzat de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Proporcionar servicios de red solo a los servidores]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Proporcionar servicios de red solo a los clientes]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Proporcionar servicios de red a todos los ordenadores del centro]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. Proporcionar servicios de red únicamente para la intranet]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>2. ¿Qué es un servidor mestre dentro del model de centre de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué es un servidor mestre dentro del model de centre de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Un servidor independiente que no se conecta con otros servidores]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Un servidor que ofrece servicios a los servidores esclavos]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Un servidor sin funciones específicas]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Un servidor que solo ofrece servicios a los clientes]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>3. ¿Cuál es la principal ventaja de utilizar LliureX para configurar el model de centre?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es la principal ventaja de utilizar LliureX para configurar el model de centre?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Requiere conocimientos avanzados de informática]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Necesita configurarse íntegramente desde la terminal]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. Permite la configuración sin necesidad de tocar la terminal y sin conocimientos avanzados de informática]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Requiere una puesta a punto complicada]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>4. ¿Cuál de las siguientes opciones NO es un servicio que puede proporcionar el model de centre de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál de las siguientes opciones NO es un servicio que puede proporcionar el model de centre de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Servidor de imágenes para clientes pesados]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. DHCP para cada aula]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Videoconferencias]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. Servidor web para sitios externos]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>5. ¿Qué caracteriza al 'sabor' de LliureX denominado 'Escriptori'?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué caracteriza al 'sabor' de LliureX denominado 'Escriptori'?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Puede funcionar de manera independiente]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. No tiene funcionalidades específicas]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Solo es compatible con servidores]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. No se conecta a la red del centro]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>6. ¿Cuál es la forma en la que puede trabajar el servidor de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es la forma en la que puede trabajar el servidor de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. Solo de forma maestra]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. Independiente o maestro]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Solo de forma esclava]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[d. Solamente de forma independiente]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>7. ¿Cuántas tarjetas de red como mínimo debe tener un servidor de LliureX?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuántas tarjetas de red como mínimo debe tener un servidor de LliureX?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text><![CDATA[a. 1]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. 2]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. 3]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. 4]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>8. ¿Qué elemento de red es necesario configurar e inicializar para que el servidor funcione dentro del model de centre?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué elemento de red es necesario configurar e inicializar para que el servidor funcione dentro del model de centre?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. DHCP del aula]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. Zero-server-wizard]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Servidor LDAP]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. Servidor NFS]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>9. ¿Qué programa se recomienda utilizar para montar el model de centre paso a paso en esta unidad?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Qué programa se recomienda utilizar para montar el model de centre paso a paso en esta unidad?</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+        <text><![CDATA[a. Virtualbox]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[b. VMware]]></text>
+        <feedback>
+            <text><![CDATA[Se podria, pero recomendamos Virtualbox.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[c. Docker]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. KVM]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>10. ¿Dónde se puede encontrar el último ISO de LliureX para descargar?</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Dónde se puede encontrar el último ISO de LliureX para descargar?</p>]]></text>
+    </questiontext>
+    <answer fraction="0">
+        <text><![CDATA[a. En el Zero-server-wizard]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[b. En el Virtual Center]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="100">
+        <text><![CDATA[c. En la página web de LliureX]]></text>
+        <feedback>
+            <text><![CDATA[Correcto]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0">
+        <text><![CDATA[d. En el servidor FTP del centro]]></text>
+        <feedback>
+            <text><![CDATA[Incorrecto]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>

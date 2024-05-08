@@ -1,0 +1,204 @@
+<quiz>
+    <question type="multichoice">
+        <name>
+            <text>1. Quin és l'objectiu principal en passar del model clàssic de centre amb servidors en cada aula al nou model amb servidors virtualizados en un hipervisor o clúster de hipervisores?</text>
+        </name>
+        <questiontext>
+            <text>1. Quin és l'objectiu principal en passar del model clàssic de centre amb servidors en cada aula al nou model amb servidors virtualizados en un hipervisor o clúster de hipervisores?</text>
+        </questiontext>
+        <answer fraction="100">
+            <text>a. Centralitzar la gestió de servidors</text>
+        </answer>
+        <answer fraction="0">
+            <text>b. Augmentar el nombre de servidors físics</text>
+        </answer>
+        <answer fraction="0">
+            <text>c. Reduir la quantitat de VLANs necessàries</text>
+        </answer>
+        <answer fraction="0">
+            <text>d. Eliminar per complet la necessitat de switches</text>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>2. Què són les VLAN de nivell 1 o per port utilitzades en el nou model de centre?</text>
+        </name>
+        <questiontext>
+            <text>2. Què són les VLAN de nivell 1 o per port utilitzades en el nou model de centre?</text>
+        </questiontext>
+        <answer fraction="1">
+            <text>a. Xarxes virtuals que es basen en la direcció MAC dels dispositius</text>
+        </answer>
+        <answer fraction="0">
+            <text>b. Xarxes virtuals que es configuren per subxarxa</text>
+        </answer>
+        <answer fraction="0">
+            <text>c. Xarxes virtuals que s'apliquen per protocol de comunicació</text>
+        </answer>
+        <answer fraction="100">
+            <text>d. Xarxes virtuals que s'assignen a un port específic</text>
+        </answer>
+    </question>
+    <!-- Add more questions here -->
+
+<question type="multichoice">
+    <name>
+        <text>3. Què s'ha de tindre en compte en configurar els ports d'un switch en una VLAN?</text>
+    </name>
+    <questiontext>
+        <text>3. Què s'ha de tindre en compte en configurar els ports d'un switch en una VLAN?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>a. Tots els ports s'han de configurar amb les mateixes VLANs</text>
+    </answer>
+    <answer fraction="100">
+        <text>b. Cada port ha de tindre una única VLAN associada</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Els ports poden pertànyer a múltiples VLANs</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. No és necessari configurar els ports en una VLAN</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>4. Com s'identifica a un ordinador que no entén de VLANs en una xarxa configurada amb múltiples VLANs?</text>
+    </name>
+    <questiontext>
+        <text>4. Com s'identifica a un ordinador que no entén de VLANs en una xarxa configurada amb múltiples VLANs?</text>
+    </questiontext>
+    <answer fraction="100">
+        <text>a. Untagged</text>
+    </answer>
+    <answer fraction="0">
+        <text>b. Forwarded</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Tagged</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. Routed</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>5. Quina és la funció principal del bonding o Link Aggregation en una xarxa?</text>
+    </name>
+    <questiontext>
+        <text>5. Quina és la funció principal del bonding o Link Aggregation en una xarxa?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>a. Reduir la velocitat de connexió entre dispositius</text>
+    </answer>
+    <answer fraction="100">
+        <text>b. Augmentar la velocitat de connexió entre dispositius</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Limitar la compatibilitat entre diferents màquines</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. Augmentar la complexitat de les connexions en xarxa</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>6. Quin avantatge proporciona el protocol LACP en utilitzar Link Aggregation?</text>
+    </name>
+    <questiontext>
+        <text>6. Quin avantatge proporciona el protocol LACP en utilitzar Link Aggregation?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>a. Disminueix la compatibilitat entre diferents dispositius</text>
+    </answer>
+    <answer fraction="100">
+        <text>b. Augmenta la velocitat de connexió de manera dinàmica</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Requereix una configuració manual en cada dispositiu</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. Simplifica la identificació de fallades en la xarxa</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>7. Quina és la quantitat màxima de VLANs que es poden configurar en l'exemple donat?</text>
+    </name>
+    <questiontext>
+        <text>7. Quina és la quantitat màxima de VLANs que es poden configurar en l'exemple donat?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>a. 100</text>
+    </answer>
+    <answer fraction="0">
+        <text>b. 256</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. 500</text>
+    </answer>
+    <answer fraction="100">
+        <text>d. 1000</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>8. Què significa el terme "UNTAGGED" en la configuració de VLANs?</text>
+    </name>
+    <questiontext>
+        <text>8. Què significa el terme "UNTAGGED" en la configuració de VLANs?</text>
+    </questiontext>
+    <answer fraction="100">
+        <text>a. El port no té assignada cap VLAN</text>
+    </answer>
+    <answer fraction="0">
+        <text>b. El port pot enviar trànsit a múltiples VLANs</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. El port és administrat per un switch extern</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. El port només treballa amb una VLAN específica</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>9. Quina funció compleix el Spanning Tree en una xarxa de commutació de Ethernet?</text>
+    </name>
+    <questiontext>
+        <text>9. Quina funció compleix el Spanning Tree en una xarxa de commutació de Ethernet?</text>
+    </questiontext>
+    <answer fraction="100">
+        <text>a. Detectar bucles en la xarxa i desactivar ports per a previndre'ls</text>
+    </answer>
+    <answer fraction="0">
+        <text>b. Augmentar la quantitat de bucles en la xarxa per a redundància</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Sincronitzar la comunicació entre diferents switches</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. Limitar la quantitat de direccions MAC per port del switch</text>
+    </answer>
+</question>
+<question type="multichoice">
+    <name>
+        <text>10. Quina és la principal finalitat del projecte COURSE - FÈNIX?</text>
+    </name>
+    <questiontext>
+        <text>10. Quina és la principal finalitat del projecte COURSE - FÈNIX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>a. Normalitzar el funcionament de les impressores en xarxa</text>
+    </answer>
+    <answer fraction="100">
+        <text>b. Actualitzar l'electrònica de xarxa del centre i millorar la infraestructura</text>
+    </answer>
+    <answer fraction="0">
+        <text>c. Implementar un sistema de videovigilància en totes les aules</text>
+    </answer>
+    <answer fraction="0">
+        <text>d. Reduir l'amplada de banda disponible per als estudiants</text>
+    </answer>
+</question>
+</quiz>

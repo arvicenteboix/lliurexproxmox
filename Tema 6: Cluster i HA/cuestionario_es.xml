@@ -1,0 +1,212 @@
+
+<quiz>
+    <question type="multichoice">
+        <name>
+            <text>1. ¿Cuál es una consideración importante al montar un clúster en PROXMOX?</text>
+        </name>
+        <questiontext>
+            <text>1. ¿Cuál es una consideración importante al montar un clúster en PROXMOX?</text>
+        </questiontext>
+        <answer fraction="0">
+            <text>Se necesita solo un hipervisor para que tenga sentido.</text>
+        </answer>
+        <answer fraction="0">
+            <text>No es necesario montar un sistema de alta disponibilidad.</text>
+        </answer>
+        <answer fraction="0">
+            <text>Los hipervisores en el clúster deben ser idénticos.</text>
+        </answer>
+        <answer fraction="100">
+            <text>Al menos se necesitan tres máquinas hipervisoras.</text>
+        </answer>
+    </question>
+
+<question type="multichoice">
+    <name>
+        <text>2. ¿Qué función cumple un sistema de alta disponibilidad en un clúster?</text>
+    </name>
+    <questiontext>
+        <text>2. ¿Qué función cumple un sistema de alta disponibilidad en un clúster?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Evitar que haya varios hipervisores.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Garantizar que siempre esté en funcionamiento al menos un hipervisor.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Proporcionar mayor rendimiento a una sola máquina.</text>
+    </answer>
+    <answer fraction="0">
+        <text>No tiene ninguna utilidad adicional.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>3. ¿Qué se necesita para montar un sistema de alta disponibilidad en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>3. ¿Qué se necesita para montar un sistema de alta disponibilidad en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Tener instalado un sistema CEPH.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Contar con una cabina externa.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Utilizar solamente un hipervisor.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Montar los hipervisores con diferentes configuraciones de red.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>4. ¿Cuál es la cantidad mínima de hipervisores necesarios para un sistema de alta disponibilidad?</text>
+    </name>
+    <questiontext>
+        <text>4. ¿Cuál es la cantidad mínima de hipervisores necesarios para un sistema de alta disponibilidad?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>1</text>
+    </answer>
+    <answer fraction="0">
+        <text>2</text>
+    </answer>
+    <answer fraction="100">
+        <text>3</text>
+    </answer>
+    <answer fraction="0">
+        <text>4</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>5. ¿Qué se debe cambiar si los hostnames de los nodos en PROXMOX coinciden?</text>
+    </name>
+    <questiontext>
+        <text>5. ¿Qué se debe cambiar si los hostnames de los nodos en PROXMOX coinciden?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>No es necesario realizar ningún cambio.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Se cambia el nombre del Datacenter.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Se modifica el archivo /etc/hostname y /etc/hosts.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Se reinician los hipervisores.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>6. ¿Qué se debe hacer una vez que los 3 hipervisores están funcionando para montar un clúster?</text>
+    </name>
+    <questiontext>
+        <text>6. ¿Qué se debe hacer una vez que los 3 hipervisores están funcionando para montar un clúster?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Crear una máquina virtual adicional.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Ir a Cluster y presionar Join cluster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Modificar la configuración de red de los hipervisores.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Apagar uno de los hipervisores.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>7. ¿Qué se debe hacer después de darle nombre al clúster en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>7. ¿Qué se debe hacer después de darle nombre al clúster en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>No es necesario realizar ninguna acción adicional.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Crear enlaces a páginas externas.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Unirse a un dominio de red.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Crear un hipervisor adicional.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>8. ¿Cuál es el propósito de la ventana "Join information" en la creación de clúster en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>8. ¿Cuál es el propósito de la ventana "Join information" en la creación de clúster en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Agregar más memoria al clúster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Ver la información del clúster creado.</text>
+    </answer>
+    <answer fraction="100">
+        <text>Copiar información para unir otros hipervisores al clúster.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Eliminar un hipervisor del clúster.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>9. ¿Qué se requiere para montar un sistema de alta disponibilidad con una cabina externa?</text>
+    </name>
+    <questiontext>
+        <text>9. ¿Qué se requiere para montar un sistema de alta disponibilidad con una cabina externa?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>2 tarjetas de red.</text>
+    </answer>
+    <answer fraction="100">
+        <text>4 tarjetas de red o una tarjeta de 10Gb.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Solo una tarjeta de red.</text>
+    </answer>
+    <answer fraction="0">
+        <text>Un switch que soporte 5Gb.</text>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>10. ¿Qué se debe seleccionar en "Request state" para la alta disponibilidad en PROXMOX?</text>
+    </name>
+    <questiontext>
+        <text>10. ¿Qué se debe seleccionar en "Request state" para la alta disponibilidad en PROXMOX?</text>
+    </questiontext>
+    <answer fraction="0">
+        <text>Stopped</text>
+    </answer>
+    <answer fraction="0">
+        <text>Unknown</text>
+    </answer>
+    <answer fraction="0">
+        <text>Pending</text>
+    </answer>
+    <answer fraction="100">
+        <text>Started</text>
+    </answer>
+</question>
+</quiz>
