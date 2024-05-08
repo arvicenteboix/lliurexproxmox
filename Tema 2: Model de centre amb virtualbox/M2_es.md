@@ -1,7 +1,7 @@
 ---
 # Front matter
 # Metainformació del document
-title: "MODELO DE CENTRO CON VIRTUALBOX"
+title: "Modelo de centro con Virtualbox"
 author: [Alfredo Rafael Vicente Boix y Javier Estellés Dasi \newline Revisado por Sergio Balaguer ]
 dato: "05-05-2024"
 subject: "Proxmox"
@@ -9,7 +9,7 @@ keywords: [Red, Instalación]
 subtitle: "Ejemplo de un centro con Virtualbox sin Proxmox"
 
 
-lang: ca
+lang: es
 page-background: img/bg.png
 titlepage: true
 # portada
@@ -18,28 +18,28 @@ titlepage-rule-color: AA0000
 titlepage-text-color: AA0000
 titlepage-background: ../portades/U2.png
 
-# configuració de l'índex
+# configuració de  l'índex
 toc-own-page: true
-toc-title: Continguts
+toc-title: Contenidos
 toc-depth: 2
 
-# capçalera i peu
+# ccapçalera i pe
 header-left: \thetitle
 header-right: Curs 2023-2024
 footer-left: CEFIRE València
 footer-right: \thepage/\pageref{LastPage}
 
-# Les figures que apareguen on les definim i centrades
+# Les figures que apareguen on legu definim i centraes
 float-placement-figure: H
 caption-justification: centering 
 
-# No volem numerar les linies de codi
+# No volem numerar les linies de inie
 listings-disable-line-numbers: true
 
-# Configuracions dels paquets de latex
+# Configuracions dels paquets de atex
 header-includes:
 
-  #  imatges i subfigures
+  #  imatges i subfigurgs
   - \usepackage{graphicx}
   - \usepackage{subfigure}
   - \usepackage{lastpage}
@@ -65,14 +65,14 @@ header-includes:
   # pàgines apaïsades
   - \usepackage{pdflscape}
   
-  # per a permetre pandoc dins de blocs Latex
+  # per a permetre pandoc dins de blocdinsx
   - \newcommand{\hideFromPandoc}[1]{#1}
   - \hideFromPandoc {
       \let\Begin\begin
       \let\End\end
     }
  
-# definició de les caixes d'avis
+# definició de les caixes davis
 pandoc-latex-environment:
   noteblock: [note]
   tipblock: [tip]

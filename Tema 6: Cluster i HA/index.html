@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />     <meta name="author" content="Alfredo Rafael Vicente Boix i Javier Estellés Dasi" />       <meta name="keywords" content="Xarxa, Instal·lació" />      <title>Cluster i HA</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        span.underline{text-decoration: underline;}
+        div.column{display: inline-block; vertical-align: top; width: 50%;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        ul.task-list{list-style: none;}
+    </style>
+        <link rel="stylesheet" href="aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+                        
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">Cluster i HA</h1>
+            <!--        <p class="subtitle">Muntatge de cluster en varios hipervisors i alta disponibilitat</p>
+        -->
+            <!--         <p class="author">Alfredo Rafael Vicente Boix i Javier Estellés Dasi</p>
+         -->
+                        <p class="date">05-05-2024</p>
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                                <h2 id="toc-title">Continguts</h2>
+                 <ul>
+<li><a href="#introducció"><span class="toc-section-number">1</span> Introducció</a></li>
+<li><a href="#muntar-clúster-en-proxmox"><span class="toc-section-number">2</span> Muntar clúster en PROXMOX</a></li>
+<li><a href="#muntatge-dalta-disponibilitat"><span class="toc-section-number">3</span> Muntatge d’alta disponibilitat</a>
+<ul>
+<li><a href="#nas-i-màquina-virtual"><span class="toc-section-number">3.1</span> NAS i màquina virtual</a></li>
+</ul></li>
+<li><a href="#consideracions-finals"><span class="toc-section-number">4</span> Consideracions finals</a></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <p><img src="img/cc.png" height="50" /></p>
+            <p>Este documento está sujeto a una licencia creative commons que permite su difusión y uso comercial reconociendo siempre la autoría de su creador. Este documento se encuentra para ser modificado en el siguiente repositorio de github: <!-- CAMBIAR EL ENLACE --> <a href="https://github.com/arvicenteboix/lliurexproxmox">https://github.com/arvicenteboix/lliurexproxmox</a> </p>
+            <!-- \awesomebox[violet]{2pt}{\faRocket}{violet}{Lorem ipsum…} -->
+            <h1 data-number="1" id="introducció"><span class="header-section-number">1</span> Introducció</h1>
+            <p>En aquesta última unitat, explicarem com muntar un clúster en PROXMOX. És un procediment molt senzill, però s’han de tenir en compte les següents consideracions:</p>
+            <ul>
+            <li>En muntar un clúster pot tenir diferents màquines entre els hipervisors del clúster.</li>
+            <li>Si no muntem un sistema d’alta disponibilitat, no té massa sentit.</li>
+            <li>Per a muntar un sistema d’alta disponibilitat cal muntar un CEPH (no s’explica en aquest curs) o tenir una cabina externa.</li>
+            </ul>
+            <div class="warning">
+            <p>Les cabines externes són sistemes molt fiables i difícilment fallen, ja que només serveixen dades. Tot el processament es faria al sistema PROXMOX.</p>
+            </div>
+            <div class="warning">
+            <p>Un sistema d’alta disponibilitat permetrà que quan una màquina deixe de funcionar immediatament altre hipervisor se n’adonarà que alguna cosa està passant i la posarà en marxa, sense necessitat que cap persona intervinga.</p>
+            </div>
+            <h1 data-number="2" id="muntar-clúster-en-proxmox"><span class="header-section-number">2</span> Muntar clúster en PROXMOX</h1>
+            <p>Ja que no deposam de tres ordinadors, es pot muntar un sistema d’alta disponibilitat en Virtualbox per a veure el seu funcionament. La màquina utilitzada és un Ryzen 5 amb 8 GB de RAM i un NAS. S’ha muntat el següent sistema:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th>Màquina</th>
+            <th>Característiques</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>Proxmox 1</td>
+            <td>Proxmox al Virtualbox</td>
+            </tr>
+            <tr class="even">
+            <td>Proxmox 2</td>
+            <td>Proxmox al Virtualbox</td>
+            </tr>
+            <tr class="odd">
+            <td>Proxmox 3</td>
+            <td>Proxmox al Virtualbox</td>
+            </tr>
+            <tr class="even">
+            <td>TrueNAS</td>
+            <td>Muntat a una màquina externa</td>
+            </tr>
+            </tbody>
+            </table>
+            <div class="warning">
+            <p>La quantitat mínima d’hipervisors per a poder fer funcionar un sistema d’alta disponibilitat és de 3. Es necessita per a fer votació per saber qui està viu, qui guanye amb dos vots (ell i altre) està viu, això significa tenir quorum , qui tinga només un vot està mort (significaria que no té accés a la xarxa).</p>
+            </div>
+            <p>El primer que cal fer és tenir 3 servidors instal·lats amb PROXMOX. En aquest cas hem muntat els 3 hipervisors amb una única targeta de xarxa. Si es muntara el model de centre tots 3 hipervisors, haurien de tenir la mateixa configuració de xarxa a excepció de la seua ip, òbviament.</p>
+            <figure>
+            <img src="media_es/1.png" alt="" /><figcaption>Màquines virtuals al Virtualbox</figcaption>
+            </figure>
+            <p>::tip Recordeu que és necessari que cada PROXMOX tinga un hostname diferent. Si el nom del node coincidix cal canviar-lo. Es deu modificar a l’arxiu /etc/hostname, i a /etc/hosts. :::</p>
+            <p>Una vegada tenim els 3 hipervisors funcionant. Clickem sobre el datacenter i anem <strong>Cluster</strong> i clickem a <strong>Create cluster</strong>.</p>
+            <figure>
+            <img src="media_es/2.png" alt="" /><figcaption>Creació de cluster</figcaption>
+            </figure>
+            <p>Una vegada polsem a <strong>Create cluster</strong> ens apareixerà la següent finestra on li donarem el nom al clúster que vulguem:</p>
+            <figure>
+            <img src="media_es/3.png" alt="" /><figcaption>Nom del cluster</figcaption>
+            </figure>
+            <p>Quan posem a <strong>Create</strong> ens apareixerà la següent finestra:</p>
+            <figure>
+            <img src="media_es/4.png" alt="" /><figcaption>Creació de cluster amb èxit</figcaption>
+            </figure>
+            <p>Com podem veure en aquests moments només tindrem un hipervisor al nostre cluster. Si volem afegir més hipervisors clickarem sobre <strong>Join information</strong>:</p>
+            <figure>
+            <img src="media_es/5.png" alt="" /><figcaption>Membres del cluster</figcaption>
+            </figure>
+            <p>I li donarem a <strong>Copy information</strong>. Aquests són els paràmetres que utilitzarà PROXMOX per a afegir els altres hipervisors al clúster.</p>
+            <figure>
+            <img src="media_es/6.png" alt="" /><figcaption>Informació a passar a altres hipervisors</figcaption>
+            </figure>
+            <p>Canviem d’hipervisor i anem novament a Clúster en el nostre Datacenter:</p>
+            <figure>
+            <img src="media_es/7.png" alt="" /><figcaption>Unir-se a un clúster</figcaption>
+            </figure>
+            <p>Polsarem a <strong>Join cluster</strong> i pegarem la informació copiada del primer hipervisor:</p>
+            <figure>
+            <img src="media_es/8.png" alt="" /><figcaption>Pegar informació</figcaption>
+            </figure>
+            <p>Al clicar sobre <strong>Join cluster</strong> ens apareixerà la següent informació:</p>
+            <figure>
+            <img src="media_es/9.png" alt="" /><figcaption>Unió al clúster amb èxit</figcaption>
+            </figure>
+            <p>Aquest procés es repetirà per a altre hipervisor:</p>
+            <figure>
+            <img src="media_es/10.png" alt="" /><figcaption>Tercer hipervisor</figcaption>
+            </figure>
+            <figure>
+            <img src="media_es/11.png" alt="" /><figcaption>Unió al clúster amb èxit</figcaption>
+            </figure>
+            <p>Ara podrem veure com tenim els tres hipervisors al mateix clúster:</p>
+            <figure>
+            <img src="media_es/12.png" alt="" /><figcaption>Relació d’hipervisors al clúster</figcaption>
+            </figure>
+            <p>En aquests moments ja tenim el nostre clúster muntat.</p>
+            <h1 data-number="3" id="muntatge-dalta-disponibilitat"><span class="header-section-number">3</span> Muntatge d’alta disponibilitat</h1>
+            <p>Per a realitzar el nostre muntatge d’alta disponibilitat utiltizarem una cabina externa. Per a fer les proves s’ha utilitzat la distro Tiny Core, la versió de 16 Mb. Es tracta d’una distro que a penes consumeix recursos i es poden fer proves amb ella en virtualització anidada.</p>
+            <div class="warning">
+            <p>Si es decidix fer el muntatge d’alta disponibilitat amb una cabina, cal disposar d’una cabina amb 4 targetes de xarxa per a muntar un bond, o d’una targeta de 10Gb que obligaria a tenir un switch que suportara 10 Gb.</p>
+            </div>
+            <h2 data-number="3.1" id="nas-i-màquina-virtual"><span class="header-section-number">3.1</span> NAS i màquina virtual</h2>
+            <p>En primer lloc afegim el nostre NAS al Proxmox. Quan l’afegim al datacenter serà visible per part de tots els hipervisors.</p>
+            <figure>
+            <img src="media_es/13.png" alt="" /><figcaption>Afegir NAS</figcaption>
+            </figure>
+            <p>Pugem la nostra ISO (no tenim el perquè fer-ho al NAS)</p>
+            <figure>
+            <img src="media_es/14.png" alt="" /><figcaption>Pujar ISO</figcaption>
+            </figure>
+            <p>I creem la nostra màquina virtual:</p>
+            <figure>
+            <img src="media_es/15.png" alt="" /><figcaption>Creació de màquina virtual</figcaption>
+            </figure>
+            <figure>
+            <img src="media_es/16.png" alt="" /><figcaption>Creació de màquina virtual</figcaption>
+            </figure>
+            <figure>
+            <img src="media_es/17.png" alt="" /><figcaption>Creació de màquina virtual</figcaption>
+            </figure>
+            <p>No cal donar molta memòria a aquesta màquina:</p>
+            <figure>
+            <img src="media_es/18.png" alt="" /><figcaption>Creació de màquina virtual</figcaption>
+            </figure>
+            <p>I arranquem la màquina:</p>
+            <figure>
+            <img src="media_es/19.png" alt="" /><figcaption>Màquina en funcionament</figcaption>
+            </figure>
+            <p>La màquina arranca de seguida i funciona molt fluida:</p>
+            <p>#3.2 Alta disponibilitat</p>
+            <p>Una vegada tenim la màquina funcionant anirem a Datacenter i després HA i clicarem sobre <strong>Add</strong>.</p>
+            <figure>
+            <img src="media_es/20.png" alt="" /><figcaption>Alta disponibilitat</figcaption>
+            </figure>
+            <p>Ens apareixerà la següent finestra on haurem d’escollir la màquina que volem tenir funcionant en tot moment:</p>
+            <figure>
+            <img src="media_es/21.png" alt="" /><figcaption>Escollir màquina</figcaption>
+            </figure>
+            <figure>
+            <img src="media_es/22.png" alt="" /><figcaption>Escollir màquina</figcaption>
+            </figure>
+            <p>En <strong>Request state</strong> cal tenir estat started.</p>
+            <p>I ja tenim el nostre sistema muntat:</p>
+            <figure>
+            <img src="media_es/23.png" alt="" /><figcaption>Llistat de màquines amb Alta disponibilitat</figcaption>
+            </figure>
+            <p>Amb Virtualbox podem provar d’apagar una màquina per a veure què passa:</p>
+            <figure>
+            <img src="media_es/24.png" alt="" /><figcaption>Prova de pèrdua d’un hipervisor</figcaption>
+            </figure>
+            <p>Al cap del temps podem veure com el nostre hipervisor ja no està en marxa i com la màquina ha canviat d’hipervisor i ara està funcionant a l’hipervisor 2:</p>
+            <figure>
+            <img src="media_es/25.png" alt="" /><figcaption>Màquina que ha passat automàticament a altre hipervisor</figcaption>
+            </figure>
+            <p>Podem veure que la màquina està funcionant:</p>
+            <figure>
+            <img src="media_es/26.png" alt="" /><figcaption>Tiny Core funcionant a altre hipervisor</figcaption>
+            </figure>
+            <div class="warning">
+            <p>No espereu que la màquina es pose en marxa de seguida, el procés pot trigar uns 5 minuts i si hi han clients semilleugers funcionant, probablement deixaran de funcionar correctament. En aquest procés pot haver-hi certa pèrdua d’informació ja que no es recupera l’estat de la màquina.</p>
+            </div>
+            <h1 data-number="4" id="consideracions-finals"><span class="header-section-number">4</span> Consideracions finals</h1>
+            <p>Es pot tractar de tenir un sistema on hi haja una mínima pèrdua d’informació amb dos hipervisors i si no disposes de NAS. Es podrien tenir dues màquines duplicades amb dos hipervisors i utilitzar la replicació.</p>
+            <p>Es podria tenir el /net a un disc virtual a banda i que aquest anara replicant-se cada 30 min entre els dos hipervisors, si un d’ells caiguera. Es podria posar en marxa l’altra màquina a l’altre hipervisor i, com a molt, s’haurien perdut 30 minuts d’informació.</p>
+            <p>Podrien configurar-ho dins de la màquina virtual a l’apartat de <strong>Replication</strong>.</p>
+            <figure>
+            <img src="media_es/27.png" alt="" /><figcaption>Replicació de discos</figcaption>
+            </figure>
+            <p>Es podrien fer moltes més coses, ja que PROXMOX permet automatitzar moltes tasques i tenir un munt de serveis. Amb aquest curs hem tractat de donar-vos unes pinzellades sobre el que es pot fer i com s’està utilitzant als centres educatius.</p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+            //item.style.color = "#ff0000";
+        </script>
+    </div>
+</body>
+
+</html>

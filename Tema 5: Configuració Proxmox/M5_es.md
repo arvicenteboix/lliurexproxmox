@@ -20,7 +20,7 @@ titlepage-background: ../portades/U5.png
 
 # configuració de l'índex
 toc-own-page: true
-toc-title: Continguts
+toc-title: Contenidos
 toc-depth: 2
 
 # capçalera i peu
