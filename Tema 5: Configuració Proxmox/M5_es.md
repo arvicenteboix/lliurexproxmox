@@ -1,7 +1,7 @@
 ---
 # Front matter
 # Metainformació del document
-title: "CONFIGURACIÓN DE PROXMOX"
+title: "Configuración de Proxmox"
 author: [Alfredo Rafael Vicente Boix y Javier Estellés Dasi \newline Modificado por Sergio Balaguer]
 dato: "05-05-2024"
 subject: "Proxmox"
@@ -16,7 +16,7 @@ titlepage: true
 titlepage-rule-height: 2
 titlepage-rule-color: AA0000
 titlepage-text-color: AA0000
-titlepage-background: ../portades/U1.png
+titlepage-background: ../portades/U5.png
 
 # configuració de l'índex
 toc-own-page: true

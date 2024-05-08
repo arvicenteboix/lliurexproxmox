@@ -16,7 +16,7 @@ titlepage: true
 titlepage-rule-height: 2
 titlepage-rule-color: AA0000
 titlepage-text-color: AA0000
-titlepage-background: ../portades/U1.png
+titlepage-background: ../portades/U3.png
 
 # configuració de l'índex
 toc-own-page: true
