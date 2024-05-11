@@ -108,7 +108,7 @@ Para entender mejor estos conceptos, podemos hacer un símil con el mundo de la 
 * Aquella que guarda en secreto la receta, para que nadie la pueda *copiar* y mantener la exclusividad del plato, o bien
 * Aquella que publica los ingredientes y el procedimiento para hacerla, de forma que nosotros la podemos cocinar en casa, la podemos adaptar o modificar a nuestro gusto, y la podemos redistribuir para hacerla llegar a otras para que la prueban o mejoran. Además, como que tenemos la lista de ingredientes, podemos saber si hay algún alérgeno presente.
 
-Volviendo al mundo del software, la primera visión sería aquella que se corresponde en el software propietario, del que no  conocemos el código fuente, y del que no podemos saber como trabaja ni que hace con nuestros datos personales. El segundo punto de vista sería el que se correspondería en el software libre, donde todo el código es público y abierto, de forma que sabemos como trabaja, que hace con nuestros datos, y podemos aplicarle cualquier mejora o adaptación.
+Volviendo al mundo del software, la primera visión sería aquella que se corresponde en el software propietario, del que no conocemos el código fuente, y del que no podemos saber cómo trabaja ni que hace con nuestros datos personales. El segundo punto de vista sería el que se correspondería en el software libre, donde todo el código es público y abierto, de forma que sabemos cómo trabaja, que hace con nuestros datos, y podemos aplicarle cualquier mejora o adaptación.
 
 > **Las cuatro libertades del software libre** 
 >
@@ -128,10 +128,10 @@ De entre las principales características que aporta LliureX, podemos destacar:
 * Es fácil de utilizar y configurar. 
 * Soporta varios idiomas, con el valenciano como lengua destacada. En este punto, hay que decir que además de la traducción al valenciano del mismo sistema se ha colaborado con la traducción de partes de Ubuntu, se ha trabajado conjuntamente con Softvalencià para la traducción de varias aplicaciones, entre ellas LibreOffice, y se ha colaborado también con instituciones como ARASAAC, en la traducción del banco de pictogramas y la futura web.
 * Incluye una buena colección de aplicaciones educativas organizadas por niveles y para todos los ámbitos.
-* Incluye recursos educativos: actividades jclic, html, etc.
+* Incluye recursos educativos: actividades Jclic, html, etc.
 * Incorpora herramientas de creación de Objetos Digitales Educativos (ODE): para crear actividades con diferentes formatos.
 * Ahorra los costes de las licencias de software y muchas horas de mantenimiento, al ser un sistema menos vulnerable a malware y piratas informáticos.
-* Optimiza de la dotación informática de centro, y nos puede aprovechar para reutilizar equipos viejos, puesto que está diseñado para consumir menos recursos que otros sistemas operativos propietarios.
+* Optimiza de la dotación informática de centro, y nos puede servir para reutilizar equipos viejos, puesto que está diseñado para consumir menos recursos que otros sistemas operativos propietarios.
 * Además del sistema operativo por equipos individuales, aporta todo un modelo de aula y de centro, de forma que centraliza en servidores todos los datos del centro, y facilita la gestión remota de los equipos.
 
 ## Versiones y sabores de LliureX
