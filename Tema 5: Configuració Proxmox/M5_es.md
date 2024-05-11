@@ -116,22 +116,19 @@ El esquema seria de la siguiente manera:
 
 ![Esquema orientativo 1](Esquemes/esquemabond.png)
 
-
-
-
 ## Esquema 2
 
-En el siguiente esquema no se usan switches gestionables por lo que no se usan VLANs. Cada tarjeta del hipervisor va a un switch diferente. Este esquema no aprovecha las ventajas que tiene un LAG (aumento ancho de banda y tolerancia a fallos).Este montaje se utiliza principalmente en centros pequeños. El equema seria de la siguiente manera:
+En el siguiente esquema no se usan switches gestionables por lo que no se usan VLANs. Cada tarjeta del hipervisor va a un switch diferente. Este esquema no aprovecha las ventajas que tiene un LAG (aumento ancho de banda y tolerancia a fallos).Este montaje se utiliza principalmente en centros pequeños. El esquema seria de la siguiente manera:
 
 ![Esquema orientativo 2](Esquemes/esquemasense.png)
 
 ## Clúster 
+
 En este tema vamos a configurar un solo hipervisor pero si tenemos más hipervisores habría que crear más LAGs en el switch y la misma configuración de PROXMOX en todos los hipervisores. Una vez estuviera todo conectado, configurado y en marcha se pueden unir los servidores PROXMOX en un **clúster**. El clúster permite gestionar todos los servidores PROXMOX de forma unificada, mover VM de un PROXMOX a otro y más cosas que **veremos en el próximo tema**. 
 
 ## Alta disponibilidad
 
-Una vez hemos creado un clúster podemos mejorarlo con la alta disponibilidad. La alta disponibilidad (HA) permite que cuando un hipervisor se estropea los otros cogen de forma automática las máquinas virtuales del mismo y siguen dando servicio sin que el usuario lo note. Esto permite cambiar el hipervisor o arreglarlo y el servicio no es interrumpido en ningún momento. Para hacer esto es necesario montar un [CEPH](https://es.wikipedia.org/wiki/Ceph_File_System) o tener una cabina/NAS de discos externa con mucha fiabilidad (y muy caras). En estas cabinas es donde se guardan los discos de todas las VM y ya no estarían almacenados en los discos de los servidores PROXMOX. Esta configuración no se va a tratar en este curso.
-
+Una vez hemos creado un clúster podemos mejorarlo con la alta disponibilidad. La alta disponibilidad (HA) permite que cuando un hipervisor se estropea los otros cogen de forma automática las máquinas virtuales del mismo y siguen dando servicio sin que el usuario lo note. Esto permite cambiar el hipervisor o arreglarlo y el servicio no es interrumpido en ningún momento. Para hacer esto es necesario montar un [CEPH](https://es.wikipedia.org/wiki/Ceph_File_System) o tener una cabina/NAS de discos externa con mucha fiabilidad (y muy caras). En estas cabinas es donde se guardan los discos de todas las VM y ya no estarían almacenados en los discos de los servidores PROXMOX. Esta configuración no se va a tratar en este tema.
 
 ## Esquema de máquinas virtuales (VM)
 
@@ -143,7 +140,7 @@ En ambos esquemas la configuración de las máquinas virtuales es igual ya que l
 
 Una vez tenemos instalado PROXMOX y haya reiniciado, podremos acceder en él. Toda la configuración del PROXMOX se realiza a través de un servidor web que lleva el sistema. Para acceder tenemos que hacerlo a través del puerto 8006 con certificación ssl. Sencillamente escribimos en un navegador de una estación de trabajo que esté en la misma red lo siguiente:
 
-```tcsh
+```sh
 https://"IP_HIPERVISOR:8006
 ```
 
@@ -167,12 +164,14 @@ Los siguientes pasos son opcionales, pero aconsejables. Es para acceder a las ú
 
 Una vez hemos accedido podemos configurar la lista de los repositorios de PROXMOX accediendo, en primer lugar al shell del hipervisor y escribimos lo siguiente:
 
-```tcsh
+```sh
 nano /etc/apt/sources.list.d/pve-enterprise.list
 ```
+
 Ten en cuenta que has accedido como root, así que tienes que ir con mucho cuidado con lo que haces. Una vez abres el fichero cambias el repositorio por el siguiente:
 
-```tcsh
+
+```sh
 deb http://download.proxmox.com/debian/pve buster pve-no-subscription
 ```
 
@@ -182,14 +181,14 @@ Se quedaría así:
 
 Ahora ya puedes actualizar desde la terminal el PROXMOX para tener la última versión:
 
-```tcsh
+```sh
 apt update
 apt upgrade
 ```
 
 ## Crear máquina virtual
 
-Antes de crear una máquina virtual tenemos que subir la iso de LliureX Server, podemos descargarla [de aquí](http://releases.lliurex.net/isos/21.07_64bits/LliureX-server_64bits_21_latest.iso). Tratamos de buscar la última versión editada.
+Antes de crear una máquina virtual tenemos que subir la iso de LliureX Server, podemos descargarla [de aquí](https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso). Tratamos de buscar la última versión editada.
 
 Una vez ya tenemos la descarga es necesario subirla al PROXMOX, lo hacemos seleccionando el espacio **local** y haciendo click en **upload**:
 
@@ -237,7 +236,7 @@ La suma de la memoria RAM de todas las máquinas puede ser sin problemas mayor q
 
 ![Memoria RAM](ConProxmox/prox13.png)
 
-Finalmente, no cambiamos nada a los parámetro de red y una vez instalada la máquina ya añadiremos las tarjetas virtuales. 
+Finalmente, no cambiamos nada en los parámetro de red y una vez instalada la máquina ya añadiremos las tarjetas virtuales. 
 
 ![Red](ConProxmox/prox14.png)
 
@@ -245,10 +244,9 @@ Podemos activar el checkbox de **Start after created** para poder iniciar la má
 
 ![Finalización de configuración VM](ConProxmox/prox15.png)
 
-
 ## Instalación de la máquina virtual
 
-Una vez configurada la máquina virtual y haya arrancado podemos ver como nos aparece un icono en la franja izquierda y se pone de color, podemos desplegar el menú contextual y pulsar sobre **Console**:
+Una vez configurada la máquina virtual y haya arrancado podemos ver cómo nos aparece un icono en la franja izquierda y se pone de color, podemos desplegar el menú contextual y pulsar sobre **Console**:
 
 ![Menú contextual de la VM en funcionamiento](ConProxmox/prox16.png)
 
@@ -301,7 +299,7 @@ De manera análoga realizamos todas las otras configuraciones y nos quedaría de
 ## Esquema 2
 
 :::important
-Recordamos que este esquema **no es el que utilizaremos en este curso** pero se enseña para casos en los que no se disponga de switches gestionables ni VLANs.
+Recordemos que este esquema **no es el que utilizaremos en este curso** pero se enseña para casos en los que no se disponga de switches gestionables ni VLANs.
 :::
 
 Este esquema que no presenta ninguna VLAN se haría de manera análoga al anterior, pero sin configurar el bond. Cogeríamos cada tarjeta virtual Linux bridge y la enlazamos a la tarjeta de salida. El esquema quedaría de la siguiente manera:
@@ -312,7 +310,7 @@ Este esquema que no presenta ninguna VLAN se haría de manera análoga al anteri
 Uno de los problemas que presenta esta configuración es saber qué tarjeta es cada una, podemos ir probando y ver cuál está activa con la herramienta **ip** para saber cuál es. Podemos ir desconectando los cables para ver que aparece state DOWN y asociar la conexión.
 :::
 
-```tcsh
+```sh
 root@cefirevalencia:~# ip link show enp4s0
 5: enp4s0: <NO-CARRIER,BROADCAST,MULTICAST,SLAVE,UP> mtu 1500 qdisc pfifo_fast master bond0 state DOWN mode DEFAULT group default qlen 1000
 ``` 
@@ -322,8 +320,6 @@ Tanto en el **esquema 1** (el que usaremos en este curso) como el **esquema 2** 
 :::
 
 # Configuración de la red en cada máquina virtual
-
-
 
 Tenemos que recordar que cada servidor LliureX debe tener 3 tarjetas:
 
@@ -399,15 +395,15 @@ Es muy importante que habilites la opción ***monta*** el /net desde el maestro.
 
 ## Arrancar las máquinas virtuales cuando inicia el servidor
 
-Es importante que cuando se reinicie el hipervisor las máquinas virtuales arranquen automáticamente para no tener que conectarse al PROXMOX para ponerlas en marcha una a una. Para configurar esta opción seleccionaremos una máquina virtual y seleccionaremos la opción de configuración **Options** y cambiaremos los parámetros **Start at boot** a **Yes** y **Start/Shutdown order** a 1 en el caso del servidor maestro.
+Es importante que cuando se reinicie el hipervisor las máquinas virtuales arranquen automáticamente para no tener que conectarse al PROXMOX para ponerlas en marcha una a una. Para configurar esta opción seleccionaremos una máquina virtual y vamos a la opción de configuración **Options** y cambiaremos los parámetros **Start at boot** a **Yes** y **Start/Shutdown order** a 1 en el caso del servidor maestro.
 
 :::caution
-Es recomendable arrancar primero el maestro y dejar un tiempo para que arranque y posteriormente arrancar los esclavos. Así, en los servidores esclavos añadiremos un tiempo a **Startup delay**.
+Es recomendable arrancar primero el maestro y dejar un tiempo para que arranque y posteriormente los esclavos. Así, en los servidores esclavos añadiremos un tiempo en **Startup delay**.
 :::
 
-![Configuración de orden de arrancada](ConProxmox/prox33.png)
+![Configuración de orden de arranque](ConProxmox/prox33.png)
 
-![Configuración de orden de arrancada](ConProxmox/prox34.png)
+![Configuración de orden de arranque](ConProxmox/prox34.png)
 
 En el servidor de centro y esclavo las opciones quedarían de la siguiente manera:
 
@@ -420,11 +416,11 @@ En el servidor de centro y esclavo las opciones quedarían de la siguiente maner
 Es posible que nos interese la opción de una cabina externa. Tiene numerosas ventajas, en el espacio de la cabina externa podemos tener almacenado isos, discos duros de máquinas virtuales, copias de seguridad...
 
 :::note
-Lo que se explica en este punto no es para conseguir la alta disponibilidad (HA). Es para añadir un almacenamiento común al clúster donde hacer backups, almacenar el disco de alguna VM, isos, etc. Las cabinas no entran dentro de la dotación, por lo tanto sería una adquisición propia del centro y no se tratará en este curso como se configuran.
+Lo que se explica en este punto no es para conseguir la alta disponibilidad (HA). Es para añadir un almacenamiento común al clúster donde hacer backups, almacenar el disco de alguna VM, isos, etc. Las cabinas no entran dentro de la dotación, por lo tanto sería una adquisición propia del centro y no se tratará en este tema cómo se configuran.
 :::
 
 :::warning
-Existe la posibilidad de almacenar /net del servidor maestro en una cabina externa. Según como se realice puede dar problema con las ACL de los archivos y no funcioná.
+Existe la posibilidad de almacenar /net del servidor maestro en una cabina externa. Según como se realice puede dar problemas con las ACL de los archivos y no funcionar.
 La opción para conseguir esto es crear un segundo disco virtual en el servidor maestro pero almacenarlo en la cabina externa. Cuando se realiza la instalación de la VM (en el apartado de particionamiento de disco) se indicaría que ese segundo disco se usará para /net. Esto funciona perfectamente ya que para la VM es como si fuera un disco local.
 
 Además, para hacer esto es aconsejable que la cabina tenga unas características adecuadas. Se recomendaría como mínimo:
@@ -436,8 +432,6 @@ Además, para hacer esto es aconsejable que la cabina tenga unas característica
 Con estás características se podría montar incluso un sistema con Alta disponibilidad.
 :::
 
-
-
 Si el centro dispone de una cabina funcionando, configurada y conectada en la red del centro podemos añadirla a nuestro **Datacenter** seleccionándolo y yendo a la opción de **Storage**. Hagamos click sobre **Add** y escogemos **NFS**.
 
 ![Configuración de cabina](ConProxmox/prox37.png)
@@ -448,7 +442,7 @@ Y seleccionamos las diferentes opciones de configuración:
 
 ## Creación de backup (Opcional)
 
-La creación de backups periodicos de las VM es muy aconsejable. En PROXMOX es muy fácil hacer backups de las VM y restaurarlos. Pueden suceder imprevistos como desconfigurar un servidor por error, borrar /net por error o cualquier desastre que nos podamos imaginar. En estos casos tener una copia de seguridad de nuestras VM es de gran utilidad.
+La creación de backups periódicos de las VM es muy aconsejable. En PROXMOX es muy fácil hacer backups de las VM y restaurarlos. Pueden suceder imprevistos como desconfigurar un servidor por error, borrar /net por error o cualquier desastre que nos podamos imaginar. En estos casos tener una copia de seguridad de nuestras VM es de gran utilidad.
 
 :::note
 Una cabina de discos o NAS con unas prestaciones modestas sería suficiente para realizar estas tareas. También se podría usar un segundo disco del hipervisor si no hemos hecho un RAID1.
