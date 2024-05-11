@@ -256,7 +256,7 @@ En el artículo de la wiki se nos comenta también, como alternativa, como reali
 
 *Creación del USB de arranque desde Windows o Mac*
 
-Para crear el disco de arranque USB desde otros sistemas, como Windows, Guapos, o incluso GNU/Linux (si no queremos utilizar el Startup Disco Creator), haremos uso de la herramienta *Etcher*.
+Para crear el disco de arranque USB desde otros sistemas, como Windows, macOS, o incluso GNU/Linux (si no queremos utilizar el Startup Disco Creator), haremos uso de la herramienta *Etcher*.
 
 Para lo cual, el primero que tendremos que hacer es acceder en su web https://www.balena.io/etcher/, y descargarlo para nuestro sistema.
 
