@@ -148,14 +148,14 @@ Por otro lado, cada versión tiene diferentes Sabores*. Podemos decir que los sa
 * **Cliente**: Versión de escritorio que depende de un servidor, de forma que se conecta a este para validar los usuarios y guardar en él los datos. La versión Servidor y Cliente están pensadas para implantarse al modelo de centro, donde se dependerá de uno o varios servidores centrales, y el resto de ordenadores del centro serán clientes. De este modo, nos conectamos desde donde nos conectamos, tenemos disponibles nuestros datos.
 * **FP**: Desde la versión de LliureX 19.07 (Julio 2020) también se dispone de un sabor pensado para ciclos formativos, sin las aplicaciones educativas orientadas a primaria y secundaria, y con una selección de software de gestión empresarial.
 
-En este curso, utilizaremos la versión de Escritorio, y si tenemos que utilizar software preinstalado en otro sabor, veremos como hacerlo a nuestra instalación.
+En este curso, utilizaremos principalmente la versión Servidor.
 
 ## LliureX y la inclusión
 
-Desde sus inicios hasta el día de hoy, LliureX ha acompañado los centras en su transformación digital, y teniendo en especial consideración aquella parte del alumnado que presenta necesidades educativas especiales o dificultades de aprendizaje. 
+Desde sus inicios hasta el día de hoy, LliureX ha acompañado los centros en su transformación digital, y teniendo en especial consideración aquella parte del alumnado que presenta necesidades educativas especiales o dificultades de aprendizaje. 
 
-Con el fin de acercar las Tecnologías de la Información y la Comunicación al alumnado con necesidades educativas especiales, y convertirlas en un elemento integrador e innovador, la Consellería de Educación, a través de la D.G. de Innovación Tecnológica Educativa, puso en marcha el plan INTEGRA-TIC entre los años 2008-2010. Este plan contemplaba dotar las aulas de los centros de Educación Especial de pizarra digital, cañón proyector y ordenador con LliureX. Las dimensiones de la pizarra, facilitan el trabajo a los alumnos con problemas motores o dificultades grafomotrices, o bien alumnas que por sus características cognitivas, no saben utilizar el ratón. Además, la PDI también presentaba muchas posibilidades de trabajo: desde las rutinas diarias, hasta actividades de aprendizaje más activas y participativas.
-
+Con el fin de acercar las Tecnologías de la Información y la Comunicación al alumnado con necesidades educativas especiales, y convertirlas en un elemento integrador e innovador, la *Consellería d'Educació*, a través de la D.G. de Innovación Tecnológica Educativa, puso en marcha el plan INTEGRA-TIC entre los años 2008-2010. Este plan contemplaba dotar las aulas de los centros de Educación Especial de pizarra digital, cañón proyector y ordenador con LliureX. Las dimensiones de la pizarra, facilitan el trabajo a los alumnos con problemas motores o dificultades grafomotrices, o bien alumnas que por sus características cognitivas, no saben utilizar el ratón. Además, la PDI también presentaba muchas posibilidades de trabajo: desde las rutinas diarias, hasta actividades de aprendizaje más activas y participativas.
+ 
 LliureX estuvo presente durante todo este proceso con la adaptación y mejora de herramientas para el trabajo con pizarras digitales como lo Notebook o el desarrollo de aplicaciones propias de accesibilidad como la herramienta MiniScreen para el control de la PDI por parte de alumnas con problemas de movilidad.
 
 A pesar de aportar una gran mejora, el sistema no era perfecto. Con el tiempo, se ha tenido que mejorar y adaptar a las nuevas circunstancias con la aplicación del modelo de centro y han aparecido nuevos retos, como la integración de las tabletas digitales al aula.
@@ -177,7 +177,7 @@ Por ahora, las posibilidades que ofrece LliureX en cuanto al mundo de la inclusi
     * *Portal Aragonés de Comunicación Alternativa y Aumentativa* (*ARASAAC*), con la adaptación al valenciano de su banco de pictogramas y el sitio web,
     * *joComunico*, de Joan Pahisa, un comunicador pictográfico que procesa el lenguaje de forma natural,
 
-Actualmente, el principal reto es mejorar el uso conjunto de las tabletas digitales con LliureX.
+A día de hoy se estan actualizando las pizarras digitales de los centros educativos a través del Aula Digital Interactiva (ADI). SE tratan de una herramienta pedagógica para la mejora de los centros educativos. Estas aulas están equipadas con tecnología avanzada, como paneles, ordenadores y dispositivos de interacción, que permiten al personal docente y al alumnado interactuar de manera dinámica.  Con las Aulas Digitales Interactivas, el alumnado puede participar activamente en el aprendizaje, colaborar con sus compañeras y compañeros y recibir retroalimentación inmediata.  
 
 ## Recursos en linea
 
@@ -191,8 +191,6 @@ Para conocer un poquito mejor el proyecto, tenemos a nuestro alcance diferentes 
 # Obtención e instalación de LliureX
 
 La mejor forma de trabajar con LliureX es tenerlo instalado al ordenador, puesto que aprovechamos todos los recursos de este. Desde la versión 19.07 de LliureX (julio 2020), también tenemos disponible LliuWin, un instalador de LliureX como si  se tratara de una aplicación para Windows. Otra opción, a pesar de que con las limitaciones esperables de compartir los recursos del ordenador es hacer uso de máquinas virtuales.
-
-Para realizar este curso, necesitaréis una instalación de LliureX a vuestros ordenadores. Vamos a ver las diferentes opciones que tenéis a vuestro alcance porque escogéis la que más os convenga.
 
 ## Instalación de LliureX al ordenador
 
@@ -212,7 +210,7 @@ Para descargar LliureX, accederemos a la sección de descargas de la página web
 
 En esta página, veremos que podemos descargar cualquier *Sabor* de las diferentes versiones de LliureX.
 
-Para descargar la versión de escritorio, abriremos el desplegale corresponden al sabor (la barra con el texto *Escritorio* y el signo +), y después en el botón de decàrrega del sistema en 64 bits:
+Para descargar la versión de escritorio, abriremos el desplegable correspondiente al sabor (la barra con el texto *Escritorio* y el signo +), y después en el botón de descarga del sistema en 64 bits:
 
 ![Acceso a las descargas de LliureX](img/descarregues_2.png){ width=450px }
 
@@ -222,11 +220,15 @@ El fichero descargado, será un fichero con extensión *.iso*, que tendremos que
 
 ### Creación de un USB de arranque
 
-Una vez disponemos de la imagen *.iso* descargada, tendremos que volcarla a un dispositivo de memoria USB. Como que este fichero ocupa 3.3 Gb, con una memoria USB de 4 GB debería de ser suficiente, pero podemos utilizar una de mayor capacidad. *Hay que tener en cuenta que esta memoria USB se utilizará de forma exclussiva para el volcado de la imagen, por el que cualquier fichero que contenga será borrado.*
+Una vez disponemos de la imagen *.iso* descargada, tendremos que volcarla a un dispositivo de memoria USB. Como que este fichero ocupa más de 4 Gb, con una memoria USB de 8 GB debería de ser suficiente, pero podemos utilizar una de mayor capacidad. **Hay que tener en cuenta que esta memoria USB se utilizará de forma exclussiva para el volcado de la imagen, por el que cualquier fichero que contenga será borrado.**
 
-A los siguientes puntos, vamos a ver como generar este USB de arranque tanto desde LliureX como desde Windows.
+En los siguientes puntos, vamos a ver como generar este USB de arranque tanto desde LliureX como desde Windows.
 
-*Creación del USB de arranque con LliureX/Ubuntu*
+:::tip
+Podemos hacer uso de la herramienta Ventoy que nos permite tener varias imágenes en el mismo usb: [https://www.ventoy.net/en/index.html](https://www.ventoy.net/en/index.html)
+:::
+
+**Creación del USB de arranque con LliureX/Ubuntu**
 
 Si queremos crear el USB de arranque desde un ordenador con LliureX o Ubuntu, lo haremos a través de la herramienta *Startup Disk Creator*. A la [wiki de LliureX](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=creaci%C3%B3+d%27un+USB+d%27arrancada) tenemos descrito este proceso. 
 
@@ -240,7 +242,7 @@ La pantalla principal de esta aplicación nos muestra dos secciones: la parte su
 
 Inicialmente, si no nos aparece el fichero *.iso* que hemos descargado en la lista superior, haremos clic en *Otros*, y buscaremos dentro de nuestro ordenador la imagen que hemos descargado (generalmente en la carpeta de Descargas).
 
-Hecho esto, nos tendremos que asegurar que tenemos a la parte superior seleccionada la imagen de LliureX que hemos descargado, y a la parte inferior seleccionado el dispositivo sobre el qué queremos crear la imarge. Si todo es correcto, tendremos que hacer clic al botón *Crea un disco de arranque* para iniciar el proceso.
+Hecho esto, nos tendremos que asegurar que tenemos a la parte superior seleccionada la imagen de LliureX que hemos descargado, y a la parte inferior seleccionado el dispositivo sobre el qué queremos crear la imagen. Si todo es correcto, tendremos que hacer clic al botón *Crea un disco de arranque* para iniciar el proceso.
 
 En este momento, después de un posible mensaje advirtiendo de la pérdida de datos de la memoria USB, se nos mostrará una barra con el progreso de la creación. Cuando esté finalizando, es posible que tengamos que introducir la contraseña del usuario administrador, para hacer el USB arrancable.
 
@@ -248,7 +250,7 @@ Finalmente, nos mostrará la siguiente ventana indicando que ha finalizado el pr
 
 ![Startup Disk Creator desde Ubuntu](img/usb3.png){ width=350px }
 
-Con esto ya tendremos el USB preparado para arrancar el ordenador con un sistema *live* de LliureX. 
+Con esto ya tendremos el USB preparado para arrancar el ordenador con un sistema *Live* de LliureX. 
 
 En el artículo de la wiki se nos comenta también, como alternativa, como realizar este proceso desde la línea de comandos. Este proceso se basa en órdenes desde la terminal, y requiere de algunos conocimientos más avanzados, pero en ocasiones, puede sernos útil en casos en que la creación de la usb de forma gráfica de problemas (bien por el formato de algunas imágenes *iso*, o bien por cuestiones de espacio a la memoria).
 
