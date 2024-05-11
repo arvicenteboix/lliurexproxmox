@@ -179,9 +179,9 @@ Por ahora, las posibilidades que ofrece LliureX en cuanto al mundo de la inclusi
 
 A día de hoy se estan actualizando las pizarras digitales de los centros educativos a través del Aula Digital Interactiva (ADI). Se trata de una herramienta pedagógica para la mejora de los centros educativos. Estas aulas están equipadas con tecnología avanzada, como paneles, ordenadores y dispositivos de interacción, que permiten al personal docente y al alumnado interactuar de manera dinámica.  Con las Aulas Digitales Interactivas, el alumnado puede participar activamente en el aprendizaje, colaborar con sus compañeras y compañeros y recibir retroalimentación inmediata.  
 
-## Recursos en linea
+## Recursos en línea
 
-Para conocer un poquito mejor el proyecto, tenemos a nuestro alcance diferentes recursos en linea que podemos consultar, a través de la página web del proyecto [https://portal.edu.gva.es/lliurex/](https://portal.edu.gva.es/lliurex/), desde donde podréis conocer las últimas noticias, la historia y las motivaciones del proyecto, y acceder a:
+Para conocer un poquito mejor el proyecto, tenemos a nuestro alcance diferentes recursos en línea que podemos consultar, a través de la página web del proyecto [https://portal.edu.gva.es/lliurex/](https://portal.edu.gva.es/lliurex/), desde donde podréis conocer las últimas noticias, la historia y las motivaciones del proyecto, y acceder a:
 
 * La página de **Descargas**, desde donde podréis descargaros diferentes versiones y sabores de LliureX,
 * **Recursos**, como explicaciones del modelo de centro o acceso al material de diferentes cursos de formación, 
