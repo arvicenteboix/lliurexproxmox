@@ -93,7 +93,7 @@ Este documento está sujeto a una licencia creative commons que permite su difus
 
 # Introducción
 
-En esta unidad veremos como montar el modelo de centro virtualitzado. Esto nos servirá para entender como funciona el modelo de centro de LliureX y qué es un servidor maestro.
+En esta unidad veremos cómo montar el modelo de centro virtualizado. Esto nos servirá para entender cómo funciona el modelo de centro de LliureX y qué es un servidor maestro.
 
 # Modelo de centro
 
@@ -112,7 +112,7 @@ El modelo de centro es un modo de configuración que combina red y servidores pa
 
 Además de todas estas características, LliureX presenta numerosas herramientas que facilitan la instalación y configuración del software.
 
-Pero la principal ventaja de todo es que LliureX permite configurarlo todo sin tocar la terminal y sin tener conocimientos avanzados de informática. La puesta a punto del modelo de centro es rápida y sencilla.
+Pero la principal ventaja de todo es que LliureX permite configurar todo sin tocar la terminal y sin tener conocimientos avanzados de informática. La puesta a punto del modelo de centro es rápida y sencilla.
 Para entender mejor el modelo de centro hablaremos de cada elemento por separado.
 
 # Sabores de LliureX
@@ -121,7 +121,7 @@ LliureX se presenta con varios sabores y cada cual tiene sus características di
 
 | Sabor | Características |
 | -- | -- |
-| Servidor | Puerta todo los paquetes para montar el modelo de centro |
+| Servidor | Trae todos los paquetes para montar el modelo de centro |
 | Cliente | Es la versión que tenemos que instalar en el centro |
 | Escritorio | Puede funcionar de manera independiente |
 
@@ -151,16 +151,16 @@ Un esquema bastante habitual que nos encontramos en los centros es el siguiente:
 ![Esquema orientativo 1](Esquemes/model1.png)
 
 :::warning
-En el esquema se muestra un servidor NFS de archivos. Al final del curso daremos unas recomendaciones de cómo se monta un servidor NFS, pero tienes que tener en cuenta que este tipo de servidores dan muchos problemas para montar el /net, debido a un problema con las ACLs y el NFS v3, por lo tanto se recomienda dejar el /net al MASTER. Se puede montar en el servidor NFS como un disco del PROXMOX (qcow por ejemplo), las ACLs no darán problemas en ese caso.
+En el esquema se muestra un servidor NFS de archivos. Al final del curso daremos unas recomendaciones de cómo se monta un servidor NFS, pero tienes que tener en cuenta que este tipo de servidores dan muchos problemas para montar el /net, debido a un problema con las ACLs y el NFS v3, por lo tanto se recomienda dejar el /net en el MASTER. Se puede montar en el servidor NFS como un disco del PROXMOX (qcow por ejemplo), las ACLs no darán problemas en ese caso.
 :::
 
-En este esquema nos encontramos 3 servidores, donde el servidor maestro guarda la base de de datos para logar todos los usuarios (LDAP), y puede dar servicio en la red de profesorado.
+En este esquema nos encontramos 3 servidores, donde el servidor maestro guarda la base de de datos para logar todos los usuarios (LDAP), y puede dar servicio a la red de centro.
 
 Un esquema más adecuado sería este:
 
 ![Esquema orientativo 2](Esquemes/Modelaula2val.png)
 
-Hemos de tener en cuenta los siguiente elementos. Cada uno de los servidores tiene que tener como mínimo 3 tarjetas de red:
+Hemos de tener en cuenta los siguiente elementos. Cada uno de los servidores debe tener como mínimo 3 tarjetas de red:
 
  | Tarjeta | Características |
  | -- | -- |
@@ -173,13 +173,13 @@ Hemos de tener en cuenta los siguiente elementos. Cada uno de los servidores tie
 Vamos a realizar el montaje de un modelo de centro paso a paso con todas sus funcionalidades, para tener claro sus conceptos. En esta unidad utilizaremos el software de Virtualbox para montar el modelo de centro.
 
 :::warning
-Tenéis que tener en cuenta que aquí no hablaremos de todo el software que viene con LliureX, como lo harvester, libreoffice, programas de diseño, etc... En este curso nos centraremos exclusivamente en el montaje y configuración del modelo de centro
+Debéis tener en cuenta que aquí no hablaremos de todo el software que viene con LliureX, como el Harvester, Libreoffice, programas de diseño, etc... En este curso nos centraremos exclusivamente en el montaje y configuración del modelo de centro
 ::: 
 
 ## Instalación de Lliurex
 
 :::info
-Podéis encontrar la última ISO para descargar [aquí](http://releases.lliurex.net/isos/19.07_64bits/lliurex-servidor_64bits_19_latest.iso).
+Podéis encontrar la última ISO para descargar [aquí](https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso).
 :::
 
 Podéis instalar virtualbox con:
@@ -188,7 +188,7 @@ Podéis instalar virtualbox con:
 sudo apt install virtualbox-dkms virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
 ```
 
-Una vez tenéis instalado lo virtualbox, lo ejecutáis y os aparecerá la siguiente pantalla:
+Una vez tenéis instalado el Virtualbox, lo ejecutáis y os aparecerá la siguiente pantalla:
 
 ![Virtualbox](model/1.png)
 
@@ -206,15 +206,15 @@ Hacemos click sobre **Nueva** y seguimos el siguiente ejemplo:
 
 ![Reservado dinámicamente](model/7.png)
 
-![Lo tamany recomendado para el MASTER es 90 GB](model/7.1.png)
+![El tamaño recomendado para el MASTER es 90 GB](model/7.1.png)
 
 :::caution
-Si es un servidor MASTER que va a alojar el mirror, tienes que dejar bastante espacio para que quepa todo el mirror (mínimo 70GB, en las pruebas se han utilizado 90GB).
+Si es un servidor MASTER que va a alojar el mirror, debes dejar bastante espacio para que quepa todo el mirror (mínimo 70GB, en las pruebas se han utilizado 90GB).
 :::
 
 ![Máquina creada](model/8.png)
 
-Ahora hacemos click sobre configuración y vamos a la sección de almacenamiento (almacenamiento), hacemos click sobre “Vacío” y seleccionamos la iso de LliureX 19 descargada (desde el recuadro rojo)
+Ahora hacemos click sobre configuración y vamos a la sección de almacenamiento (almacenamiento), hacemos click sobre “Vacío” y seleccionamos la iso de LliureX descargada (desde el recuadro rojo)
 
 ![Vayamos a almacenamiento](model/9.png)
 
@@ -303,12 +303,9 @@ Ahora que ya tenemos las dos máquinas creadas y configuradas con tres tarjetas 
 
 Para ello cambiaremos el adaptador 1 a **Adaptador puente** en ambas máquinas:
 
-
 ![Adaptador puente MAS](model/33_1.png)
 
 ![Adaptador puente CEN](model/33_2.png)
-
-
 
 # Inicialización del servidor
 
@@ -353,25 +350,23 @@ Desde un terminal con **ifconfig** o **ip address** podemos identificar los nomb
 
 ![Configuración del servidor maestro con IP fija](model/39_2.png)
 
-En la primera imagen el servidor cogerá una IP por DHCP del router y en la segunda se ha puesto fija. Para estas pruebas podemos hacerlo por DHCP pero si conocemos las direcciones libres de nuestra red podemos ponerla (recomendado).
-
+En la primera imagen el servidor cogerá una IP por DHCP del router y en la segunda se ha puesto fija. Para estas pruebas podemos hacerlo por DHCP pero si conocemos las direcciones libres de nuestra red pondremos esa (recomendado).
 
 En las dos imágenes anteriores vemos como la tarjeta **eth0** es la externa, **eth1** es la interna y **eth2** la de replicación.
-
 
 :::caution
 Hay que asegurarse que se coloca correctamente el orden de las tarjetas y estar seguros cual es la externa.
 :::
 
 :::caution
-Si estás haciendo las pruebas en tu casa has de tener en cuenta que los DNS que hay por defecto no funcionarán ya que son para la red de Aulas. Como ejemplo se pueden usar 1.1.1.1, 1.0.0.1 (Cloudflare) y 8.8.8.8, 8.8.4.4 (Google).
+Si estás haciendo las pruebas en tu casa has de tener en cuenta que los DNS que hay por defecto no funcionarán ya que son para la red de Aulas. Como ejemplo se pueden usar 1.1.1.1, 1.0.0.1 (Cloudflare) o 8.8.8.8, 8.8.4.4 (Google).
 :::
 
 Una vez se ha inicializado el servidor maestro y reiniciado lo dejaremos en marcha para continuar con los servidores esclavos.
 
 ## Inicialización del servidor esclavo
 
-Una vez inicializado el servidor maestro, los esclavos los inicializamos del mismo modo, pero teniendo en cuenta que tendrán una dirección  IP diferente y montaremos **/net** del servidor maestro.
+Una vez inicializado el servidor maestro, los esclavos los inicializamos del mismo modo, pero teniendo en cuenta que tendrán una dirección IP diferente y montaremos **/net** del servidor maestro.
 
 ![Configuración del servidor esclavo con IP por DHCP](model/41_2.png)
 
@@ -450,10 +445,6 @@ En el último apartado podemos ver un menú desplegable para escoger la imagen c
 :::info
 Hace falta actualizar la página del admin-center una vez se han detectado los clientes para que funcione la ventana de parámetros.
 :::
-
-## Instalar nuevo software en una imagen
-
-
 
 ## Clientes pesados
 
