@@ -451,7 +451,6 @@ Desde la versión 19 de LliureX, se utiliza la en torno a escritorio Plasma, de 
 
 A pesar de que no entraremos a verlo en detalle, vamos a hacer una breve paseo por el escritorio para conocer, cuál será nuestro entorno de trabajo.
 
-
 ## El escritorio
 
 A la Wiki de LliureX tenéis disponible [el artículo Primeros pasos en el nuevo entorno de LliureX 19](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=primers-passos-en-el-nou-entorn-de-lliurex-19) donde se habla más extensamente del escritorio de LliureX 19. En este apartado vamos a hacer un resumen, **basándonos en la configuración de escritorio por defecto** y poniendo atención a aquellos aspectos que más nos interesarán para el desarrollo del curso.
@@ -511,7 +510,7 @@ La ventana anterior muestra la aplicación *Dolphin*, que es el explorador de fi
 
 Cómo vemos, esta carpeta de inicio contiene otras carpetas, tales como:
 
-* **Bajadas**, donde se guardarán de forma predeterminada los ficheros que descargamos desde el navegador u otras aplicaciones.
+* **Descargas**, donde se guardarán de forma predeterminada los ficheros que descargamos desde el navegador u otras aplicaciones.
 * **Documentos**, donde se guardan de forma predeterminada los documentos.
 * **Escritorio**, que contiene los ficheros que tenemos en nuestro escritorio, es decir, los ficheros y carpetas que dejamos en el escritorio, se almacenará realmente en esta carpeta.
 * **Imágenes**, donde se guardan de forma predeterminada nuestras imágenes.
@@ -535,19 +534,13 @@ A continuación, podemos ver, de forma gráfica la relación entre todos los ele
 
 Las aplicaciones se componen de varios ficheros, tanto ejecutables como de configuración o recursos, como puedan ser las imágenes, iconos, o documentos. Cuando instalamos una aplicación, todos estos recursos se ubican a su lugar respectivo dentro del sistema.
 
-Las aplicaciones se componen de varios ficheros, tanto ejecutables como de configuración o recursos, como
-puedan ser las imágenes, iconos, o documentos. Cuando instalamos una aplicación, todos estos recursos
-se ubican a su lugar respectivo dentro del sistema.
+Las aplicaciones se componen de varios ficheros, tanto ejecutables como de configuración o recursos, como puedan ser las imágenes, iconos, o documentos. Cuando instalamos una aplicación, todos estos recursos se ubican a su lugar respectivo dentro del sistema.
 
+La forma que tienen los sistemas GNU/Linux de distribuir y gestionar las aplicaciones es mediante lo que se conocen como paquetes. Un paquete es un fichero comprimido, que contiene, además de los ficheros necesarios información sobre este (versión, desarrollador, web, etc.).
 
-La forma que tienen los sistemas GNU/Linux de distribuir y gestionar las aplicaciones es mediante lo que
-se conocen como paquetes. Un paquete es un fichero comprimido, que contiene, además de los ficheros necesarios información sobre este (versión, desarrollador, web, etc.).
+El sistema de paquetes utilizados de forma natural en Ubuntu y por tanto en LliureX es del formato *Debian*, un fichero comprimido con extensión `.deb`, que contiene toda esta información y los ficheros.
 
-El sistema de paquetes utilizados de forma natural en Ubuntu y por tanto en LliureX es del formato *Debian*,
-un fichero comprimido con extensión `.deb`, que contiene toda esta información y los ficheros.
-
-En los últimos años, se han incorporado otros sistemas de distribución de paquetes, como el formato *Snap* o *Appimage*,
-que presentan menos problemas en cuanto a dependencias con otros paquetes, pero que pueden tener un peso considerablemente superior a los .*deb*.
+En los últimos años, se han incorporado otros sistemas de distribución de paquetes, como el formato *Snap* o *Appimage*, que presentan menos problemas en cuanto a dependencias con otros paquetes, pero que pueden tener un peso considerablemente superior a los .*deb*.
 
 ## ¿Cómo obtenemos el software?
 
@@ -566,11 +559,9 @@ Es una buena práctica mantener actualizado nuestro sistema, tanto por las actua
 
 Para acceder al LliureX Up, lo haremos a través del menú de *Inicio* > *Administración de LliureX* > *Actualizador de LliureX*:
 
-
 ![LliureX Up](img/lliurex_up1.png){ width=250px }
 
 Nada más lanzar el actualizador, se realizarán varias acciones para *refrescar* todas las listas de paquetes disponibles a los repositorios. El sistema de paquetes, mantiene unas listas con todo el software disponible a los repositorios, y lo primero que hace LliureX Up al iniciarse es actualizar estas listas. Después compara las aplicaciones que tenemos instaladas con estas listas, para detectar si hay versiones nuevas para instalar. 
-
 
 ![LliureX Up](img/lliurex_up2.png){ width=250px }
 
@@ -579,7 +570,6 @@ En caso de que el sistema esté actualizado nos lo indicará:
 ![LliureX Up](img/lliurex_up3.png){ width=250px }
 
 Si tenemos alguna actualización disponible, el sistema nos mostrará la versión actual de LliureX (cada actualización de cualquier paquete a los repositorios de LliureX implica un cambio en la versión general). A la siguiente imagen podemos ver que tenemos la versión 19.200727, pero está disponible la 19.200731.1. También nos dice que tenemos 4 paquetes para actualizar (podemos ver cuáles son con el botón *Visualiza los paquetes*) y el tamaño de esta actualización. 
-
 
 ![LliureX Up](img/lliurex_up4.png){ width=250px }
 
