@@ -136,7 +136,7 @@ De entre las principales características que aporta LliureX, podemos destacar:
 
 ## Versiones y sabores de LliureX
 
-LliureX lanza actualizaciones completas del sistema aproximadamente cada dos años, basándose en la última versión LTS (*Long Term Support* de Ubuntu). La última versión completa, basada en Ubuntu 18.04 es LliureX 19. Además, los años que no se actualiza completamente el sistema de base, se realiza una actualización completa del software, y se añaden mejoras, pero sin cambiar este sistema de base. La última versión, LliureX 20, utiliza pues la misma base que LliureX 19, pero con muchas mejoras añadidas.
+LliureX lanza actualizaciones completas del sistema aproximadamente cada dos años, basándose en la última versión LTS (Long Term Support de Ubuntu). Por ejemplo, LliureX 19 se basa en Ubuntu 18.04 LTS, LliureX 21 sen Ubuntu 20.04 LTS y Lliurex 23 en Ubuntu 22.04 LTS. Además, los años que no se actualiza completamente el sistema de base, se realiza una actualización completa del software, y se añaden mejoras, pero sin cambiar este sistema de base.
 
 Por otro lado, cada versión tiene diferentes Sabores*. Podemos decir que los sabores* son adaptaciones de LliureX a los diferentes contextos educativos en que se vayan a implantar. Así, los diferentes sabores que presenta LliureX son:
 
@@ -177,7 +177,7 @@ Por ahora, las posibilidades que ofrece LliureX en cuanto al mundo de la inclusi
     * *Portal Aragonés de Comunicación Alternativa y Aumentativa* (*ARASAAC*), con la adaptación al valenciano de su banco de pictogramas y el sitio web,
     * *joComunico*, de Joan Pahisa, un comunicador pictográfico que procesa el lenguaje de forma natural,
 
-A día de hoy se estan actualizando las pizarras digitales de los centros educativos a través del Aula Digital Interactiva (ADI). SE tratan de una herramienta pedagógica para la mejora de los centros educativos. Estas aulas están equipadas con tecnología avanzada, como paneles, ordenadores y dispositivos de interacción, que permiten al personal docente y al alumnado interactuar de manera dinámica.  Con las Aulas Digitales Interactivas, el alumnado puede participar activamente en el aprendizaje, colaborar con sus compañeras y compañeros y recibir retroalimentación inmediata.  
+A día de hoy se estan actualizando las pizarras digitales de los centros educativos a través del Aula Digital Interactiva (ADI). Se trata de una herramienta pedagógica para la mejora de los centros educativos. Estas aulas están equipadas con tecnología avanzada, como paneles, ordenadores y dispositivos de interacción, que permiten al personal docente y al alumnado interactuar de manera dinámica.  Con las Aulas Digitales Interactivas, el alumnado puede participar activamente en el aprendizaje, colaborar con sus compañeras y compañeros y recibir retroalimentación inmediata.  
 
 ## Recursos en linea
 
