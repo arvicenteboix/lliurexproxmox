@@ -220,7 +220,7 @@ El fichero descargado, será un fichero con extensión *.iso*, que tendremos que
 
 ### Creación de un USB de arranque
 
-Una vez disponemos de la imagen *.iso* descargada, tendremos que volcarla a un dispositivo de memoria USB. Como que este fichero ocupa más de 4 Gb, con una memoria USB de 8 GB debería de ser suficiente, pero podemos utilizar una de mayor capacidad. **Hay que tener en cuenta que esta memoria USB se utilizará de forma exclussiva para el volcado de la imagen, por el que cualquier fichero que contenga será borrado.**
+Una vez disponemos de la imagen *.iso* descargada, tendremos que volcarla a un dispositivo de memoria USB. Como que este fichero ocupa más de 4 Gb, con una memoria USB de 8 GB debería de ser suficiente, pero podemos utilizar una de mayor capacidad. **Hay que tener en cuenta que esta memoria USB se utilizará de forma exclusiva para el volcado de la imagen, por el que cualquier fichero que contenga será borrado.**
 
 En los siguientes puntos, vamos a ver como generar este USB de arranque tanto desde LliureX como desde Windows.
 
@@ -230,19 +230,19 @@ Podemos hacer uso de la herramienta Ventoy que nos permite tener varias imágene
 
 **Creación del USB de arranque con LliureX/Ubuntu**
 
-Si queremos crear el USB de arranque desde un ordenador con LliureX o Ubuntu, lo haremos a través de la herramienta *Startup Disk Creator*. A la [wiki de LliureX](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=creaci%C3%B3+d%27un+USB+d%27arrancada) tenemos descrito este proceso. 
+Si queremos crear el USB de arranque desde un ordenador con LliureX o Ubuntu, lo haremos a través de la herramienta *Startup Disk Creator*. En la [wiki de LliureX](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=creaci%C3%B3+d%27un+USB+d%27arrancada) tenemos descrito este proceso.
 
 Lo que tendremos que hacer es buscar esta aplicación desde el menú de inicio (*Sistema* > *Startup Disk Creator*) y ejecutarla:
 
 ![Acceso a Startup Disk Creator desde Ubuntu](img/usb1.png){ width=400px }
 
-La pantalla principal de esta aplicación nos muestra dos secciones: la parte superior, con la lista de imágenes *iso* que conoce la aplicación (Imagen de Disco Font), y la parte inferior (Disco a utilizar), con la lista de memorias USB conectadas en ese momento. Para crear el USB de arranque, tendremos que tenerlo conectado antes de iniciar la aplicación para qué esta lo detecto.
+La pantalla principal de esta aplicación nos muestra dos secciones: la parte superior, con la lista de imágenes *iso* que conoce la aplicación (Imagen de Disco Font), y la parte inferior (Disco a utilizar), con la lista de memorias USB conectadas en ese momento. Para crear el USB de arranque, deberemos tenerlo conectado antes de iniciar la aplicación para qué esta lo detecto.
 
 ![Startup Disk Creator desde Ubuntu](img/usb2.png){ width=450px }
 
 Inicialmente, si no nos aparece el fichero *.iso* que hemos descargado en la lista superior, haremos clic en *Otros*, y buscaremos dentro de nuestro ordenador la imagen que hemos descargado (generalmente en la carpeta de Descargas).
 
-Hecho esto, nos tendremos que asegurar que tenemos a la parte superior seleccionada la imagen de LliureX que hemos descargado, y a la parte inferior seleccionado el dispositivo sobre el qué queremos crear la imagen. Si todo es correcto, tendremos que hacer clic al botón *Crea un disco de arranque* para iniciar el proceso.
+Hecho esto, nos tendremos que asegurar que tenemos en la parte superior seleccionada la imagen de LliureX que hemos descargado, y en la parte inferior seleccionado el dispositivo sobre el qué queremos crear la imagen. Si todo es correcto, tendremos que hacer clic al botón *Crea un disco de arranque* para iniciar el proceso.
 
 En este momento, después de un posible mensaje advirtiendo de la pérdida de datos de la memoria USB, se nos mostrará una barra con el progreso de la creación. Cuando esté finalizando, es posible que tengamos que introducir la contraseña del usuario administrador, para hacer el USB arrancable.
 
@@ -254,7 +254,7 @@ Con esto ya tendremos el USB preparado para arrancar el ordenador con un sistema
 
 En el artículo de la wiki se nos comenta también, como alternativa, como realizar este proceso desde la línea de comandos. Este proceso se basa en órdenes desde la terminal, y requiere de algunos conocimientos más avanzados, pero en ocasiones, puede sernos útil en casos en que la creación de la usb de forma gráfica de problemas (bien por el formato de algunas imágenes *iso*, o bien por cuestiones de espacio a la memoria).
 
-*Creación del USB de arranque desde Windows o Mac*
+*Creación del USB de arranque desde Windows o macOS*
 
 Para crear el disco de arranque USB desde otros sistemas, como Windows, macOS, o incluso GNU/Linux (si no queremos utilizar el Startup Disco Creator), haremos uso de la herramienta *Etcher*.
 
@@ -301,7 +301,7 @@ Cada fabricante utiliza una tecla diferente para acceder al menú de arranque. A
 | Sony | F11, Esc, F10 según modelos |
 | Toshiba | F12 | 
  
-Cuando reiniciamos el ordenador y pulsamos la tecla correspondiente a nuestro equipo, se nos mostrará un menú similar al siguiente, al qué tendremos que indicar que queremos arrancar desde el USB que hemos creado:
+Cuando reiniciamos el ordenador y pulsamos la tecla correspondiente a nuestro equipo, se nos mostrará un menú similar al siguiente, al que tendremos que indicar que queremos arrancar desde el USB que hemos creado:
 
 ![Menú de arrancada](img/boot_menu.png){ width=300px }
 
@@ -340,7 +340,7 @@ En caso de que tengamos el modo UEFI activado en nuestro ordenador, es posible q
 
 ![Software adicional](img/instllx7.png){ width=350px }
 
-8. **Complementos del sistema**, desde donde podremos habilitar el apoyo de flash, así como el envío de estadísticas de uso de LliureX de forma anónima y el servicio de inventario, para recoger información del hardware. En nuestro caso, dejaremos marcado el apoyo de flash y el uso de estadítiques.
+8. **Complementos del sistema**, desde donde podremos habilitar el apoyo de flash, así como el envío de estadísticas de uso de LliureX de forma anónima y el servicio de inventario, para recoger información del hardware. En nuestro caso, dejaremos marcado el apoyo de flash y el uso de estadíticas.
 
 ![Complementos del sistema](img/instllx8.png){ width=350px }
 
@@ -348,7 +348,7 @@ En caso de que tengamos el modo UEFI activado en nuestro ordenador, es posible q
 
 ![Tipo de instalación](img/instllx9.png){ width=500px }
 
-Cuando hablamos de *particiones* hacemos referencia a las partes en que dividimos, de forma lógica, un disco duro de forma que es cómo si tuvieramos tantos discos duros como particiones. Cada sistema operativo necesita ubicar su sistema de ficheros en una de estas particiones. En esta ventana de *Tipo de instalación* tenemos varias opciones para hacer estas particiones:
+Cuando hablamos de *particiones* hacemos referencia a las partes en que dividimos, de forma lógica, un disco duro de forma que es cómo si tuviéramos tantos discos duros como particiones. Cada sistema operativo necesita ubicar su sistema de ficheros en una de estas particiones. En esta ventana de *Tipo de instalación* tenemos varias opciones para hacer estas particiones:
 
 * *Guiado - redimensiona disco y utiliza el espacio libre*, que será la opción recomendada, siempre que el particionador encuentro espacio suficiente en el disco como para hacer la instalación. A la instalación de ejemplo que estamos haciendo se ha utilizado este sistema, sobre un disco que ya tenía varias particiones. El sistema ha detectado la partición donde más espacio disponible había y nos ha sugerido reducir esta y crear una nueva para instalar LliureX. Cómo vemos a la imagen, se nos muestra el estado actual del disco, y como quedaría después de hacer la nueva partición. En esta barra de abajo, fijaos que aparece una flecha doble entre la partición que vayamos a redimensionar y la nueva por sí queremos ajustar los espacios. Si deseáis ajustar el espacio, acordaros de dejar unos 20GB para la partición con LliureX.
 
@@ -356,9 +356,9 @@ Cuando hablamos de *particiones* hacemos referencia a las partes en que dividimo
 
 * *Guiado - utiliza el disco entero y configura LVM*, es parecido al anterior pero utilizando volúmenes lógicos ( *LVM, Logical Volume Manager*), que gestiona varias particiones como si se tratara de una.
 
-* *Guiado - utiliza el disco entero y configura LVM cifrado*, que seria como el anterior, pero cifrando el disco.
+* *Guiado - utiliza el disco entero y configura LVM cifrado*, que sería como el anterior, pero cifrando el disco.
 
-* *Manual*, es la opción más versátil y potente, puesto que nos permite gestionar las particiones a nuestro gusto, y por tanto, la más peligrosa si no sabemos muy bien qué estamos haciendo.
+* *Manual*, es la opción más versátil y potente, puesto que nos permite gestionar las particiones a nuestro gusto y, por tanto, la más peligrosa si no sabemos muy bien qué estamos haciendo.
 
 Lo más recomendable, será pues, seguir el modo guiado que nos sugiere el reparticionamento del disco.
 
@@ -392,7 +392,7 @@ Una vez le damos a *Continuar* el sistema empezará a instalarse, mientras sigue
 
 Si no deseamos dedicar una partición del disco a LliureX, desde LliureX 19.07 podemos hacer uso de LliuWin. 
 
-LliuWin es un instalador de LliureX para Windows, de forma que se pueda probar sin correr el riesgo de perder información durante el formateado o particionamiento. La idea es instalar LliureX y poder desinstalarlo cómo si se tratara de una aplicación más de Windows. Para lo cual hace uso de una imagen de LliureX ubicada como un fichero sobre el mismo sistema de ficheros de Windows. No se trata por lo tanto de una virtualización de LliureX, sino de una instalación en sí, con la diferencia que en lugar de dedicar una partición del disco, esta se instala sobre un fichero de Windows, y es este quien se encarga de ponerla en marcha o de poner en marcha Windows. La principal diferencia en cuanto al rendimiento frente a un sistema instalado es que este último descansa sobre el sistema de ficheros de Windows, el que hace que no sea óptimo.
+LliuWin es un instalador de LliureX para Windows, de forma que se pueda probar sin correr el riesgo de perder información durante el formateado o particionamiento. La idea es instalar LliureX y poder desinstalarlo cómo si se tratara de una aplicación más de Windows. Para lo cual hace uso de una imagen de LliureX ubicada como un fichero sobre el mismo sistema de ficheros de Windows. No se trata por lo tanto de una virtualización de LliureX, sino de una instalación en sí, con la diferencia que, en lugar de dedicar una partición del disco, esta se instala sobre un fichero de Windows, y es este quien se encarga de ponerla en marcha o de poner en marcha Windows. La principal diferencia en cuanto al rendimiento frente a un sistema instalado es que este último descansa sobre el sistema de ficheros de Windows, el que hace que no sea óptimo.
 
 El proceso de instalación de LliuWin consta de dos pasos genéricos:
 
@@ -421,7 +421,7 @@ Con esto tendremos instalado *LliuWin Installer*, que nos permitirá instalar Ll
 
 ### Descarga e instalación de LliureX con LliuWin Installer
 
-Para iniciar el instalador, hacemos doble clic en el acceso directo de LliuWin, y seleccionamos, cuando nos pregunte, que queremos permitir que la aplicación realize cambios al dispositivo:
+Para iniciar el instalador, hacemos doble clic en el acceso directo de LliuWin, y seleccionamos, cuando nos pregunte, que queremos permitir que la aplicación realice cambios al dispositivo:
 
 ![Permiso para LliuWin](img/lliuwin5.png){ width=300px }
 
@@ -445,11 +445,11 @@ Y cuando arrancamos Windows, nos pedirá con cual de los dos sistemas arrancar:
 
 Con esto hemos conseguido realizar una instalación de LliureX sobre un ordenador sin necesidad de hacer particiones del disco, como si se tratara de una aplicación más. En el momento en que queramos desinstalarlo, lo hacemos de igual manera como si se tratara de una aplicación Windows.
 
-# Un paseo por el en torno a LliureX
+# Un paseo por el entorno a LliureX
 
 Desde la versión 19 de LliureX, se utiliza la en torno a escritorio Plasma, de KDE en lugar de Mate o Gnome que se ha utilizado en versiones anteriores. Se trata de un escritorio que respeta los recursos del sistema y le da un aspecto más moderno y útil.
 
-A pesar de que no entraremos a verlo en detalle, vamos a hacer una breve paseo por el escritorio para conocer, cuál será nuestro entorno de trabajo.
+A pesar de que no entraremos a verlo en detalle, vamos a hacer un breve paseo por el escritorio para conocer, cuál será nuestro entorno de trabajo.
 
 ## El escritorio
 
@@ -474,9 +474,9 @@ Como podemos ver, la barra de menú consta de varias partes:
 
 Por su parte, en la parte inferior se encuentra el *Dock* o *Gestor de tareas*, a través del cual podremos acceder de manera rápida a las diferentes aplicaciones que tengamos en ejecución. Esta barra también dispone de algunos accesos directos a las aplicaciones más comunes, como el Firefox, el gestor de ficheros o las preferencias del sistema. Si queremos añadir alguna aplicación a esta barra, para iniciarla con un solo clic desde el escritorio, solo tenemos que localizarla al menú y arrastrarla hasta aquí.
 
-## ¿Donde están mis cosas?
+## ¿Dónde están mis cosas?
 
-Nuestros documentos, y ficheros en general se guardan en nuestra carpeta de usuario. Es conveniente conocer como se organiza esta para mantener una organización coherente, y saber donde guardamos todo aquello que hacemos.
+Nuestros documentos, y ficheros en general se guardan en nuestra carpeta de usuario. Es conveniente conocer cómo se organiza esta para mantener una organización coherente, y saber dónde guardamos todo aquello que hacemos.
 
 ### El sistema de ficheros de LliureX
 
@@ -491,7 +491,7 @@ Algunas de las carpetas más importantes de esta organización son:
 *  **/bin**: Contiene los programas esenciales de la línea de comandos necesarios para una sesión de usuario (copia de ficheros, listar directorios, etc.)
 *  **/boot**: Encargada de la puesta en marcha del sistema,
 *  **/etc**: Contiene ficheros de configuración del sistema,
-*  **/home**: Contiene las carpetas de trabajo de los usuarios. Dentro de esta carpeta habrá una carpeta de trabajo para cada usuario del sistema./
+*  **/home**: Contiene las carpetas de trabajo de los usuarios. Dentro de esta carpeta habrá una carpeta de trabajo para cada usuario del sistema.
 *  **/media**: Carpeta donde se *montarán* los dispositivos que conectamos al ordenador, como puedan ser las memorias USB. Los sistemas Linux, a diferencia de Windows, no generan una nueva unidad (D:, E:, etc.) cuando conectamos un dispositivo, sino que añaden carpetas dentro de esta carpeta. Los accesos que  tendremos a *Dispositivos*, harán referencia en estas carpetas.
 *  **/opt**: Carpeta con programas opcionales que tienen una configuración personalizada para cada usuario.
 * **/root**: Carpeta personal del administrador del sistema. Por motivos de seguridad, esta no se encuentra dentro del directorio */home*.
@@ -561,7 +561,7 @@ Para acceder al LliureX Up, lo haremos a través del menú de *Inicio* > *Admini
 
 ![LliureX Up](img/lliurex_up1.png){ width=250px }
 
-Nada más lanzar el actualizador, se realizarán varias acciones para *refrescar* todas las listas de paquetes disponibles a los repositorios. El sistema de paquetes, mantiene unas listas con todo el software disponible a los repositorios, y lo primero que hace LliureX Up al iniciarse es actualizar estas listas. Después compara las aplicaciones que tenemos instaladas con estas listas, para detectar si hay versiones nuevas para instalar. 
+Nada más lanzar el actualizador, se realizarán varias acciones para *refrescar* todas las listas de paquetes disponibles a los repositorios. El sistema de paquetes mantiene unas listas con todo el software disponible a los repositorios, y lo primero que hace LliureX Up al iniciarse es actualizar estas listas. Después compara las aplicaciones que tenemos instaladas con estas listas, para detectar si hay versiones nuevas para instalar. 
 
 ![LliureX Up](img/lliurex_up2.png){ width=250px }
 
@@ -601,7 +601,7 @@ Come se muestra a la imagen, disponemos de varias secciones en la aplicación. L
 
 Si nos fijamos en la *Barra de herramientas*, el primer botón que aparece es el de **Refresca**. Este botón realiza una operación que ya conocemos, y es que actualiza la lista de paquetes disponibles (lo primero de los pasos que hace el LliureX Up). 
 
-Desde esta herramienta, podemos también actualizar las aplicaciones gestionadas en formato *.deb*. Si quisieramos hacer una actualización, haríamos clic al botón *Marca las actualizaciones*, de forma que Synaptic marcará para actualizar todas las aplicaciones que estén desactualizadas. Si solo queremos actualizar desde el Synaptic, haremos clic *Aplica* y nuestro sistema se actualizará.
+Desde esta herramienta, podemos también actualizar las aplicaciones gestionadas en formato *.deb*. Si quisiéramos hacer una actualización, haríamos clic al botón *Marca las actualizaciones*, de forma que Synaptic marcará para actualizar todas las aplicaciones que estén desactualizadas. Si solo queremos actualizar desde el Synaptic, haremos clic *Aplica* y nuestro sistema se actualizará.
 
 Finalmente, nos centramos en el botón *Busca* de la barra de herramientas. Si hagamos clic en él, se nos abrirá un diálogo donde podremos introducir el nombre o alguna palabra de la descripción del paquete que estamos buscando:
 
@@ -628,13 +628,13 @@ La interfaz del Discover es un poquito más sencilla que la del Synaptic, y en e
 
 ![Acceso a Discover](img/discover2.png){ width=400px }
 
-Tengamos en cuenta que el Discover tiene acceso a los repositorios catalogados por el propio *Plasma*. Si buscamos, por ejemplo *Casimir* en la barra de busca, veremos que ahora no nos encuentra la aplicación, puesto que esta no está catalogada por KDE.
+Tengamos en cuenta que el Discover tiene acceso a los repositorios catalogados por el propio *Plasma*. Si buscamos, por ejemplo, *Casimir* en la barra de busca, veremos que ahora no nos encuentra la aplicación, puesto que esta no está catalogada por KDE.
 
-Con el Discover, una vez hemos encontrado la aplicación que queemos, solo habrá que hacer clic en el botón *Instalar* para descargarla e instalarla en nuestro equipo.
+Con el Discover, una vez hemos encontrado la aplicación que quemos, solo habrá que hacer clic en el botón *Instalar* para descargarla e instalarla en nuestro equipo.
 
 ### LliureX Store
 
-La LliureX Store facilita la instalación de aplicaciones de diferentes origes y formatos (*.deb*, *Snap*, *Appimage*)
+La LliureX Store facilita la instalación de aplicaciones de diferentes orígenes y formatos (*.deb*, *Snap*, *Appimage*)
 
 Para acceder a la LliureX Store lo haremos a través del Menú de *Inicio*, bien a través del acceso directo de la barra de favoritos de la izquierda, o bien a través del *submenú Administración de LliureX* > *LliureX Store*:
 
@@ -650,7 +650,7 @@ En el siguiente gráfico vemos las diferentes vistas que se nos pueden presentar
   * Una sección de **aplicaciones destacadas**, 
   * Una sección con las diferentes **Categorías** en que se encuentra organizado el software.
 
-* Si hacemos click al desplegable del **Menú de navegación**, se nos mostrará este menú, con accesos a la *Vista de Inicio*, por si estamos en otra ventana, a *Nuestras aplicaciones*, con las aplicaciones instaladas al sistema, y una lista con las *Categorías de software*, equivaliendo a las que nos aparecen a la vista principal.
+* Si hacemos clic al desplegable del **Menú de navegación**, se nos mostrará este menú, con accesos a la *Vista de Inicio*, por si estamos en otra ventana, a *Nuestras aplicaciones*, con las aplicaciones instaladas al sistema, y una lista con las *Categorías de software*, equivaliendo a las que nos aparecen a la vista principal.
 * Cuando hacemos clic con el ratón sobre una categoría, tanto desde el *Menú de Navegación* como desde la vista principal, accederemos a la **Vista de la Categoría** en cuestión, la cual nos mostrará:
   * Un menú a la izquierda con las subcategorías, y
   * Una lista de aplicaciones correspondientes a la categoría.
@@ -700,7 +700,7 @@ La primera pantalla que nos muestra la herramienta es la de **Opciones**, con en
   * Activar o desactivar los ***repositorios de LliureX desde uno Mirror*** o Réplica del centro. Si trabajamos en un modelo de centro y disponemos de una réplica de los repositorios de LliureX al servidor, esta sería la opción más adecuada.
   * Activar o desactivar los ***repositorios de Ubuntu***. De manera predeterminada están desactivados, y podemos activarlos si necesitamos software de Ubuntu que no esté a LliureX. **En caso de que un paquete esté tanto en los repositorios de Ubuntu como a los de LliureX, tendrá preferencia lo del repositorio de LliureX, aunque haya una versión más actualizada a Ubuntu.**
 
-* **Gestionar repositorios personalizados**, donde podremos configurar otros repositorios externos en LliureX y en Ubuntu. Para añadir un nuevo repositorio haremos clic en el botón que hay encima del recuadro de los repositorios, y añadimos su dirección web, junto con el nombre y una descripción. En principio, no tendremos que añadir ningún repositorio externo, puesto que las aplicaciones con que trabajaremos se encuentran en los repositorios por defecto. De todas maneras, si lo necesitamos en algún momento, explicaríamos en detalle como hacerlo.
+* **Gestionar repositorios personalizados**, donde podremos configurar otros repositorios externos en LliureX y en Ubuntu. Para añadir un nuevo repositorio haremos clic en el botón que hay encima del recuadro de los repositorios, y añadimos su dirección web, junto con el nombre y una descripción. En principio, no tendremos que añadir ningún repositorio externo, puesto que las aplicaciones con que trabajaremos se encuentran en los repositorios por defecto. De todas maneras, si lo necesitamos en algún momento, explicaríamos en detalle cómo hacerlo.
 
 * **Herramientas del sistema**, desde donde podremos actualizar las listas de software, lanzar el actualizador LliureX Up o LliureX Store.
 
