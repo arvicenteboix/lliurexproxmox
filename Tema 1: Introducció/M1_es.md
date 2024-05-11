@@ -296,7 +296,7 @@ Cada fabricante utiliza una tecla diferente para acceder al menú de arranque. A
 | HP | Esc |
 | Huawei | F12 |
 | Intel NUDO | F10 |
-| Lenonvo | F12 |
+| Lenovo | F12 |
 | Samsung | Esc |
 | Sony | F11, Esc, F10 según modelos |
 | Toshiba | F12 | 
@@ -311,10 +311,10 @@ Vemos a continuación las diferentes pantallas que se nos presentan y las difere
 
 1. **Pantalla de arrancada de LliureX Live:** En esta primera pantalla cuando arrancamos desde el USB tendremos que pulsar una tecla para iniciar la sesión Live de LliureX. Si no pulsamos ninguna tecla, el sistema se iniciará desde el disco duro del ordenador.
 
-![Pantalla de arranc de LliureX Live](img/instllx1.png){ width=350px }
+![Pantalla de arranque de LliureX Live](img/instllx1.png){ width=350px }
 
 
-2. **Menú de inicio del sistema Live**, con diferentes opciones, como hacer un testeo de memoria o comproar si el CD/USB de instalación tiene defectos. Elegiremos la opción **Probar LliureX sin instalarlo**, para iniciar el modo live y desde ahí empezar la instalación.
+2. **Menú de inicio del sistema Live**, con diferentes opciones, como hacer un testeo de memoria o comprobar si el CD/USB de instalación tiene defectos. Elegiremos la opción **Probar LliureX sin instalarlo**, para iniciar el modo live y desde ahí empezar la instalación.
 
 ![Menú de inicio del sistema Live](img/instllx2.png){ width=350px }
 
@@ -328,13 +328,13 @@ En caso de que tengamos el modo UEFI activado en nuestro ordenador, es posible q
 
 ![Selección de idioma](img/instllx4.png){ width=350px }
 
-5. **Selección de la distribución del teclado**, en este caso, elegiremos la *Disposición en Español* y la variante del catalán para tener habilitado el punto medio (el de la ele geminada *l·l*).
+5. **Selección de la distribución del teclado**, en este caso, elegiremos la *Disposición en Español* y la variante del catalán para tener habilitado el punto medio (el de la ele geminada **l·l**).
 
 ![Selección de la distribución del teclado](img/instllx5.png){ width=350px }
 
 6. **Selección de la distribución del escritorio**, donde podremos elegir qué apariencia queremos darle a nuestro escritorio LliureX. Tenemos dos opciones. La primero es la distribución por defecto (*Default Layout*), con una barra superior y el *dock* a la parte inferior, tal y como se ha estado trabajando en las últimas versiones de LliureX. La segunda opción es una distribución más clásica (*Classic Layout*) con una única barra a la parte inferior. **En principio escogeremos la distribución por defecto**.
 
-![Distriubució del escritorio](img/instllx6.png){ width=350px }
+![Distribución del escritorio](img/instllx6.png){ width=350px }
 
 7. **Selección de software adicional**, en principio no tendremos que instalar este software por defecto, por el que **no marcaremos nada y pulsaremos en Continua**.
 
