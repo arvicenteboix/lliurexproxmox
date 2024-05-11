@@ -93,16 +93,16 @@ Este documento está sujeto a una licencia creative commons que permite su difus
 
 # Introducción
 
-En esta unidad vamos a ver la instalación de Proxmox. En el primer capítulo veremos como nos puede resultar útil la herramienta [meshcomander](https://www.meshcommander.com/meshcommander).
+En esta unidad vamos a ver la instalación de Proxmox. En el primer capítulo veremos cómo nos puede resultar útil la herramienta [meshcomander](https://www.meshcommander.com/meshcommander).
 
-![Proxmox es la herramienta que utilizaremos para virtualitzar los servidores](Proxmox-logo.png)
+![Proxmox es la herramienta que utilizaremos para virtualizar los servidores](Proxmox-logo.png)
 
 Es importante tener claro los siguientes conceptos antes de empezar la instalación.
 
 * **AMT** funciona como un sistema independiente, por lo tanto tendrá su propia ip.
 * Los dispositivos físicos cada vez se utilizan menos. Recuerda cuando fue la última vez que utilizaste un CD-ROM.
-* Vamos a hacer una instalación de proxmox. No es necesario tener acceso a la consola de Proxmox en ningún momento, por lo tanto si ya tienes lo hipervisor montado al rack, no lo desmontes.
-* Las IPs utilizadas no corresponden con las indicadas a las que recomienda lo SAI. Es parte de la tarea que deberéis hacer!
+* Vamos a hacer una instalación de Proxmox. No es necesario tener acceso a la consola de Proxmox en ningún momento, por lo tanto si ya tienes un hipervisor montado en el rack, no lo desmontes.
+* Las IPs utilizadas no corresponden con las indicadas a las que recomienda el SAI. Es parte de la tarea que deberéis hacer!
 
 ![Esquema orientativo](Esquema.png)
 
@@ -114,8 +114,7 @@ Para poner a punto el servidor, es recomendable, aunque no imprescindible habili
 
 ## Habilitar AMT de Intel
 
-Los servidores distribuidos en los centros disponen de la herramienta AMT de Intel para poder conectarse remotamente, no solo nos permitirá arrancar el hipervisor sino que también nos permitirá
- configurar ciertas funcionalidades básicas. Pero antes de nada, habrá que entrar a la BIOS. Para acceder a la BIOS (Modelo SEH1) pulsamos F2 en el setup del ordenador.
+Los servidores distribuidos en los centros disponen de la herramienta AMT de Intel para poder conectarse remotamente, no solo nos permitirá arrancar el hipervisor sino que también nos permitirá  configurar ciertas funcionalidades básicas. Pero antes de nada, habrá que entrar en la BIOS. Para acceder (Modelo SEH1) pulsamos F2 en el setup del ordenador.
 
 ![BIOS del sistema](amt-conf/Desktop--2020-11-25-18-25.png)
 
@@ -123,38 +122,38 @@ Los servidores distribuidos en los centros disponen de la herramienta AMT de Int
 
 Una vez dentro vamos a la pestaña *Advanced*.
 
-![Proxmox es la herramienta que utilizaremos para virtualitzar los servidores](amt-conf/Desktop--2020-11-25-18-26.png)
+![Proxmox es la herramienta que utilizaremos para virtualizar los servidores](amt-conf/Desktop--2020-11-25-18-26.png)
 
 \newpage
 
 Y seleccionamos *AMT Configuration*.
 
-![Proxmox es la herramienta que utilizaremos para virtualitzar los servidores](amt-conf/Desktop--2020-11-25-18-262.png)
+![Proxmox es la herramienta que utilizaremos para virtualizar los servidores](amt-conf/Desktop--2020-11-25-18-262.png)
 
 \newpage
 
 Cambiamos *MEBx Modo* y seleccionamos la opción Entero MEBx Setup
 
-![Proxmox es la herramienta que utilizaremos para virtualitzar los servidores](amt-conf/Desktop--2020-11-25-18-26-2.png)
+![Proxmox es la herramienta que utilizaremos para virtualizar los servidores](amt-conf/Desktop--2020-11-25-18-26-2.png)
 
 \newpage
 
-Finalmente salvamos los parámetros y reiniciamos.
+Finalmente guardamos los parámetros y reiniciamos.
 
-![Proxmox es la herramienta que utilizaremos para virtualitzar los servidores](amt-conf/Desktop--2020-11-25-18-27.png)
+![Proxmox es la herramienta que utilizaremos para virtualizar los servidores](amt-conf/Desktop--2020-11-25-18-27.png)
 
 ## Configuración del AMT
 
 Una vez hemos habilitado el AMT, entramos en la configuración del mismo y configuramos los siguientes parámetros.
 
 ::: tip
-**Info**: Por motivos obvios de seguridad no se permite entrar a la configuración del AMT por VNC, por el que algunas de las siguientes imágenes están fotografiadas de la pantalla.
+**Info**: Por motivos obvios de seguridad no se permite entrar a la configuración del AMT por VNC, por lo que algunas de las siguientes imágenes están fotografiadas de la pantalla.
 :::
 
-Cuando entramos a la herramienta de configuración del AMT, tenemos que logarnos. La contraseña de administrador es **admin**. Posteriormente nos pedirá que cambiemos la contraseña por una nueva.
+Cuando entramos a la herramienta de configuración del AMT, tenemos que identificarnos (hacer *login*). La contraseña del administrador es **admin**. Posteriormente nos pedirá que cambiemos la contraseña por una nueva.
 
 ::: warning
-**Contraseña**: Tenemos que respetar la política de contraseñas, con mayúscula, minúscula y carácter especial.
+**Contraseña**: Tenemos que respetar la política de contraseñas, con mayúscula, minúscula y carácter especial. El teclado está configurado por defecto en inglés.
 :::
 
 ![Entramos a la herramienta de configuración](mebx/-000.png)
@@ -165,7 +164,7 @@ Tenemos que acceder a las siguientes opciones para hacer una configuración bás
 
 | Opción | Funcionalidad |
 | -- | -- |
-| **User Consiente** | Conectarnos al servidor por VNC sin permiso |
+| **User Consent** | Conectarnos al servidor por VNC sin permiso |
 | **Network Setup** | Para configurar las opciones de red |
 | **Activate Network Access** | Para poder acceder a lo hipervisor |
 
@@ -186,7 +185,7 @@ Después vamos a **TCP/IP Settings**
 Y configuramos el AMT según los siguientes parámetros
 
 ::: caution
-**Ten cuidado**: La dirección del AMT es diferente a la dirección del hipervisor. Además has que tener en cuenta que el AMT no tiene el ICMP activado, por el que si haces un *ping* o *nmap* no te dará respuesta.
+**Ten cuidado**: La dirección del AMT es diferente a la dirección del hipervisor. Además debes de tener en cuenta que el AMT no tiene el ICMP activado, por lo que si haces un *ping* o *nmap* no te dará respuesta.
 :::
 
 Los parámetros que mostramos son unos parámetros de ejemplo que vamos a utilizar dentro de nuestro banco de pruebas.
@@ -211,21 +210,21 @@ El *AMT* junto la aplicación *Meshcommander* nos permitirá tener los servidore
 
 > Desde febrero de 2021 existe una versión de *Meshcommander* para GNU/Linux, os dejamos un **vídeo** en recursos adicionales para hacer la instalación en GNU/Linux. En resumen se instala con el comando:
 
-```tcsh
+```sh
 npm install meshcommander
 ```
 >Una vez instalado accedemos a la carpeta que se ha descargado 
-```tcsh
+```sh
 cd node_modules/meshcommander
 ``` 
 y ejecutamos:
 
-```tcsh
+```sh
 node meshcommander
 ```
 >Esto habilitará meshcommander en la dirección web http://127.0.0.1:3000 y el procedimiento será igual que con la aplicación Windows.
 
-![Video d'instalació de Meshcommander Linux](mesh/14.png)
+![Video de instalación de Meshcommander Linux](mesh/14.png)
 
 En esta sección se detalla la instalación en Windows. Pero es más que recomendable usar la versión para GNU/Linux. 
 
@@ -251,14 +250,14 @@ Haremos click sobre *Add computer...* Y configuraremos el servidor con los pará
 * Sin seguridad, utilizaremos el puerto *16992*
 
 :::warning
-El puerto 16993 está dando problemas este año, si no tenéis el firmware de lo AMT actualizado es posible que no os deje utilizar el puerto 16993.
+El puerto 16993 da problemas, si no tenéis el firmware del AMT actualizado es posible que no os deje utilizar el puerto 16993.
 :::
 
 ![Configuración del meshcomander 1](mesh/3.png)
 
 ![Configuración del meshcomander 2](mesh/4.png)
 
-Una vez configurado el servidor veremos la pantalla de la siguiente manera. Ya solo  hace falta, dar a **connect** y podremos acceder a la configuración de nuestro servidor de manera remota.
+Una vez configurado el servidor veremos la pantalla de la siguiente manera. Ya solo hace falta, dar a **connect** y podremos acceder a la configuración de nuestro servidor de manera remota.
 
 ![Pantalla donde se muestra el hipervisor](mesh/5.png)
 
@@ -288,7 +287,7 @@ Finalmente veremos como empieza la instalación de Proxmox.
 
 ![Cambio de opción](mesh/13.png)
 
-:::importando
+:::important
 Es altamente recomendable tener una conexión al menos de 1Gb, puesto que sino la instalación se puede hacer muy pesada y pueden aparecer errores de *timeout*.
 :::
 
@@ -296,24 +295,22 @@ Es altamente recomendable tener una conexión al menos de 1Gb, puesto que sino l
 
 Para instalar Proxmox podemos utilizar la opción explicada. Es la más recomendable si ya tienes el servidor montado en el rack. De todas maneras, también se puede instalar con una memoria usb.
 
-
 ## Creación de usb de arranque de proxmox
 
 Para hacer la instalación de la iso de proxmox, la mejor opción es utilizar **dd**. Para detectar donde está montado el usb podemos ejecutar antes y después lsblk y podemos ver donde se ha montado la partición.
 
-```tcsh
+```sh
 lsblk
 ```
 
-En nuestro ejemplo (puesto que tenemos un disco llevar m2 no sata, se ha montado  sda). Por lo tanto nnuestro comando sería:
+En nuestro ejemplo (puesto que tenemos un disco duro m2 no sata, se ha montado sda). Por lo tanto nuestro comando sería:
 
-```tcsh
+```sh
 sudo dd if=./proxmox-viene_6.2-1.iso of=/dev/sda status=progress
 ```
+<!-- \awesomebox[violet]{2pt}{\faUsb}{violet}{} -->
 
-\awesomebox[violet]{2pt}{\faUsb}{violet}{}
-
-También disponemos de herremientas gráficas para grabar la iso de Proxmox en un USB. Podemos utilizar [Etcher](https://balena.io/etcher/) que es multiplataforma i muy senzilla de utilizar.
+También disponemos de herremientas gráficas para grabar la iso de Proxmox en un USB. Podemos utilizar [Etcher](https://balena.io/etcher/) que es multiplataforma y muy senzilla de utilizar.
 
 ![Etcher](mesh/15.png)
 
@@ -328,7 +325,7 @@ Todos sabemos que es importante leerse la licencia :smirk: .
 
 ![Licencia de Proxmox](inst_proxmox/2.jpg)
 
-Esta es una de las partes más delicadas y depende de lo que queréis tener montado en vuestro centro, también depende de la cantidad de discos duros que tengáis instalados y de si queréis invertir dinero en una cabina de discos duros.
+Esta es una de las partes más delicadas y depende de lo que queréis tener montado en vuestro centro, también depende de la cantidad de discos duros que tengáis instalados y de si queréis invertir dinero en una cabina de discos duros o no.
 
 ![Opciones de instalación](inst_proxmox/3.jpg)
 
