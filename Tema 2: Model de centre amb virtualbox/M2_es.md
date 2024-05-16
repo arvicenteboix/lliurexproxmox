@@ -99,16 +99,16 @@ En esta unidad veremos cómo montar el modelo de centro virtualizado. Esto nos s
 
 El modelo de centro es un modo de configuración que combina red y servidores para dar unos servicios a todos los ordenadores dentro del centro. Entre otras cosas el modelo de centro puede dar los siguientes servicios de red:
 
-- Páginas web internet del centros
-- Jitsi para reuniones a la intranet
-- Moodle para sesiones internas
-- Videoconferencias
-- LDAP para logar los usuarios a cualquier ordenador del centro
-- Carpetas compartidas en todo el centro
-- Mirror compartido por todos los servidores
-- Servidor de imágenes para clientes ligeros
-- Nextcloud para compartir ficheros a la intranet
-- DHCP para cada aula
+- Páginas web internet de los centros.
+- Jitsi para reuniones a la intranet.
+- Moodle para sesiones internas.
+- Videoconferencias.
+- LDAP para logar los usuarios a cualquier ordenador del centro.
+- Carpetas compartidas en todo el centro.
+- Mirror compartido por todos los servidores.
+- Servidor de imágenes para clientes ligeros.
+- Nextcloud para compartir ficheros a la intranet.
+- DHCP para cada aula.
 
 Además de todas estas características, LliureX presenta numerosas herramientas que facilitan la instalación y configuración del software.
 
@@ -151,10 +151,10 @@ Un esquema bastante habitual que nos encontramos en los centros es el siguiente:
 ![Esquema orientativo 1](Esquemes/model1.png)
 
 :::warning
-En el esquema se muestra un servidor NFS de archivos. Al final del curso daremos unas recomendaciones de cómo se monta un servidor NFS, pero tienes que tener en cuenta que este tipo de servidores dan muchos problemas para montar el /net, debido a un problema con las ACLs y el NFS v3, por lo tanto se recomienda dejar el /net en el MASTER. Se puede montar en el servidor NFS como un disco del PROXMOX (qcow por ejemplo), las ACLs no darán problemas en ese caso.
+En el esquema se muestra un servidor NFS de archivos. Al final del curso daremos unas recomendaciones de cómo se monta un servidor NFS, pero tienes que tener en cuenta que este tipo de servidores dan muchos problemas para montar el /net, debido a un problema con las ACLs y el NFS v3, por lo tanto, se recomienda dejar el /net en el MASTER. Se puede montar en el servidor NFS como un disco del PROXMOX (qcow por ejemplo), las ACLs no darán problemas en ese caso.
 :::
 
-En este esquema nos encontramos 3 servidores, donde el servidor maestro guarda la base de de datos para logar todos los usuarios (LDAP), y puede dar servicio a la red de centro.
+En este esquema nos encontramos 3 servidores, donde el servidor maestro guarda la base de datos para logar todos los usuarios (LDAP), y puede dar servicio a la red de centro.
 
 Un esquema más adecuado sería este:
 
@@ -289,7 +289,7 @@ Y seleccionamos clonación completa:
 ![Clonación](model/31.png)
 
 :::warning
-Es importante hacer la clonación completa antes de inicializar el servidor y reiniciar la dirección MAC de todas las tarjetas de red. Si se hiciera después requeriría unas tareas de mantenimiento en la carpeta /etc/netplan para asegurarse que no se duplican ips. Si ya se ha inicializado el servidor es mejor hacer una instalación nueva para el servidor esclavo.
+Es importante hacer la clonación completa antes de inicializar el servidor y reiniciar la dirección MAC de todas las tarjetas de red. Si se hiciera después requeriría unas tareas de mantenimiento en la carpeta /etc/netplan para asegurarse que no se duplican IPs. Si ya se ha inicializado el servidor es mejor hacer una instalación nueva para el servidor esclavo.
 :::
 
 El adaptador 2 lo cambiamos a centro en lugar de maestro:
@@ -338,7 +338,7 @@ Iniciamos el zero-server-wizard
 
 ![Zero-server-wizard](model/37.png)
 
-En nuestro caso, vamos a iniciar este servidor como maestro. Tenemos que tener especial cuidado y no olvidar marcar al **exportar /net**, para tener solo uno mirror y carpetas de usuarios en todos los servidores sincronizadas.
+En nuestro caso, vamos a iniciar este servidor como maestro. Debemos tener especial cuidado y no olvidar marcar al **exportar /net**, para tener solo uno mirror y carpetas de usuarios en todos los servidores sincronizadas.
 
 También hay que tener mucho cuidado en identificar la tarjeta externa (la que ha cogido una IP del Router), la tarjeta interna (la que se comunica con los ordenadores clientes del aula/centro) y la tarjeta de replicación (la que se comunica con otros servidores para compartir **/net**).
 
@@ -400,7 +400,7 @@ Desde hace un tiempo Consellería ha decidido prescindir de los clientes ligeros
 
 ## Clientes ligeros
 
-Para utilizar clientes ligeros utilizaremos **admin-center** que podemos encontrar tan en el zero-center como en la página de inicio del firefox. Al entrar en admin-center nos encontraremos este menú.
+Para utilizar clientes ligeros utilizaremos **admin-center** que podemos encontrar tan en el zero-center como en la página de inicio del Firefox. Al entrar en admin-center nos encontraremos este menú.
 
 ![Menú Admin Center](model/45.png)
 
@@ -432,11 +432,11 @@ Podemos asociar la imagen de un cliente para que se inicie siempre con esa image
 
 ![Gestión de clientes del aula](model/54.png)
 
-Para poder ver los clientes es necesario que se hayan puesto en marcha al menos una vez y sea el mismo servidor quién les haya dado una ip (Las ips se cogen de la tabla del dnsmasq).
+Para poder ver los clientes es necesario que se hayan puesto en marcha al menos una vez y sea el mismo servidor quién les haya dado una IP (Las IPs se cogen de la tabla del dnsmasq).
 
 ![Listado de ordenadores en el aula](model/55.png)
 
-Haces doble click sobre un ordenador (estos vienen identificados con la ip y la MAC). Y nos aparecerá el siguiente menú:
+Haces doble click sobre un ordenador (estos vienen identificados con la IP y la MAC). Y nos aparecerá el siguiente menú:
 
 ![Configuración de cliente](model/56.png)
 
@@ -471,7 +471,7 @@ Llum es la herramienta que nos va a permitir gestionar los usuarios de nuestro c
 
 ![Itaca](model/usuarios29.png)
 
-Y después iniciamos llum:
+Y después iniciamos Llum:
 
 ![Llum](model/57.png)
 
