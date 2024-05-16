@@ -179,7 +179,7 @@ Deben tener cuidado con las características que ponen en cada máquina, para ha
 2. Cambiar las características que se adapten a sus máquinas.
 3. Inicializar servidor maestro.
 4. Inicializar servidor esclavo.
-5. Crear usuario con luz (prueba).
+5. Crear usuario con Llum (prueba).
 6. Instalar cliente.
 7. Inicializar el cliente con el usuario prueba.
 
