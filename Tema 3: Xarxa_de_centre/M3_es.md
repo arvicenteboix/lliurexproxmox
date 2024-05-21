@@ -93,7 +93,7 @@ Este documento está sujeto a una licencia creative commons que permite su difus
 
 # Introducción
 
-Hasta ahora hemos visto que en el modelo clásico de centro existía un servidor en cada una de las aulas de informática. Por lo tanto, para gestionarlo había que ir al aula de informática, o conectarse bien vía ssh o por vnc. Con un modelo de centro virtualizado cambiamos el paradigma y tendremos todos los servidores virtualizados en un hipervisor o en un cluster de hipervisores. A modo de ejemplo tenemos el siguiente esquema de modelo clásico.
+Hasta ahora hemos visto que en el modelo clásico de centro existía un servidor en cada una de las aulas de informática. Por lo tanto, para gestionarlo había que ir al aula de informática, o conectarse bien vía ssh o por vnc. Con un modelo de centro virtualizado cambiamos el paradigma y tendremos todos los servidores virtualizados en un hipervisor o en un clúster de hipervisores. A modo de ejemplo tenemos el siguiente esquema de modelo clásico.
 
 ![Esquema simplificado modelo clásico](models/classic.png) 
 
@@ -115,7 +115,7 @@ El proyecto no se solicita en el SAI, a estas alturas prácticamente el 90% de l
 
 # Conceptos de red
 
-En esta unidad configuraremos un esquema de red modelo con dos *switchs* a tipo de ejemplo. Conociendo cómo se configuran dos *switchs*, configurar más se hace de manera similar. Pero antes vamos a ver un poco de terminología y tecnología que vamos a utilizar.
+En esta unidad configuraremos un esquema de red modelo con dos *switches* a tipo de ejemplo. Conociendo cómo se configuran dos *switches*, configurar más se hace de manera similar. Pero antes vamos a ver un poco de terminología y tecnología que vamos a utilizar.
 
 :::warning
 Se presupone cierta pericia en tema de redes como saber qué es una IP, un switch o un router, como se conectan los ordenadores en red o configurar una estación de trabajo en una red.
@@ -123,30 +123,30 @@ Se presupone cierta pericia en tema de redes como saber qué es una IP, un switc
 
 ## VLAN y LAG
 
-Trataremos de hacer una breve explicación para entender las VLANs sin entrar en detalles técnicos que no corresponden a este curso. En las redes virtuales por puerto, tal y como dice el nombre, podemos configurar tantas VLANs como el *switchs* permita. En nuestro caso, la cantidad máxima es de 256, más que suficiente para lo que vamos a hacer. A modo de ejemplo podríamos tener el siguiente switch donde cada puerto pertenece a una o más VLANS.
+Trataremos de hacer una breve explicación para entender las VLANs sin entrar en detalles técnicos que no corresponden a este curso. En las redes virtuales por puerto, tal y como dice el nombre, podemos configurar tantas VLANs como el *switch* permita. En nuestro caso, la cantidad máxima es de 256, más que suficiente para lo que vamos a hacer. A modo de ejemplo podríamos tener el siguiente switch donde cada puerto pertenece a una o más VLANS.
 
 ![Esquema de un switch con diferentes VLANS](switch/vlan.png)
 
-Tenemos que tener en cuenta que:
+Debemos tener en cuenta que:
 
-* Tenemos que configurar cada uno de los puertos del switch con la VLAN correspondiente. Es por eso que se hace necesario tener ***switchs* gestionables** para poder configurar la red.
+* Tenemos que configurar cada uno de los puertos del switch con la VLAN correspondiente. Es por eso por lo que se hace necesario tener ***switches* gestionables** para poder configurar la red.
 * Si nos fijamos en la VLAN 110 en rojo, podemos ver que la VLAN que entra es la 110 y la que sale es la misma.
 * En cambio, en el puerto 12 podemos ver como la VLAN que sale es la 60 y la 110, ya que que el puerto está configurado para pertenecer a 2 VLANS.
-* Al puerto 16 pasa lo mismo pero con 4 VLANS, los puerto de la zona naranja están configurados para tener 4 VLANS.
+* Al puerto 16 pasa lo mismo, pero con 4 VLANS, los puerto de la zona naranja están configurados para tener 4 VLANS.
 * Si a un puerto llega una conexión sin ninguna VLAN y el puerto está configurado con la VLAN 10, la conexión que sale es de la VLAN 10.
 
-Para haceros una idea sencilla simplemente tenéis que tener en cuenta cada uno de los cuadrados. Cuando pensáis en la VLAN 110, pensad en los puerto que pertenecen a esa VLAN. Pero ahora se nos plantea la siguiente cuestión.
+Para haceros una idea sencilla simplemente debéis tener en cuenta cada uno de los cuadrados. Cuando pensáis en la VLAN 110, pensad en los puertos que pertenecen a esa VLAN. Pero ahora se nos plantea la siguiente cuestión.
 
 ### ¿Cómo sabe un ordenador con diferentes VLANS qué red tiene que escoger?
 
-Si el ordenador soporta VLANS o està configurado para ello, que no es lo más habitual, se deberá de configurar el archivo de red correspondiente con las VLAN de la red. Pero como normalmente se trata de una máquina de trabajo (solo trabaja con una VLAN), le diremos al puerto del switch donde va a conectarse el ordenador que esa máquina no entiende de VLANS. A esta opción lo denominamos **UNTAGGED**.
-Si en lugar de un ordenador conectamos un switch (que sí entiende de VLANS). Entenderá que la VLAN **untagged** es para él (por ejemplo un DHCP que le ofrece una ip, o la red para de acceso para gestionarlo) y las **TAGGED** serán aquellas que pasarán a los puertos configurados con las respectivas VLANS.
+Si el ordenador soporta VLANS o está configurado para ello, que no es lo más habitual, se deberá de configurar el archivo de red correspondiente con las VLAN de la red. Pero como normalmente se trata de una máquina de trabajo (solo trabaja con una VLAN), le diremos al puerto del switch donde va a conectarse el ordenador que esa máquina no entiende de VLANS. A esta opción lo denominamos **UNTAGGED**.
+Si en lugar de un ordenador conectamos un switch (que sí entiende de VLANS). Entenderá que la VLAN **untagged** es para él (por ejemplo, un DHCP que le ofrece una ip, o la red para de acceso para gestionarlo) y las **TAGGED** serán aquellas que pasarán a los puertos configurados con las respectivas VLANS.
 A modo de ejemplo podemos ver.
 
 ![Esquema de un switch con diferentes VLANS](switch/vlans2.png)
 
-Esta es la situación que nos encontraremos normalmente en el centros. En este caso podemos ver que llegan 4 VLANS, la 1 llega untagged, lo que significa que el switch deberá tener una ip de la VLAN 1. La VLAN 2+3+4 como estan tagged, estarán conectadas en la red 2,3 y 4 respectivamente. Como vamos a conectar un ordenador a ese puerto las hemos puesto en unttagged.
-Podemos ver cómo sería la conexión entre dos ordenador conectados a la misma VLAN:
+Esta es la situación que nos encontraremos normalmente en los centros. En este caso podemos ver que llegan 4 VLANS, la 1 llega untagged, lo que significa que el switch deberá tener una ip de la VLAN 1. La VLAN 2+3+4 como están tagged, estarán conectadas en la red 2,3 y 4 respectivamente. Como vamos a conectar un ordenador a ese puerto las hemos puesto en unttagged.
+Podemos ver cómo sería la conexión entre dos ordenadores conectados a la misma VLAN:
 
 ![Recorrido entre dos ordenadores](switch/vlanmoviment.png)
 
@@ -156,7 +156,7 @@ Esta explicación no pretende ser técnica ya este curso no va dirigido únicame
 
 ## Bonding/Link Aggregation
 
-El bonding es una forma de poder ampliar la velocidad de conexión entre dos máquinas, pueden ser bien dos ordenadores, dos *switchs*, o un ordenador y un switch, entre otras cosas.
+El bonding es una forma de poder ampliar la velocidad de conexión entre dos máquinas, pueden ser bien dos ordenadores, dos *switches*, o un ordenador y un switch, entre otras cosas.
 
 ![Ejemplo de bonding](switch/bond.png)
 
@@ -182,13 +182,13 @@ Partiremos del ejemplo del siguiente modelo. Para poder hacerlo hemos utilizado:
 | Netgear GS724T | Switch de 24 puertos a 1 Gb |
 | Servidor SEH1 | Ordenador de 32 Gb y procesador i7 | 
 
-El esquema se quedaría de la siguiente manera. Una vez tengamos diseñado el esquema de nuestro centro podemos pasar a configurar cada uno del *switchs*.
+El esquema se quedaría de la siguiente manera. Una vez tengamos diseñado el esquema de nuestro centro podemos pasar a configurar cada uno del *switches*.
 
 ![Ejemplo de modelo de centro para trabajar](models/Model_ex.png)
 
-## Configuración de los *switchs*
+## Configuración de los *switches*
 
-Antes de empezar hace falta que nos creemos una tabla para definir, las direcciones ip de los switch y qué puertos van a tener cada una de las VLANs. El rango del centro ficticio que tenemos creado en nuestro ejemplo es el 172.254.254.X. Las direcciones IP de los *switchs* serán:
+Antes de empezar hace falta que nos creemos una tabla para definir, las direcciones ip de los switches y qué puertos van a tener cada una de las VLANs. El rango del centro ficticio que tenemos creado en nuestro ejemplo es el 172.254.254.X. Las direcciones IP de los *switches* serán:
 
 | Switch | Dirección |
 | -- | -- |
@@ -225,10 +225,10 @@ La VLAN 200 la utilizamos para la **red de replicación de LliureX**.  Concepto 
 
 :::note
 Es posible que os preguntéis el porqué de T-LAG2 y T-LAG3. Hemos dejado preparado el switch por sí queremos crear un clúster en Proxmox con otros hipervisores. 
-Es decir que si tuviéramos tres servidores con 4 tarjetas de red  podemos hacer tres LAG con cuatro puertos cada uno. Los tres servidores se comunicarían entre ellos por estos LAG.
+Es decir que si tuviéramos tres servidores con 4 tarjetas de red podemos hacer tres LAG con cuatro puertos cada uno. Los tres servidores se comunicarían entre ellos por estos LAG.
 :::
 
-Antes de nada, para acceder al switch tenemos que tenerlo dentro de la misma red. Si el switch ya está configurado y conocemos la dirección ip y la contraseña nos podemos saltar el siguiente paso.
+Antes de nada, para acceder al switch debemos tenerlo dentro de la misma red. Si el switch ya está configurado y conocemos la dirección ip y la contraseña nos podemos saltar el siguiente paso.
 
 #### Reinicializar switch
 
@@ -319,7 +319,7 @@ Y la de replicación.
 ![VLAN de replicación](Switchs/netgear13.png)
 
 :::warning
-Finalmente y es muy importante, en los *switchs* Netgear (no con los otros marcas) es necesario cambiar el parámetro PVID, por el que hay que ir al apartado PVID configuration y cambiarlo en aquellos puertos untagged al valor que hemos dado. En otras marcas este paso se hacen automáticamente.
+Finalmente, y es muy importante, en los *switches* Netgear (no con los otros marcas) es necesario cambiar el parámetro PVID, por el que hay que ir al apartado PVID configuration y cambiarlo en aquellos puertos untagged al valor que hemos dado. En otras marcas este paso se hacen automáticamente.
 :::
 
 ![Configuración PVID](Switchs/netgear14.png)
@@ -354,7 +354,7 @@ sudo nmap -sP 172.254.254.*
 ``` 
 #### Configuración del Switch
 
-Una vez tengas la ip en el mismo rango, ya puedes acceder a él, la **ip** por defecto del switch D-link es 10.90.90.90, por lo tanto cambiaremos la ip de nuestro ordenador accederemos a él. Igualmente podemos utilizar la terminal para crear un alias. Dependiendo de si tienes instalado el comando ifconfig o no puedes utilizar cualquier de los siguientes comandos:
+Una vez tengas la ip en el mismo rango, ya puedes acceder a él, la **ip** por defecto del switch D-link es 10.90.90.90, por lo tanto, cambiaremos la ip de nuestro ordenador accederemos a él. Igualmente podemos utilizar la terminal para crear un alias. Dependiendo de si tienes instalado el comando ifconfig o no puedes utilizar cualquier de los siguientes comandos:
 
 ```sh
 sudo ip addr addr add 10.90.90.100/24 dev eth0 label eth0:1
@@ -377,7 +377,7 @@ Y cambiamos la contraseña genérica
 
 Si vamos a gestionar el switch a través de SNMP[^1] habrá que habilitar esta opción.
 
-[^1]: Se trta de un agente que permite recopilar información de administración del dispositivo localmente y la pone a disposición del administrador SNMP, de esta manera se puede monitorear el estado de la red.
+[^1]: Se trata de un agente que permite recopilar información de administración del dispositivo localmente y la pone a disposición del administrador SNMP, de esta manera se puede monitorear el estado de la red.
 
 ![SNMP](Switchs/dlink4.png)
 
@@ -412,7 +412,7 @@ Una vez hemos dado al botón **Add**, configuramos el VID y la VLAN Name, selecc
 ![Switch D-link](Switchs/dlink13.png)
 
 :::caution
-Finalmente, y en algunos *switchs* es de vital importancia, hay que salvar la configuración puesto que, si hay un corte en el suministro eléctrico el switch vuelve a la configuración anterior. En este caso, dado que tenemos un switch con un LAG, probablemente provocaríamos un bucle en la red y dejaría de funcionar todo el centro. Por lo tanto hay que ir con mucho cuidado con estos detalles.
+Finalmente, y en algunos *switches* es de vital importancia, hay que salvar la configuración puesto que, si hay un corte en el suministro eléctrico el switch vuelve a la configuración anterior. En este caso, dado que tenemos un switch con un LAG, probablemente provocaríamos un bucle en la red y dejaría de funcionar todo el centro. Por lo tanto, hay que ir con mucho cuidado con estos detalles.
 :::
 
 Procedemos a salvar la configuración:
@@ -421,19 +421,19 @@ Procedemos a salvar la configuración:
 
 ![Confirmamos que queremos guardar la configuración](Switchs/dlink15.png)
 
-Ahora en estos momentos ya tenemos todos los switch preparados para poner en funcionamiento nuestro centro. En el próximo tema instalaremos el Proxmox de las diferentes maneras posibles y configuraremos los parámetros del servidor.
+Ahora en estos momentos ya tenemos todos los switches preparados para poner en funcionamiento nuestro centro. En el próximo tema instalaremos el Proxmox de las diferentes maneras posibles y configuraremos los parámetros del servidor.
 
 # COURSE - FÈNIX
 
-Existe un proyecto desde la DGTIC que trata de normalizar el funcionamiento de las VLANS en el centro. En este proyecto se actualiza la electrónica de red del centro, en principio de secreataria y **si el centro reúne los requisitos** la electrónica de todo el centro.
+Existe un proyecto desde la DGTIC que trata de normalizar el funcionamiento de las VLANS en el centro. En este proyecto se actualiza la electrónica de red del centro, en principio de secreataría y **si el centro reúne los requisitos** la electrónica de todo el centro.
 
-En principio los requisitos principales es que sea viable cambiar la electrónica del todos los racks sin que afecte al funcionamiento del centro en general. Los *switchs* que en principio se montan son los siguientes:
+En principio los requisitos principales es que sea viable cambiar la electrónica del todos los racks sin que afecte al funcionamiento del centro en general. Los *switches* que en principio se montan son los siguientes:
 
 ![SWITCH HUAWEI CLOUDENGINE S5735-L24P4X-A ](Switchs/huawei24.png)
 
 ![SWITCH HUAWEI CLOUDENGINE S5735-L48P4X-A ](Switchs/huawei48.png)
 
-En este caso cuando os monten los *switchs*, si lo pedís, ya os dejan toda la infraestructura preparada para montar el modelo de centro con Proxmox. Las últimas bocas siempre se reservan para hacer conexiones entre *switchs*. Las VLANS normalizadas del proyecto curso son las siguientes:
+En este caso cuando os monten los *switches*, si lo pedís, ya os dejan toda la infraestructura preparada para montar el modelo de centro con Proxmox. Las últimas bocas siempre se reservan para hacer conexiones entre *switches*. Las VLANS normalizadas del proyecto curso son las siguientes:
 
 | VLAN | Descripción |
 | -- | --------- |
@@ -445,19 +445,19 @@ En este caso cuando os monten los *switchs*, si lo pedís, ya os dejan toda la i
 | 40-41 | Reservadas para Red de Aulas (Antigua MacroLAN) |
 | 10-11 | Reservadas para Red de secretaría |
 
-La red de 198 se utiliza en principio para hacer la replicación entre servidores LliureX, pero si se utiliza para hacer replicación entre diferentes servidores con Proxmox se podría utilizar alguna de las otras reservadas para las Aulas de Informática (tienen 10 VLANs reservadas). En principio, hay pocos centros que tienen 10 Aulas de informática, por lo tanto se podría utlitzar una de las otras si te hicieran falta.
+La red de 198 se utiliza en principio para hacer la replicación entre servidores LliureX, pero si se utiliza para hacer replicación entre diferentes servidores con Proxmox se podría utilizar alguna de las otras reservadas para las Aulas de Informática (tienen 10 VLANs reservadas). En principio, hay pocos centros que tienen 10 Aulas de informática, por lo tanto, se podría utilizar una de las otras si te hicieran falta.
 
-La manera de configurar los *switchs* de este modo es poniendo un ticket al SAI exponiendo la boca, el número de VLAN y el switch donde lo quieres configurar. Como ejemplo imaginemos que tenemos un switch en el rack principal cuyas características principales son:
+La manera de configurar los *switches* de este modo es poniendo un ticket al SAI exponiendo la boca, el número de VLAN y el switch donde lo quieres configurar. Como ejemplo imaginemos que tenemos un switch en el rack principal cuyas características principales son:
 
 * Las últimas 4 bocas del switch están reservadas
 * Tenemos configurado el switch del rack para modelo de centro
 * Las conexiones marcadas cómo *hipervisors* tienen marcadas todas las VLANS (100, 111-120, 198 y 200) por lo tanto no hay que tocar nada de este switch
 
-Y queremos que el switch del aula 1 tenga las 24 primeras bocas para los ordenadores del aula de informática y las otras 12 las queremos para ordenadores de las Aulas que se encuentren en esa planta. Por lo tanto pondríamos un ticket al SAI indicando lo siguiente:
+Y queremos que el switch del aula 1 tenga las 24 primeras bocas para los ordenadores del aula de informática y las otras 12 las queremos para ordenadores de las Aulas que se encuentren en esa planta. Por lo tanto, pondríamos un ticket al SAI indicando lo siguiente:
 
 > Cambiar las bocas de 1 a 24 a la VLAN 110 y de la 37-44 a la VLAN 100 del switch de Aula 1.
 
-Y desde la DGTIC nos harían el cambio. De este modo no nos deberíamos de preocupar por la configuración de ningun switch.
+Y desde la DGTIC nos harían el cambio. De este modo no nos deberíamos de preocupar por la configuración de ningún switch.
 
 ![Ejemplo de ticket](Switchs/xarxa_exemple.png)
 
