@@ -132,7 +132,7 @@ L’activitat es considerarà APTA entregant un full en format pdf amb les segü
 * Captura d'una ip a en la terminal d'un dels servidors
 
 ```bash
-ip a
+$ ip addr
 ```
 
 ## Exemple de captures de pantalla
@@ -198,7 +198,7 @@ La actividad se considerará APTA entregando un documento en formato pdf con las
 * Captura de una ip en la terminal de uno de los servidores.
 
 ```bash
-ip a
+$ ip addr
 ```
 ## Ejemplo de capturas de pantalla
 
