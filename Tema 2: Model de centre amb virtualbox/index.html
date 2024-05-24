@@ -8,10 +8,19 @@
     <style>
         code{white-space: pre-wrap;}
         span.smallcaps{font-variant: small-caps;}
-        span.underline{text-decoration: underline;}
-        div.column{display: inline-block; vertical-align: top; width: 50%;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-        ul.task-list{list-style: none;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     </style>
         <link rel="stylesheet" href="aqua.css" />  
     <!--[if lt IE 9]>
@@ -24,9 +33,11 @@
     <div id="content">
                  <header id="title-block-header">
             <h1 class="title">Model de centre amb Virtualbox</h1>
-            <!--        <p class="subtitle">Exemple d’un centre amb Virtualbox sense Proxmox</p>
+            <!--        <p class="subtitle">Exemple d’un centre amb
+Virtualbox sense Proxmox</p>
         -->
-            <!--         <p class="author">Alfredo Rafael Vicente Boix i Javier Estellés Dasi Revisado por Sergio Balaguer</p>
+            <!--         <p class="author">Alfredo Rafael Vicente Boix i
+Javier Estellés Dasi Revisado por Sergio Balaguer</p>
          -->
                         <p class="date">05-05-2024</p>
                     </header>
@@ -34,59 +45,107 @@
             <div class="navContainer">
                                 <h2 id="toc-title">Continguts</h2>
                  <ul>
-<li><a href="#introducció"><span class="toc-section-number">1</span> Introducció</a></li>
-<li><a href="#model-de-centre"><span class="toc-section-number">2</span> Model de centre</a></li>
-<li><a href="#sabors-de-lliurex"><span class="toc-section-number">3</span> Sabors de LliureX</a></li>
-<li><a href="#servidor"><span class="toc-section-number">4</span> Servidor</a>
+<li><a href="#introducció" id="toc-introducció"><span
+class="toc-section-number">1</span> Introducció</a></li>
+<li><a href="#model-de-centre" id="toc-model-de-centre"><span
+class="toc-section-number">2</span> Model de centre</a></li>
+<li><a href="#sabors-de-lliurex" id="toc-sabors-de-lliurex"><span
+class="toc-section-number">3</span> Sabors de LliureX</a></li>
+<li><a href="#servidor" id="toc-servidor"><span
+class="toc-section-number">4</span> Servidor</a>
 <ul>
-<li><a href="#esquema-de-xarxa"><span class="toc-section-number">4.1</span> Esquema de xarxa</a></li>
+<li><a href="#esquema-de-xarxa" id="toc-esquema-de-xarxa"><span
+class="toc-section-number">4.1</span> Esquema de xarxa</a></li>
 </ul></li>
-<li><a href="#installació-del-model-de-centre"><span class="toc-section-number">5</span> Instal·lació del model de centre</a>
+<li><a href="#installació-del-model-de-centre"
+id="toc-installació-del-model-de-centre"><span
+class="toc-section-number">5</span> Instal·lació del model de centre</a>
 <ul>
-<li><a href="#installació-de-lliurex"><span class="toc-section-number">5.1</span> Instal·lació de Lliurex</a></li>
+<li><a href="#installació-de-lliurex"
+id="toc-installació-de-lliurex"><span
+class="toc-section-number">5.1</span> Instal·lació de Lliurex</a></li>
 </ul></li>
-<li><a href="#inicialització-del-servidor"><span class="toc-section-number">6</span> Inicialització del servidor</a>
+<li><a href="#inicialització-del-servidor"
+id="toc-inicialització-del-servidor"><span
+class="toc-section-number">6</span> Inicialització del servidor</a>
 <ul>
-<li><a href="#inicialització-del-servidor-esclau"><span class="toc-section-number">6.1</span> Inicialització del servidor esclau</a></li>
+<li><a href="#inicialització-del-servidor-esclau"
+id="toc-inicialització-del-servidor-esclau"><span
+class="toc-section-number">6.1</span> Inicialització del servidor
+esclau</a></li>
 </ul></li>
-<li><a href="#installació-de-clients"><span class="toc-section-number">7</span> Instal·lació de clients</a>
+<li><a href="#installació-de-clients"
+id="toc-installació-de-clients"><span
+class="toc-section-number">7</span> Instal·lació de clients</a>
 <ul>
-<li><a href="#clients-lleugers"><span class="toc-section-number">7.1</span> Clients lleugers</a>
+<li><a href="#clients-lleugers" id="toc-clients-lleugers"><span
+class="toc-section-number">7.1</span> Clients lleugers</a>
 <ul>
-<li><a href="#associar-client-a-imatge"><span class="toc-section-number">7.1.1</span> Associar client a imatge</a></li>
+<li><a href="#associar-client-a-imatge"
+id="toc-associar-client-a-imatge"><span
+class="toc-section-number">7.1.1</span> Associar client a
+imatge</a></li>
 </ul></li>
-<li><a href="#installar-nou-programari-en-una-imatge"><span class="toc-section-number">7.2</span> Instal·lar nou programari en una imatge</a></li>
-<li><a href="#clients-pesats"><span class="toc-section-number">7.3</span> Clients pesats</a></li>
-<li><a href="#boot-manager"><span class="toc-section-number">7.4</span> Boot Manager</a></li>
+<li><a href="#clients-pesats" id="toc-clients-pesats"><span
+class="toc-section-number">7.2</span> Clients pesats</a></li>
+<li><a href="#boot-manager" id="toc-boot-manager"><span
+class="toc-section-number">7.3</span> Boot Manager</a></li>
 </ul></li>
-<li><a href="#creació-dusuaris-amb-llum"><span class="toc-section-number">8</span> Creació d’usuaris amb llum</a></li>
+<li><a href="#creació-dusuaris-amb-llum"
+id="toc-creació-dusuaris-amb-llum"><span
+class="toc-section-number">8</span> Creació d’usuaris amb Llum</a></li>
 </ul>
             </div>
         </nav>
                 <main>
             <p><img src="img/cc.png" height="50" /></p>
-            <p>Aquest document està subjecte a una llicència creative commons que permet la seua difusió i ús comercial reconeixent sempre l’autoria del seu creador. Aquest document es troba per a ser modificat al següent repositori de github: <!-- CANVIAR L'ENLLAÇ --> <a href="https://github.com/arvicenteboix/lliurexproxmox">https://github.com/arvicenteboix/lliurexproxmox</a> </p>
+            <p>Aquest document està subjecte a una llicència creative
+            commons que permet la seua difusió i ús comercial
+            reconeixent sempre l’autoria del seu creador. Aquest
+            document es troba per a ser modificat al següent repositori
+            de github: <!-- CANVIAR L'ENLLAÇ --> <a
+            href="https://github.com/arvicenteboix/lliurexproxmox">https://github.com/arvicenteboix/lliurexproxmox</a>
+            </p>
             <!-- \awesomebox[violet]{2pt}{\faRocket}{violet}{Lorem ipsum…} -->
-            <h1 data-number="1" id="introducció"><span class="header-section-number">1</span> Introducció</h1>
-            <p>En aquesta unitat veurem com muntar el model de centre virtualitzat. Això ens servirà per a entendre com funciona el model de centre de LliureX, què és un servidor mestre.</p>
-            <h1 data-number="2" id="model-de-centre"><span class="header-section-number">2</span> Model de centre</h1>
-            <p>El model de centre es un configuració que combina xarxa i servidors per a donar uns serveis a tots els ordinadors dins del centre. Entre altres coses el model de centre pot donar els següents serveis de xarxa:</p>
+            <h1 data-number="1" id="introducció"><span
+            class="header-section-number">1</span> Introducció</h1>
+            <p>En aquesta unitat veurem com muntar el model de centre
+            virtualitzat. Això ens servirà per a entendre com funciona
+            el model de centre de LliureX, què és un servidor
+            mestre.</p>
+            <h1 data-number="2" id="model-de-centre"><span
+            class="header-section-number">2</span> Model de centre</h1>
+            <p>El model de centre es un configuració que combina xarxa i
+            servidors per a donar uns serveis a tots els ordinadors dins
+            del centre. Entre altres coses el model de centre pot donar
+            els següents serveis de xarxa:</p>
             <ul>
-            <li>Pàgines web internet del centres</li>
-            <li>Jitsi per a reunions a la intranet</li>
-            <li>Moodle per a sessions internes</li>
-            <li>Videoconferències</li>
-            <li>LDAP per a autentificar-se els usuaris a qualsevol ordinador del centre</li>
-            <li>Carpetes compartides a tot el centre</li>
-            <li>Mirror compartit per tots els servidors</li>
-            <li>Servidor d’imatges per a clients lleugers</li>
-            <li>Nextcloud per a compartir fitxers a la intranet</li>
-            <li>DHCP per a cada aula</li>
+            <li>Pàgines web internet del centres.</li>
+            <li>Jitsi per a reunions a la intranet.</li>
+            <li>Moodle per a sessions internes.</li>
+            <li>Videoconferències.</li>
+            <li>LDAP per a autentificar-se els usuaris a qualsevol
+            ordinador del centre.</li>
+            <li>Carpetes compartides a tot el centre.</li>
+            <li>Mirror compartit per tots els servidors.</li>
+            <li>Servidor d’imatges per a clients lleugers.</li>
+            <li>Nextcloud per a compartir fitxers a la intranet.</li>
+            <li>DHCP per a cada aula.</li>
             </ul>
-            <p>A banda de totes aquestes característiques, LliureX presenta nombroses ferramentes que faciliten la instal·lació i configuració del programari.</p>
-            <p>Però el principal avantatge de tot és que LliureX permet configurar-ho tot sense tocar la terminal i sense tenir coneixements avançats d’informàtica. La posada a punt del model de centre és ràpida i senzilla. Per entendre millor el model de centre parlarem de cada element per separat.</p>
-            <h1 data-number="3" id="sabors-de-lliurex"><span class="header-section-number">3</span> Sabors de LliureX</h1>
-            <p>LliureX es presenta en varios sabors i cadascú té les seues característiques diferenciades. Dins del model de centre tenim dos sabors principals:</p>
+            <p>A banda de totes aquestes característiques, LliureX
+            presenta nombroses ferramentes que faciliten la instal·lació
+            i configuració del programari.</p>
+            <p>Però el principal avantatge de tot és que LliureX permet
+            configurar-ho tot sense tocar la terminal i sense tenir
+            coneixements avançats d’informàtica. La posada a punt del
+            model de centre és ràpida i senzilla. Per entendre millor el
+            model de centre parlarem de cada element per separat.</p>
+            <h1 data-number="3" id="sabors-de-lliurex"><span
+            class="header-section-number">3</span> Sabors de
+            LliureX</h1>
+            <p>LliureX es presenta en varios sabors i cadascú té les
+            seues característiques diferenciades. Dins del model de
+            centre tenim dos sabors principals:</p>
             <table>
             <thead>
             <tr class="header">
@@ -97,7 +156,8 @@
             <tbody>
             <tr class="odd">
             <td>Servidor</td>
-            <td>Porta tot els paquets per a muntar el model de centre</td>
+            <td>Porta tot els paquets per a muntar el model de
+            centre</td>
             </tr>
             <tr class="even">
             <td>Client</td>
@@ -109,10 +169,17 @@
             </tr>
             </tbody>
             </table>
-            <p>Els sabors música, infantil, fp, etc… són una versió d’escriptori amb paquets característics de cadascuna de les especialitats.</p>
-            <h1 data-number="4" id="servidor"><span class="header-section-number">4</span> Servidor</h1>
+            <p>Els sabors música, infantil, fp, etc… són una versió
+            d’escriptori amb paquets característics de cadascuna de les
+            especialitats.</p>
+            <h1 data-number="4" id="servidor"><span
+            class="header-section-number">4</span> Servidor</h1>
             <p>El servidor de LliureX pot treballar de 3 maneres.</p>
             <table>
+            <colgroup>
+            <col style="width: 50%" />
+            <col style="width: 50%" />
+            </colgroup>
             <thead>
             <tr class="header">
             <th>Servidor</th>
@@ -130,30 +197,55 @@
             </tr>
             <tr class="odd">
             <td>Esclau</td>
-            <td>Pot treballar de manera independent, es sincronitza amb el mestre</td>
+            <td>Pot treballar de manera independent, es sincronitza amb
+            el mestre</td>
             </tr>
             </tbody>
             </table>
             <p>El servidor té com a mínim 2 targetes de xarxa:</p>
             <ul>
-            <li>La xarxa interna: a aquesta targeta es connectarà un switch on es connectaran els clients.</li>
-            <li>La xarxa externa: es connectarà directament a la xarxa de Aules del router (antiga macrolan).</li>
+            <li>La xarxa interna: a aquesta targeta es connectarà un
+            switch on es connectaran els clients.</li>
+            <li>La xarxa externa: es connectarà directament a la xarxa
+            de Aules del router (antiga macrolan).</li>
             </ul>
-            <p>Per a que el servidor funcione dins del model de centre cal configurar-lo i inicialitzar-lo amb el <strong>zero-server-wizard</strong> que vorem més avant.</p>
-            <h2 data-number="4.1" id="esquema-de-xarxa"><span class="header-section-number">4.1</span> Esquema de xarxa</h2>
-            <p>Un esquema bastant habitual que ens trobem als centres és el següent:</p>
+            <p>Per a que el servidor funcione dins del model de centre
+            cal configurar-lo i inicialitzar-lo amb el
+            <strong>zero-server-wizard</strong> que vorem més avant.</p>
+            <h2 data-number="4.1" id="esquema-de-xarxa"><span
+            class="header-section-number">4.1</span> Esquema de
+            xarxa</h2>
+            <p>Un esquema bastant habitual que ens trobem als centres és
+            el següent:</p>
             <figure>
-            <img src="Esquemes/model1.png" alt="" /><figcaption>Esquema orientatiu 1</figcaption>
+            <img src="Esquemes/model1.png" alt="Esquema orientatiu 1" />
+            <figcaption aria-hidden="true">Esquema orientatiu
+            1</figcaption>
             </figure>
             <div class="warning">
-            <p>A l’esquema es mostra un servidor NFS d’arxius. A l’últim donarem unes recomanacions de com es munta un servidor NFS, però has de tenir en compte que aquest tipus de servidors donen molts problemes per a muntar el /net, donat un problema amn les ACLs i el NFS v3, per tant es recomana deixar el /net al MASTER. Es pot muntar al servidor NFS com un disc del PROXMOX (qcow per exemple), les ACLs no donaran problemes en eixe cas.</p>
+            <p>A l’esquema es mostra un servidor NFS d’arxius. A l’últim
+            donarem unes recomanacions de com es munta un servidor NFS,
+            però has de tenir en compte que aquest tipus de servidors
+            donen molts problemes per a muntar el /net, donat un
+            problema amn les ACLs i el NFS v3, per tant, es recomana
+            deixar el /net al MASTER. Es pot muntar al servidor NFS com
+            un disc del PROXMOX (qcow per exemple), les ACLs no donaran
+            problemes en eixe cas.</p>
             </div>
-            <p>En aquest esquema ens trobem 3 servidors, on el servidor mestre guarda la base de de dades per a autentificar-se tots els usuaris (LDAP), i pot donar servei a la xarxa de professorat.</p>
+            <p>En aquest esquema ens trobem 3 servidors, on el servidor
+            mestre guarda la base de dades per a autentificar-se tots
+            els usuaris (LDAP), i pot donar servei a la xarxa de
+            professorat.</p>
             <p>Un esquema més adient seria aquest:</p>
             <figure>
-            <img src="Esquemes/Modelaula2val.png" alt="" /><figcaption>Esquema orientatiu 2</figcaption>
+            <img src="Esquemes/Modelaula2val.png"
+            alt="Esquema orientatiu 2" />
+            <figcaption aria-hidden="true">Esquema orientatiu
+            2</figcaption>
             </figure>
-            <p>Hem de tenir en compte els següent elements. Cadascun dels servidor ha de tenir com a mínim 3 targetes de xarxa:</p>
+            <p>Hem de tenir en compte els següents elements. Cadascun
+            dels servidor ha de tenir com a mínim 3 targetes de
+            xarxa:</p>
             <table>
             <thead>
             <tr class="header">
@@ -176,104 +268,173 @@
             </tr>
             </tbody>
             </table>
-            <h1 data-number="5" id="installació-del-model-de-centre"><span class="header-section-number">5</span> Instal·lació del model de centre</h1>
-            <p>Anem a realitzar el muntatge d’un model de centre pas a pas amb totes les seues funcionalitats, per a tenir clar els seus conceptes. En aquesta unitat utilitzarem el programari de Virtualbox per a muntar el model de centre.</p>
+            <h1 data-number="5"
+            id="installació-del-model-de-centre"><span
+            class="header-section-number">5</span> Instal·lació del
+            model de centre</h1>
+            <p>Anem a realitzar el muntatge d’un model de centre pas a
+            pas amb totes les seues funcionalitats, per a tenir clar els
+            seus conceptes. En aquesta unitat utilitzarem el programari
+            de Virtualbox per a muntar el model de centre.</p>
             <div class="warning">
-            <p>Heu de tenir en compte que ací no parlarem de tot el programari que ve amb LliureX, com el harvester, libreoffice, programes de disseny, etc… En aquest curs ens centrarem exclusivament en el muntatge i configuració del model de centre</p>
+            <p>Heu de tenir en compte que ací no parlarem de tot el
+            programari que ve amb LliureX, com el harvester,
+            libreoffice, programes de disseny, etc… En aquest curs ens
+            centrarem exclusivament en el muntatge i configuració del
+            model de centre</p>
             </div>
-            <h2 data-number="5.1" id="installació-de-lliurex"><span class="header-section-number">5.1</span> Instal·lació de Lliurex</h2>
+            <h2 data-number="5.1" id="installació-de-lliurex"><span
+            class="header-section-number">5.1</span> Instal·lació de
+            Lliurex</h2>
             <div class="important">
-            <p>Podeu trobar l’última ISO per a descarregar <a href="http://releases.lliurex.net/isos/19.07_64bits/lliurex-servidor_64bits_19_latest.iso">ací</a>.</p>
+            <p>Podeu trobar l’última ISO per a descarregar <a
+            href="https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso">ací</a>.</p>
             </div>
             <p>Podeu instal·lar virtualbox amb:</p>
             <pre><code>sudo apt install virtualbox-dkms virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso</code></pre>
-            <p>Una vegada teniu instal·lat el virtualbox, l’executeu i vos apareixerà la següent pantalla:</p>
+            <p>Una vegada teniu instal·lat el virtualbox, l’executeu i
+            vos apareixerà la següent pantalla:</p>
             <figure>
-            <img src="model/1.png" alt="" /><figcaption>Virtualbox</figcaption>
+            <img src="model/1.png" alt="Virtualbox" />
+            <figcaption aria-hidden="true">Virtualbox</figcaption>
             </figure>
-            <p>Clickem sobre <strong>Nueva</strong> i seguim el següent exemple:</p>
+            <p>Clickem sobre <strong>Nueva</strong> i seguim el següent
+            exemple:</p>
             <figure>
-            <img src="model/2.png" alt="" /><figcaption>Versión: Ubuntu 64</figcaption>
-            </figure>
-            <figure>
-            <img src="model/3.png" alt="" /><figcaption>Nom: 4600xxxx.MAS</figcaption>
-            </figure>
-            <figure>
-            <img src="model/4.png" alt="" /><figcaption>RAM: amb 2-2,5 GB serà suficient per a provar coses</figcaption>
-            </figure>
-            <figure>
-            <img src="model/5.png" alt="" /><figcaption>Per defecte el que hi ha</figcaption>
+            <img src="model/2.png" alt="Versión: Ubuntu 64" />
+            <figcaption aria-hidden="true">Versión: Ubuntu
+            64</figcaption>
             </figure>
             <figure>
-            <img src="model/6.png" alt="" /><figcaption>Per defecte el que hi ha</figcaption>
+            <img src="model/3.png" alt="Nom: 4600xxxx.MAS" />
+            <figcaption aria-hidden="true">Nom:
+            4600xxxx.MAS</figcaption>
             </figure>
             <figure>
-            <img src="model/7.png" alt="" /><figcaption>Reservat dinàmicament</figcaption>
+            <img src="model/4.png"
+            alt="RAM: amb 2-2,5 GB serà suficient per a provar coses" />
+            <figcaption aria-hidden="true">RAM: amb 2-2,5 GB serà
+            suficient per a provar coses</figcaption>
             </figure>
             <figure>
-            <img src="model/7.1.png" alt="" /><figcaption>El tamany recomanat per al MASTER és 90 GB</figcaption>
+            <img src="model/5.png" alt="Per defecte el que hi ha" />
+            <figcaption aria-hidden="true">Per defecte el que hi
+            ha</figcaption>
+            </figure>
+            <figure>
+            <img src="model/6.png" alt="Per defecte el que hi ha" />
+            <figcaption aria-hidden="true">Per defecte el que hi
+            ha</figcaption>
+            </figure>
+            <figure>
+            <img src="model/7.png" alt="Reservat dinàmicament" />
+            <figcaption aria-hidden="true">Reservat
+            dinàmicament</figcaption>
+            </figure>
+            <figure>
+            <img src="model/7.1.png"
+            alt="El tamany recomanat per al MASTER és 90 GB" />
+            <figcaption aria-hidden="true">El tamany recomanat per al
+            MASTER és 90 GB</figcaption>
             </figure>
             <div class="caution">
-            <p>Si és un servidor MASTER que va a allotjar el mirror, has de donar bastant espai per a que càpiga el mirror (mínim 70GB, a les proves s’han utilitzat 90GB).</p>
+            <p>Si és un servidor MASTER que va a allotjar el mirror, has
+            de donar bastant espai per a que càpiga el mirror (mínim
+            70GB, a les proves s’han utilitzat 90GB).</p>
             </div>
             <figure>
-            <img src="model/8.png" alt="" /><figcaption>Màquina creada</figcaption>
+            <img src="model/8.png" alt="Màquina creada" />
+            <figcaption aria-hidden="true">Màquina creada</figcaption>
             </figure>
-            <p>Ara clickem sobre configuració i name a la secció d’emmagatzemament (almacenamiento), clickem sobre “Vacío” i seleccionem la iso de LliureX 19 descarregada (des de el requadre roig)</p>
+            <p>Ara clickem sobre configuració i name a la secció
+            d’emmagatzemament (almacenamiento), clickem sobre “Vacío” i
+            seleccionem la iso de LliureX 19 descarregada (des de el
+            requadre roig)</p>
             <figure>
-            <img src="model/9.png" alt="" /><figcaption>Anem a emmagatzemament</figcaption>
-            </figure>
-            <figure>
-            <img src="model/10.png" alt="" /><figcaption>Emmagatzemament</figcaption>
-            </figure>
-            <figure>
-            <img src="model/11.png" alt="" /><figcaption>Seleccionem el CD</figcaption>
-            </figure>
-            <figure>
-            <img src="model/12.png" alt="" /><figcaption>Seleccionem la imatge</figcaption>
-            </figure>
-            <p>Després anem a la secció de xarxa i seleccionem 3 adaptadors:</p>
-            <figure>
-            <img src="model/13.png" alt="" /><figcaption>Adaptador 1</figcaption>
+            <img src="model/9.png" alt="Anem a emmagatzemament" />
+            <figcaption aria-hidden="true">Anem a
+            emmagatzemament</figcaption>
             </figure>
             <figure>
-            <img src="model/15.png" alt="" /><figcaption>Adaptador 2</figcaption>
+            <img src="model/10.png" alt="Emmagatzemament" />
+            <figcaption aria-hidden="true">Emmagatzemament</figcaption>
             </figure>
             <figure>
-            <img src="model/16.png" alt="" /><figcaption>Adaptador 3</figcaption>
+            <img src="model/11.png" alt="Seleccionem el CD" />
+            <figcaption aria-hidden="true">Seleccionem el
+            CD</figcaption>
             </figure>
-            <p>Després anem a pantalla i seleccionem 128Mb de memòria de vídeo.</p>
             <figure>
-            <img src="model/17.png" alt="" /><figcaption>Pantalla</figcaption>
+            <img src="model/12.png" alt="Seleccionem la imatge" />
+            <figcaption aria-hidden="true">Seleccionem la
+            imatge</figcaption>
+            </figure>
+            <p>Després anem a la secció de xarxa i seleccionem 3
+            adaptadors:</p>
+            <figure>
+            <img src="model/13.png" alt="Adaptador 1" />
+            <figcaption aria-hidden="true">Adaptador 1</figcaption>
+            </figure>
+            <figure>
+            <img src="model/15.png" alt="Adaptador 2" />
+            <figcaption aria-hidden="true">Adaptador 2</figcaption>
+            </figure>
+            <figure>
+            <img src="model/16.png" alt="Adaptador 3" />
+            <figcaption aria-hidden="true">Adaptador 3</figcaption>
+            </figure>
+            <p>Després anem a pantalla i seleccionem 128Mb de memòria de
+            vídeo.</p>
+            <figure>
+            <img src="model/17.png" alt="Pantalla" />
+            <figcaption aria-hidden="true">Pantalla</figcaption>
             </figure>
             <p>I li donem a Iniciar:</p>
             <figure>
-            <img src="model/18.png" alt="" /><figcaption>Model</figcaption>
+            <img src="model/18.png" alt="Model" />
+            <figcaption aria-hidden="true">Model</figcaption>
             </figure>
-            <p>Després fem click sobre <strong>Instal·la versió de LliureX</strong></p>
+            <p>Després fem click sobre <strong>Instal·la versió de
+            LliureX</strong></p>
             <figure>
-            <img src="model/19.png" alt="" /><figcaption>Instal·la versió de LliureX</figcaption>
-            </figure>
-            <figure>
-            <img src="model/20.png" alt="" /><figcaption>Fem click en continua</figcaption>
-            </figure>
-            <figure>
-            <img src="model/21.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/19.png" alt="Instal·la versió de LliureX" />
+            <figcaption aria-hidden="true">Instal·la versió de
+            LliureX</figcaption>
             </figure>
             <figure>
-            <img src="model/22.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/20.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <figure>
-            <img src="model/23.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/21.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <figure>
-            <img src="model/24.png" alt="" /><figcaption>Fem click en Instal·la ara</figcaption>
+            <img src="model/22.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <figure>
-            <img src="model/25.0.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/23.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <figure>
-            <img src="model/25.1.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/24.png" alt="Fem click en Instal·la ara" />
+            <figcaption aria-hidden="true">Fem click en Instal·la
+            ara</figcaption>
+            </figure>
+            <figure>
+            <img src="model/25.0.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
+            </figure>
+            <figure>
+            <img src="model/25.1.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <p>Emplenem els següents paràmetres:</p>
             <table>
@@ -299,190 +460,395 @@
             </tbody>
             </table>
             <figure>
-            <img src="model/26.png" alt="" /><figcaption>Fem click en continua</figcaption>
+            <img src="model/26.png" alt="Fem click en continua" />
+            <figcaption aria-hidden="true">Fem click en
+            continua</figcaption>
             </figure>
             <p>I es procedix a la instal·lació:</p>
             <figure>
-            <img src="model/27.png" alt="" /><figcaption>Instal·lació</figcaption>
+            <img src="model/27.png" alt="Instal·lació" />
+            <figcaption aria-hidden="true">Instal·lació</figcaption>
             </figure>
-            <p>Podem fer click en Reinicia o apagar l’ordinador amb el menú aturar:</p>
+            <p>Podem fer click en Reinicia o apagar l’ordinador amb el
+            menú aturar:</p>
             <figure>
-            <img src="model/28.png" alt="" /><figcaption>Fem click en Reinicia</figcaption>
+            <img src="model/28.png" alt="Fem click en Reinicia" />
+            <figcaption aria-hidden="true">Fem click en
+            Reinicia</figcaption>
             </figure>
-            <p>Una vegada tenim l’ordinador apagat podem clonar la màquina:</p>
+            <p>Una vegada tenim l’ordinador apagat podem clonar la
+            màquina:</p>
             <figure>
-            <img src="model/29.png" alt="" /><figcaption>Clonació de la màquina</figcaption>
+            <img src="model/29.png" alt="Clonació de la màquina" />
+            <figcaption aria-hidden="true">Clonació de la
+            màquina</figcaption>
             </figure>
             <p>Li donem el nom a la màquina: 46000xxxx.CEN:</p>
             <figure>
-            <img src="model/30.png" alt="" /><figcaption>Nou Nom</figcaption>
+            <img src="model/30.png" alt="Nou Nom" />
+            <figcaption aria-hidden="true">Nou Nom</figcaption>
             </figure>
             <p>I seleccionem clonació completa:</p>
             <figure>
-            <img src="model/31.png" alt="" /><figcaption>Clonació</figcaption>
+            <img src="model/31.png" alt="Clonació" />
+            <figcaption aria-hidden="true">Clonació</figcaption>
             </figure>
             <div class="warning">
-            <p>És important fer la clonació completa abans d’inicialitzar el servidor i reiniciar la direcció MAC de totes les targetes de xarxa. Si es fera després requeriria unes tasques de manteniment en la carpeta /etc/netplan per a assegurar-se que no es dupliquen ips. Si ja s’ha inicialitzat el servidor és millor fer una instal·lació nova per al servidor esclau.</p>
+            <p>És important fer la clonació completa abans
+            d’inicialitzar el servidor i reiniciar la direcció MAC de
+            totes les targetes de xarxa. Si es fera després requeriria
+            unes tasques de manteniment en la carpeta /etc/netplan per a
+            assegurar-se que no es dupliquen IPs. Si ja s’ha
+            inicialitzat el servidor és millor fer una instal·lació nova
+            per al servidor esclau.</p>
             </div>
             <p>L’adaptador 2 el canviem a centre en lloc de mestre:</p>
             <figure>
-            <img src="model/32.png" alt="" /><figcaption>Adaptador 2</figcaption>
+            <img src="model/32.png" alt="Adaptador 2" />
+            <figcaption aria-hidden="true">Adaptador 2</figcaption>
             </figure>
             <figure>
-            <img src="model/33.png" alt="" /><figcaption>Adaptador 2</figcaption>
+            <img src="model/33.png" alt="Adaptador 2" />
+            <figcaption aria-hidden="true">Adaptador 2</figcaption>
             </figure>
-            <p>Ara que ja tenim les dues màquines creades i configurades amb tres targetes de xarxa connectarem l’adaptador 1 a la nostra xarxa local. D’aquesta manera l’adaptador 1 rebrà una adreça IP del DHCP de l’encaminador de la nostra xarxa.</p>
-            <p>Per a això canviarem l’adaptador 1 a <strong>Adaptador pont</strong> en totes dues màquines:</p>
+            <p>Ara que ja tenim les dues màquines creades i configurades
+            amb tres targetes de xarxa connectarem l’adaptador 1 a la
+            nostra xarxa local. D’aquesta manera l’adaptador 1 rebrà una
+            adreça IP del DHCP de l’encaminador de la nostra xarxa.</p>
+            <p>Per a això canviarem l’adaptador 1 a <strong>Adaptador
+            pont</strong> en totes dues màquines:</p>
             <figure>
-            <img src="model/33_1.png" alt="" /><figcaption>Adaptador puente MAS</figcaption>
+            <img src="model/33_1.png" alt="Adaptador puente MAS" />
+            <figcaption aria-hidden="true">Adaptador puente
+            MAS</figcaption>
             </figure>
             <figure>
-            <img src="model/33_2.png" alt="" /><figcaption>Adaptador puente CEN</figcaption>
+            <img src="model/33_2.png" alt="Adaptador puente CEN" />
+            <figcaption aria-hidden="true">Adaptador puente
+            CEN</figcaption>
             </figure>
-            <h1 data-number="6" id="inicialització-del-servidor"><span class="header-section-number">6</span> Inicialització del servidor</h1>
-            <p>Per a poder tindre el model de centre és important inicialitzar el servidor. El servidor es pot inicialitzar de tres maneres diferents.</p>
+            <h1 data-number="6" id="inicialització-del-servidor"><span
+            class="header-section-number">6</span> Inicialització del
+            servidor</h1>
+            <p>Per a poder tindre el model de centre és important
+            inicialitzar el servidor. El servidor es pot inicialitzar de
+            tres maneres diferents.</p>
             <ul>
-            <li><p>Si només volem un servidor d’aula, el servidor s’inicia com a <strong>independent</strong>.</p></li>
-            <li><p>Si volem tindre un servidor on es fa l’autenticació (LDAP), emmagatzeme el <em>mirror</em>, les carpetes d’usuari i tots els serveis que vulguem donar, cal configurar un <strong>mestre</strong></p></li>
-            <li><p>Si volem un servidor per a una aula d’informàtica però que tinga els serveis de <em>LDAP, accés al </em>mirror, les carpetes d’usuaris, etc, cal configurar un <strong>esclau</strong>.</p></li>
+            <li><p>Si només volem un servidor d’aula, el servidor
+            s’inicia com a <strong>independent</strong>.</p></li>
+            <li><p>Si volem tindre un servidor on es fa l’autenticació
+            (LDAP), emmagatzeme el <em>mirror</em>, les carpetes
+            d’usuari i tots els serveis que vulguem donar, cal
+            configurar un <strong>mestre</strong></p></li>
+            <li><p>Si volem un servidor per a una aula d’informàtica
+            però que tinga els serveis de <em>LDAP, accés al
+            </em>mirror, les carpetes d’usuaris, etc, cal configurar un
+            <strong>esclau</strong>.</p></li>
             </ul>
-            <p>Amb tot això, inicialitzarem primer la màquina 4600xxxx.MES com a <strong>mestre</strong> i després la màquina 4600xxxx.CEN com a <strong>esclau</strong>.</p>
-            <p>Per a poder inicialitzar el servidor farem ús del programa <strong>zero-server-wizard</strong>. Podem iniciar-lo des de la terminal amb:</p>
+            <p>Amb tot això, inicialitzarem primer la màquina
+            4600xxxx.MES com a <strong>mestre</strong> i després la
+            màquina 4600xxxx.CEN com a <strong>esclau</strong>.</p>
+            <p>Per a poder inicialitzar el servidor farem ús del
+            programa <strong>zero-server-wizard</strong>. Podem
+            iniciar-lo des de la terminal amb:</p>
             <pre><code>zero-server-wizard</code></pre>
-            <p>També podem accedir des de <strong>Menú d’aplicacions</strong> &gt; <strong>Administració LliureX</strong> &gt; <strong>Zero-Center, centre de control de LliureX</strong></p>
+            <p>També podem accedir des de <strong>Menú
+            d’aplicacions</strong> &gt; <strong>Administració
+            LliureX</strong> &gt; <strong>Zero-Center, centre de control
+            de LliureX</strong></p>
             <div class="info">
-            <p>El zero-center és un apartat exclusiu de lliurex on es pot trobar tot aquell programari específic de la distribució o instal·ladors de programari que bé perquè requereixen configuracions especials o bé perquè són complicats d’instal·lar, faciliten la tasca enormement.</p>
+            <p>El zero-center és un apartat exclusiu de lliurex on es
+            pot trobar tot aquell programari específic de la distribució
+            o instal·ladors de programari que bé perquè requereixen
+            configuracions especials o bé perquè són complicats
+            d’instal·lar, faciliten la tasca enormement.</p>
             </div>
-            <p>Anem al <strong>zero-center</strong> i busquem el zero-server-wizard:</p>
+            <p>Anem al <strong>zero-center</strong> i busquem el
+            zero-server-wizard:</p>
             <figure>
-            <img src="model/36.png" alt="" /><figcaption>Zero-center</figcaption>
+            <img src="model/36.png" alt="Zero-center" />
+            <figcaption aria-hidden="true">Zero-center</figcaption>
             </figure>
             <p>Iniciem el zero-server-wizard</p>
             <figure>
-            <img src="model/37.png" alt="" /><figcaption>Zero-server-wizard</figcaption>
+            <img src="model/37.png" alt="Zero-server-wizard" />
+            <figcaption
+            aria-hidden="true">Zero-server-wizard</figcaption>
             </figure>
-            <p>En el nostre cas, iniciarem aquest servidor com a mestre. Hem de tindre especial cura i no oblidar marcar en <strong>exportar /net</strong>, per a tindre només un mirror i carpetes d’usuaris en tots els servidors sincronitzades.</p>
-            <p>També cal tindre molta cura a identificar la targeta externa (la que ha agafat una IP del Router), la targeta interna (la que es comunica amb els ordenadors clients de l’aula/centre) i la targeta de replicació (la que es comunica amb altres servidors per a compartir <strong>/net</strong>).</p>
+            <p>En el nostre cas, iniciarem aquest servidor com a mestre.
+            Hem de tindre especial cura i no oblidar marcar en
+            <strong>exportar /net</strong>, per a tindre només un mirror
+            i carpetes d’usuaris en tots els servidors
+            sincronitzades.</p>
+            <p>També cal tindre molta cura a identificar la targeta
+            externa (la que ha agafat una IP del Router), la targeta
+            interna (la que es comunica amb els ordenadors clients de
+            l’aula/centre) i la targeta de replicació (la que es
+            comunica amb altres servidors per a compartir
+            <strong>/net</strong>).</p>
             <div class="*info">
-            <p>Des d’un terminal amb *<strong>ifconfig</strong> o <strong>ip address</strong> podem identificar els noms de les targetes de xarxa i veure qual ha agafat una IP del DHCP del Router per a identificar l’externa.</p>
+            <p>Des d’un terminal amb *<strong>ifconfig</strong> o
+            <strong>ip address</strong> podem identificar els noms de
+            les targetes de xarxa i veure qual ha agafat una IP del DHCP
+            del Router per a identificar l’externa.</p>
             </div>
-            <p>En el nostre cas, anem a iniciar aquest servidor com a mestre. Hem de tenir especial cura en incloure <strong>exporta el /net</strong>, per tenir només un mirror. La <strong>IP interna</strong> ens interessa tenir-la controlada per a saber quin és cada servidor. I la interfície de replicació que és per on es muntarà el /net entre els servidors.</p>
+            <p>En el nostre cas, anem a iniciar aquest servidor com a
+            mestre. Hem de tenir especial cura en incloure
+            <strong>exporta el /net</strong>, per tenir només un mirror.
+            La <strong>IP interna</strong> ens interessa tenir-la
+            controlada per a saber quin és cada servidor. I la
+            interfície de replicació que és per on es muntarà el /net
+            entre els servidors.</p>
             <figure>
-            <img src="model/39_1.png" alt="" /><figcaption>Configuració del servidor mestre amb DHCP</figcaption>
+            <img src="model/39_1.png"
+            alt="Configuració del servidor mestre amb DHCP" />
+            <figcaption aria-hidden="true">Configuració del servidor
+            mestre amb DHCP</figcaption>
             </figure>
             <figure>
-            <img src="model/39_2.png" alt="" /><figcaption>Configuración del servidor mestre amb IP fixa</figcaption>
+            <img src="model/39_2.png"
+            alt="Configuración del servidor mestre amb IP fixa" />
+            <figcaption aria-hidden="true">Configuración del servidor
+            mestre amb IP fixa</figcaption>
             </figure>
-            <p>En la primera imatge el servidor agafarà una IP per DHCP del router i en la segona s’ha posat fixa. Per a aquestes proves podem fer-ho per DHCP però si coneixem les direccions lliures de la nostra xarxa podem posar-la (recomanat).</p>
-            <p>En les dues imatges anteriors veiem com la targeta <strong>eth0</strong> és l’externa, <strong>eth1</strong> és la interna i <strong>eth2</strong> la de replicació.</p>
+            <p>En la primera imatge el servidor agafarà una IP per DHCP
+            del router i en la segona s’ha posat fixa. Per a aquestes
+            proves podem fer-ho per DHCP però si coneixem les direccions
+            lliures de la nostra xarxa podem posar-la (recomanat).</p>
+            <p>En les dues imatges anteriors veiem com la targeta
+            <strong>eth0</strong> és l’externa, <strong>eth1</strong> és
+            la interna i <strong>eth2</strong> la de replicació.</p>
             <div class="caution">
-            <p>Cal assegurar-se que es col·loca correctament l’ordre de les targetes i estar segurs qual és l’externa.</p>
+            <p>Cal assegurar-se que es col·loca correctament l’ordre de
+            les targetes i estar segurs qual és l’externa.</p>
             </div>
             <div class="caution">
-            <p>Si estàs fent les proves a la teua casa has de tindre en compte que els DNS que hi ha per defecte no funcionaran ja que són per a la xarxa d’Aules. Com a exemple es poden usar 1.1.1.1, 1.0.0.1 (Cloudflare) i 8.8.8.8, 8.8.4.4 (Google).</p>
+            <p>Si estàs fent les proves a la teua casa has de tindre en
+            compte que els DNS que hi ha per defecte no funcionaran ja
+            que són per a la xarxa d’Aules. Com a exemple es poden usar
+            1.1.1.1, 1.0.0.1 (Cloudflare) i 8.8.8.8, 8.8.4.4
+            (Google).</p>
             </div>
-            <p>Una vegada s’ha inicialitzat el servidor mestre i reiniciat el deixarem en marxa per a continuar amb els servidors esclaus.</p>
-            <h2 data-number="6.1" id="inicialització-del-servidor-esclau"><span class="header-section-number">6.1</span> Inicialització del servidor esclau</h2>
-            <p>Una vegada inicialitzat el servidor mestre, els esclaus els inicialitzem de la mateixa manera, però tenint en compte que la ip serà diferent i muntarem el <strong>/net</strong> del servidor mestre.</p>
+            <p>Una vegada s’ha inicialitzat el servidor mestre i
+            reiniciat el deixarem en marxa per a continuar amb els
+            servidors esclaus.</p>
+            <h2 data-number="6.1"
+            id="inicialització-del-servidor-esclau"><span
+            class="header-section-number">6.1</span> Inicialització del
+            servidor esclau</h2>
+            <p>Una vegada inicialitzat el servidor mestre, els esclaus
+            els inicialitzem de la mateixa manera, però tenint en compte
+            que la ip serà diferent i muntarem el <strong>/net</strong>
+            del servidor mestre.</p>
             <figure>
-            <img src="model/41_1.png" alt="" /><figcaption>Configuració del servidor esclau amb IP fixa</figcaption>
+            <img src="model/41_1.png"
+            alt="Configuració del servidor esclau amb IP fixa" />
+            <figcaption aria-hidden="true">Configuració del servidor
+            esclau amb IP fixa</figcaption>
             </figure>
             <figure>
-            <img src="model/41_2.png" alt="" /><figcaption>Configuració del servidor esclau amb DHCP</figcaption>
+            <img src="model/41_2.png"
+            alt="Configuració del servidor esclau amb DHCP" />
+            <figcaption aria-hidden="true">Configuració del servidor
+            esclau amb DHCP</figcaption>
             </figure>
             <div class="caution">
-            <p>Cal assegurar-se que es col·loca correctament l’ordre de les targetes i estar segurs qual és l’externa.</p>
+            <p>Cal assegurar-se que es col·loca correctament l’ordre de
+            les targetes i estar segurs qual és l’externa.</p>
             </div>
             <div class="*info">
-            <p>Hi ha un altre camp anomenat <strong>ID d’aula</strong>. Aqueix número identifica a cada servidor esclau. Si inicialitzem un altre servidor esclau en el centre canviarem aqueix número amb el següent disponible. És important portar el compte que *IDs hem utilitzat en el centre.</p>
+            <p>Hi ha un altre camp anomenat <strong>ID d’aula</strong>.
+            Aqueix número identifica a cada servidor esclau. Si
+            inicialitzem un altre servidor esclau en el centre canviarem
+            aqueix número amb el següent disponible. És important portar
+            el compte que *IDs hem utilitzat en el centre.</p>
             </div>
-            <p>Després de reiniciar tornem al zero-center (recorda que sempre al servidor esclau) i executem el <strong>lliurex-mirror-redirect</strong>.</p>
+            <p>Després de reiniciar tornem al zero-center (recorda que
+            sempre al servidor esclau) i executem el
+            <strong>lliurex-mirror-redirect</strong>.</p>
             <figure>
-            <img src="model/42.png" alt="" /><figcaption>liurex-mirror-redirect</figcaption>
+            <img src="model/42.png" alt="liurex-mirror-redirect" />
+            <figcaption
+            aria-hidden="true">liurex-mirror-redirect</figcaption>
             </figure>
-            <p>Escrivim el nostre usuari i contrasenya. La última entrada la deixem en blanc.</p>
+            <p>Escrivim el nostre usuari i contrasenya. La última
+            entrada la deixem en blanc.</p>
             <figure>
-            <img src="model/43.png" alt="" /><figcaption>Usuari i contrasenya</figcaption>
+            <img src="model/43.png" alt="Usuari i contrasenya" />
+            <figcaption aria-hidden="true">Usuari i
+            contrasenya</figcaption>
             </figure>
-            <p>I activem l’opció del <strong>lliurex-mirror-redirect</strong>. Pots anar després a la carpeta <strong>/net/mirror</strong> o escriure a la terminal <strong>mount | grep mirror</strong> per a assegurar-te que està muntat.</p>
+            <p>I activem l’opció del
+            <strong>lliurex-mirror-redirect</strong>. Pots anar després
+            a la carpeta <strong>/net/mirror</strong> o escriure a la
+            terminal <strong>mount | grep mirror</strong> per a
+            assegurar-te que està muntat.</p>
             <figure>
-            <img src="model/44.png" alt="" /><figcaption>Activar l’opció</figcaption>
+            <img src="model/44.png" alt="Activar l’opció" />
+            <figcaption aria-hidden="true">Activar l’opció</figcaption>
             </figure>
-            <h1 data-number="7" id="installació-de-clients"><span class="header-section-number">7</span> Instal·lació de clients</h1>
-            <p>De fa un temps Conselleria ha decidit prescindir dels clients lleuger, i ja no es realitzen compres dels mateixos. Encara que als centres hi han molts i LliureX continuarà donant suport.</p>
-            <h2 data-number="7.1" id="clients-lleugers"><span class="header-section-number">7.1</span> Clients lleugers</h2>
-            <p>Per a utilitzar clients lleugers utilitzarem <strong>l’admin-center</strong> que podem trobar tan en el zero-center com en la pàgina d’inici del firefox. Al entrar a l’admin-center ens trobarem aquest menú.</p>
+            <h1 data-number="7" id="installació-de-clients"><span
+            class="header-section-number">7</span> Instal·lació de
+            clients</h1>
+            <p>De fa un temps Conselleria ha decidit prescindir dels
+            clients lleuger, i ja no es realitzen compres dels mateixos.
+            Encara que als centres hi han molts i LliureX continuarà
+            donant suport.</p>
+            <h2 data-number="7.1" id="clients-lleugers"><span
+            class="header-section-number">7.1</span> Clients
+            lleugers</h2>
+            <p>Per a utilitzar clients lleugers utilitzarem
+            <strong>l’admin-center</strong> que podem trobar tan en el
+            zero-center com en la pàgina d’inici del Firefox. Al entrar
+            a l’admin-center ens trobarem aquest menú.</p>
             <figure>
-            <img src="model/45.png" alt="" /><figcaption>Menú Admin Center</figcaption>
+            <img src="model/45.png" alt="Menú Admin Center" />
+            <figcaption aria-hidden="true">Menú Admin
+            Center</figcaption>
             </figure>
-            <p>Farem click sobre LliureX LTSP i veurem el menú de Gestió de Clients LTSP, farem click sobre Gestió d’Imatges de client.</p>
+            <p>Farem click sobre LliureX LTSP i veurem el menú de Gestió
+            de Clients LTSP, farem click sobre Gestió d’Imatges de
+            client.</p>
             <figure>
-            <img src="model/46.png" alt="" /><figcaption>Gestió de Clients LTSP</figcaption>
+            <img src="model/46.png" alt="Gestió de Clients LTSP" />
+            <figcaption aria-hidden="true">Gestió de Clients
+            LTSP</figcaption>
             </figure>
             <p>Una vegada ahí crearem una nova imatge.</p>
             <div class="*important">
-            <p>Cal recordar que abans de crear imatges de clients lleugers s’ha de descarregar el mirror complet de Lliurex en el servidor mestre la grandària del qual supera els 18GB. Com hem activat el <strong>lliurex-mirror-redirect</strong> en els servidors esclaus només es descarrega una vegada en el servidor mestre.</p>
+            <p>Cal recordar que abans de crear imatges de clients
+            lleugers s’ha de descarregar el mirror complet de Lliurex en
+            el servidor mestre la grandària del qual supera els 18GB.
+            Com hem activat el <strong>lliurex-mirror-redirect</strong>
+            en els servidors esclaus només es descarrega una vegada en
+            el servidor mestre.</p>
             </div>
             <div class="info">
-            <p>Pots tenir tantes imatges com vullgues. Si tens diferents models de clients lleugers, tal vegada t’interese tenir-ne varies. A més, si tens una pissarra digital, és convenient tenir una imatge per a l’ordinador en pissarra i altra per a la resta d’ordinadors.</p>
+            <p>Pots tenir tantes imatges com vullgues. Si tens diferents
+            models de clients lleugers, tal vegada t’interese tenir-ne
+            varies. A més, si tens una pissarra digital, és convenient
+            tenir una imatge per a l’ordinador en pissarra i altra per a
+            la resta d’ordinadors.</p>
             </div>
             <figure>
-            <img src="model/47.png" alt="" /><figcaption>Creació d’una nova imatge</figcaption>
+            <img src="model/47.png" alt="Creació d’una nova imatge" />
+            <figcaption aria-hidden="true">Creació d’una nova
+            imatge</figcaption>
             </figure>
-            <p>Escollim l’opció de client ja que aquesta és la que ens permet logar-nos amb LDAP del servidor del servidor mestre.</p>
+            <p>Escollim l’opció de client ja que aquesta és la que ens
+            permet logar-nos amb LDAP del servidor del servidor
+            mestre.</p>
             <figure>
-            <img src="model/48.png" alt="" /><figcaption>Client</figcaption>
+            <img src="model/48.png" alt="Client" />
+            <figcaption aria-hidden="true">Client</figcaption>
             </figure>
             <figure>
-            <img src="model/49.png" alt="" /><figcaption>Client - paràmetres</figcaption>
+            <img src="model/49.png" alt="Client - paràmetres" />
+            <figcaption aria-hidden="true">Client -
+            paràmetres</figcaption>
             </figure>
-            <h3 data-number="7.1.1" id="associar-client-a-imatge"><span class="header-section-number">7.1.1</span> Associar client a imatge</h3>
-            <p>Podem associar la imatge d’un client per a que s’inicie sempre amb eixa imatge. Aquesta situació ens interesarà principalment a l’ordinador del professor si té una pissarra digital. Anem a Gestió de client de l’aula:</p>
+            <h3 data-number="7.1.1" id="associar-client-a-imatge"><span
+            class="header-section-number">7.1.1</span> Associar client a
+            imatge</h3>
+            <p>Podem associar la imatge d’un client per a que s’inicie
+            sempre amb eixa imatge. Aquesta situació ens interesarà
+            principalment a l’ordinador del professor si té una pissarra
+            digital. Anem a Gestió de client de l’aula:</p>
             <figure>
-            <img src="model/54.png" alt="" /><figcaption>Gestió de clients de l’aula</figcaption>
+            <img src="model/54.png" alt="Gestió de clients de l’aula" />
+            <figcaption aria-hidden="true">Gestió de clients de
+            l’aula</figcaption>
             </figure>
-            <p>Per a poder vore els clients és necessari que s’hagen engegat al menys una vegada i siga el mateix servidor qui els haja donat una ip (Les ips s’agafan de la taula del dnsmasq).</p>
+            <p>Per a poder vore els clients és necessari que s’hagen
+            engegat al menys una vegada i siga el mateix servidor qui
+            els haja donat una IP (Les IPs s’agafan de la taula del
+            dnsmasq).</p>
             <figure>
-            <img src="model/55.png" alt="" /><figcaption>Llistat d’ordinadors a l’aula</figcaption>
+            <img src="model/55.png"
+            alt="Llistat d’ordinadors a l’aula" />
+            <figcaption aria-hidden="true">Llistat d’ordinadors a
+            l’aula</figcaption>
             </figure>
-            <p>Fas doble click sobre un ordinador (aquestos venen identificats amb la ip i la MAC). I ens apareixerà el següent menú:</p>
+            <p>Fas doble click sobre un ordinador (aquestos venen
+            identificats amb la IP i la MAC). I ens apareixerà el
+            següent menú:</p>
             <figure>
-            <img src="model/56.png" alt="" /><figcaption>Configuració de client</figcaption>
+            <img src="model/56.png" alt="Configuració de client" />
+            <figcaption aria-hidden="true">Configuració de
+            client</figcaption>
             </figure>
-            <p>A l’últim apartat podem veure un menú desplegable per a escollir la imatge amb la qual volem arrancar.</p>
+            <p>A l’últim apartat podem veure un menú desplegable per a
+            escollir la imatge amb la qual volem arrancar.</p>
             <div class="info">
-            <p>Cal actualitzat la pàgina de l’admin-center una vegada s’han detectat els clients per a que funcione la finestra de paràmetres.</p>
+            <p>Cal actualitzat la pàgina de l’admin-center una vegada
+            s’han detectat els clients per a que funcione la finestra de
+            paràmetres.</p>
             </div>
-            <h2 data-number="7.2" id="installar-nou-programari-en-una-imatge"><span class="header-section-number">7.2</span> Instal·lar nou programari en una imatge</h2>
-            <h2 data-number="7.3" id="clients-pesats"><span class="header-section-number">7.3</span> Clients pesats</h2>
-            <p>Per a instal·lar clients pesats la millor opció és habilitar la instal·lació per xarxa. Per tant, anem a LliureX Netinstall i configurem els paràmetres per a fer una instal·lació desatesa.</p>
+            <h2 data-number="7.2" id="clients-pesats"><span
+            class="header-section-number">7.2</span> Clients pesats</h2>
+            <p>Per a instal·lar clients pesats la millor opció és
+            habilitar la instal·lació per xarxa. Per tant, anem a
+            LliureX Netinstall i configurem els paràmetres per a fer una
+            instal·lació desatesa.</p>
             <figure>
-            <img src="model/50.1.png" alt="" /><figcaption>LliureX Netinstall</figcaption>
+            <img src="model/50.1.png" alt="LliureX Netinstall" />
+            <figcaption aria-hidden="true">LliureX
+            Netinstall</figcaption>
             </figure>
             <p>Exemple d’intal·lació.</p>
             <figure>
-            <img src="model/50.png" alt="" /><figcaption>Paràmetres instal·lació desatesa 1</figcaption>
+            <img src="model/50.png"
+            alt="Paràmetres instal·lació desatesa 1" />
+            <figcaption aria-hidden="true">Paràmetres instal·lació
+            desatesa 1</figcaption>
             </figure>
             <figure>
-            <img src="model/51.png" alt="" /><figcaption>Paràmetres instal·lació desatesa 2</figcaption>
+            <img src="model/51.png"
+            alt="Paràmetres instal·lació desatesa 2" />
+            <figcaption aria-hidden="true">Paràmetres instal·lació
+            desatesa 2</figcaption>
             </figure>
-            <h2 data-number="7.4" id="boot-manager"><span class="header-section-number">7.4</span> Boot Manager</h2>
-            <p>Per a escollir la imatge que s’executa per defecte podem anar al menú principal a <strong>Boot Manager</strong> i canviar quines opcions per defecte volem per a iniciar el servidor.</p>
+            <h2 data-number="7.3" id="boot-manager"><span
+            class="header-section-number">7.3</span> Boot Manager</h2>
+            <p>Per a escollir la imatge que s’executa per defecte podem
+            anar al menú principal a <strong>Boot Manager</strong> i
+            canviar quines opcions per defecte volem per a iniciar el
+            servidor.</p>
             <figure>
-            <img src="model/53.png" alt="" /><figcaption>Menú boot manager</figcaption>
+            <img src="model/53.png" alt="Menú boot manager" />
+            <figcaption aria-hidden="true">Menú boot
+            manager</figcaption>
             </figure>
-            <h1 data-number="8" id="creació-dusuaris-amb-llum"><span class="header-section-number">8</span> Creació d’usuaris amb llum</h1>
-            <p>Llum és al ferramenta que ens va a permetre gestionar els usuaris del nostre centre. Podem accedir al <strong>llum</strong> des del zero-center. Podem crear tots els usuaris del centre important els usuaris de Ítaca, per a fer això cal anar a la pestanya de “Centre” i escollir la entrada “Importació/Exportación” on seleccionarem l’opció Aula LliureX.</p>
+            <h1 data-number="8" id="creació-dusuaris-amb-llum"><span
+            class="header-section-number">8</span> Creació d’usuaris amb
+            Llum</h1>
+            <p>Llum és al ferramenta que ens va a permetre gestionar els
+            usuaris del nostre centre. Podem accedir al
+            <strong>Llum</strong> des del zero-center. Podem crear tots
+            els usuaris del centre important els usuaris de Ítaca, per a
+            fer això cal anar a la pestanya de “Centre” i escollir la
+            entrada “Importació/Exportación” on seleccionarem l’opció
+            Aula LliureX.</p>
             <figure>
-            <img src="model/usuarios29.png" alt="" /><figcaption>Ítaca</figcaption>
+            <img src="model/usuarios29.png" alt="Ítaca" />
+            <figcaption aria-hidden="true">Ítaca</figcaption>
             </figure>
-            <p>I després iniciem llum:</p>
+            <p>I després iniciem Llum:</p>
             <figure>
-            <img src="model/57.png" alt="" /><figcaption>Llum</figcaption>
+            <img src="model/57.png" alt="Llum" />
+            <figcaption aria-hidden="true">Llum</figcaption>
             </figure>
-            <p>Una vegada hem iniciat Llum anem a l’opció d’importar/exportar d’Ítaca i importem els usuaris.</p>
+            <p>Una vegada hem iniciat Llum anem a l’opció
+            d’importar/exportar d’Ítaca i importem els usuaris.</p>
             <div class="warning">
-            <p>Es podria tenir un model de centre funcionant amb servidors virtualitzats sobre una mateixa LliureX? Sí, enlloc de PROXMOX, podríem tenir com a sistema base un LliureX i enllaçar la targeta externa de cada servidor a la targeta física on està connectat el switch per a l’Aula d’informàtica, per als ordinadors del centre, etc… Però no tindríem gestió remota (o seria més complicat). I LliureX no es un sistema pensat per a tal fi. PROXMOX sí.</p>
+            <p>Es podria tenir un model de centre funcionant amb
+            servidors virtualitzats sobre una mateixa LliureX? Sí,
+            enlloc de PROXMOX, podríem tenir com a sistema base un
+            LliureX i enllaçar la targeta externa de cada servidor a la
+            targeta física on està connectat el switch per a l’Aula
+            d’informàtica, per als ordinadors del centre, etc… Però no
+            tindríem gestió remota (o seria més complicat). I LliureX no
+            es un sistema pensat per a tal fi. PROXMOX sí.</p>
             </div>
         </main>
         
