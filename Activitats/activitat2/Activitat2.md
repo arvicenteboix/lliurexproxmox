@@ -109,31 +109,60 @@ Heu d’anar amb compte amb les característiques que poseu a cada màquina, per
 
 ## Procediment de l’activitat
 
-1. Descarregar el *appliance* de màquines de Virtualbox i importar-les.
-2. Canviar les característiques que s'adapten a les vostres màquines
-3. Inicialitzat servidor mestre
-4. inicialitzar servidor esclau
-5. Crear usuari amb llum (prova)
-6. Instal·lar client
-7. Inicialitzar el client amb l’usuari prova.
+
+### OPCIÓ 1 (SENSE USAR L'ARXIU .*OVA DELS RECURSOS DEL TEMA)
+
+
+1.	Crear dos **VM** per als servidors, un MESTRE i un altre ESCLAU amb les tres targetes de xarxa (externa, interna i de replicació)
+2.	Crear una **VM** per al client amb la seua targeta de xarxa en la xarxa interna d'un dels servidors.
+3.	Inicialitzar amb **Zero-Server-Wizar** els dos servidors.
+4.	Crear un usuari de prova amb **Llum**.
+5.	Entrar en l'ordenador client amb l'usuari creat en **Llum**.
+
+
+
+## Aconseguir Apte en l'activitat 
+
+L'activitat es considerarà APTA entregant un document en format pdf amb les següents captures de pantalla
+
+* Característiques de cada màquina des de *VirtualBox*
+* Els dos servidors i el client funcionant.
+* Captura d'inicialització correctament finalitzada amb **zero-server-wizard** d'un dels servidors.
+* Captura d'un terminal amb les **IP** d'un dels servidors.
+ ```bash
+ip add
+```
+* Captura de **Llum** amb la creació de l'usuari de prova correctament realitzat.
+* Captura de l'ordenador client amb l'usuari de prova amb la sessió iniciada.
+
+
+
+
+### OPCIÓ 2 (USANT L'ARXIU .*OVA DELS RECURSOS DEL TEMA)
+
 
 :::warning
-Les màquines estan inicializades i funcionen. Heu de canviar el nom de cada màquina a CODI_DE_CETRE+{MAS,CEN,AU1 o AU2} per a que comprovar que heu fet el canvi.
+Les màquines estan inicializades amb *zero-server-wizard* i funcionen. Heu de canviar el nom de cada màquina a CODI_DE_CETRE+{MAS,CEN,AU1 o AU2} en VirtualBox per a que comprovar que heu fet el canvi.
 :::
 
-## Aconseguir Apte en l’activitat
+1. Descarregar l'arxiu **.ova** dels recursos del tema i importar les màquines ja configurades i inicialitzades amb **Zero-server-wizard**. 
+2. Canviar les característiques de les **VM** importades perquè s'adapten a les prestacions de cada equip si és necessari (nombre de processadors, RAM, etc) i canviar el nom de cada màquina a **CODI_DE_CETRE+{MAS,CEN,AU1 o AU2}**
+3. Arrancar servidor mestre i esclau. 
+4. Crear un usuari amb **Llum** (prova) des d'algun dels servidors.
+5. Arrancar client i iniciar sessió amb l'usuari prova.
 
-L’activitat es considerarà APTA entregant un full en format pdf amb les següents captures de pantalla:
+## Aconseguir Apte en l'activitat 
 
-* Característiques de cada màquina
-* Els dos servidors funcionant
-* Dos servidors (Un mestre i un esclau) i el client funcionant
-* Captura de inicialització (zero-server-wizard) d’un dels servidors
-* Captura d'una ip a en la terminal d'un dels servidors
+L'activitat es considerarà APTA entregant un document en format pdf amb les següents captures de pantalla
 
-```bash
-ip a
+* Característiques de cada màquina des de *VirtualBox* amb el nom canviat (ej: cod_centre_mestre)
+* Els dos servidors i el client funcionant.
+* Captura de **Llum** amb la creació de l'usuari de prova correctament realitzat.
+* Captura d'un terminal de les **IP** d'un dels servidors.
+ ```bash
+ip add
 ```
+* Captura de l'ordenador client amb l'usuari de prova amb la sessió iniciada.
 
 ## Exemple de captures de pantalla
 
@@ -175,31 +204,57 @@ Deben tener cuidado con las características que ponen en cada máquina, para ha
 
 ## Procedimiento de la actividad
 
-1. Descargar el *appliance* de máquinas de Virtualbox e importarlas.
-2. Cambiar las características que se adapten a sus máquinas.
-3. Inicializar servidor maestro.
-4. Inicializar servidor esclavo.
-5. Crear usuario con Llum (prueba).
-6. Instalar cliente.
-7. Inicializar el cliente con el usuario prueba.
+### OPCIÓN 1 (SIN USAR EL ARCHIVO .OVA DE LOS RECURSOS DEL TEMA)
+
+1.	Crear dos **VM** para los servidores, uno MAESTRO y otro ESCALVO con las tres tarjetas de red (externa, interna y de replicación)
+2.	Crear una **VM** para el cliente con su tarjeta de red en la red interna de uno de los servidores.
+3.	Inicializar con **Zero-Server-Wizar** los dos servidores.
+4.	Crear un usuario de prueba con **Llum**.
+5.	Entrar en el ordenador cliente con el usuario creado en Llum.
+
+
+
+## Conseguir Apto en la actividad
+
+La actividad se considerará APTA entregando un documento en formato pdf con las siguientes capturas de pantalla
+
+*	Características de cada máquina desde *VirtualBox*
+*	Los dos servidores y el cliente funcionando.
+*	Captura de inicialización correctamente finalizada con **zero-server-wizard** de uno de los servidores. 
+*	Captura de un terminal con las **IP**  de uno de los servidores.
+```bash
+ip add
+```
+*	Captura de **Llum** con la creación del usuario de prueba correctamente realizado.
+*	Captura del ordenador cliente con el usuario de prueba con la sesión iniciada.
+
+
+## OPCIÓN 2 (USANDO EL ARCHIVO .OVA DE LOS RECURSOS DEL TEMA)
 
 :::warning
 Las máquinas están inicializadas y funcionan. Deben cambiar el nombre de cada máquina a CODI_DE_CETRE+{MAS,CEN,AU1 o AU2} para comprobar que han hecho el cambio.
 :::
 
-## Conseguir Apto en la actividad
+1. Descargar el archivo **.ova** de los recursos del tema e importar las máquinas ya configuradas e inicializadas con Zero-server-wizard. 
+2. Cambiar las características de las **VM** importadas para que se adapten a las prestaciones de cada equipo si es necesario (número de procesadores, RAM, etc) y cambiar el nombre de cada máquina a **CODI_DE_CETRE+{MAS,CEN,AU1 o AU2}**
+3. Arrancar servidor maestro y esclavo.
+4. Crear usuario con **Llum** (prueba) desde alguno de los servidores.
+5. Arrancar cliente e iniciar sesión con el usuario prueba.
 
-La actividad se considerará APTA entregando un documento en formato pdf con las siguientes capturas de pantalla:
 
-* Características de cada máquina.
-* Los dos servidores funcionando.
-* Dos servidores (uno maestro y uno esclavo) y el cliente funcionando.
-* Captura de inicialización (zero-server-wizard) de uno de los servidores.
-* Captura de una ip en la terminal de uno de los servidores.
+## Conseguir Apto en la actividad 
 
-```bash
-ip a
-```
+La actividad se considerará APTA entregando un documento en formato pdf con las siguientes capturas de pantalla
+
+*	Características de cada máquina desde *VirtualBox* con el nombre cambiado (ej: cod_centro_maestro)
+*	Los dos servidores y el cliente funcionando.
+*	Captura de **Llum** con la creación del usuario de prueba correctamente realizado.
+*	Captura de un terminal de las IPs  de uno de los servidores.
+	```bash
+	ip add
+	```
+* Captura del ordenador cliente con el usuario de prueba con la sesión iniciada.
+
 ## Ejemplo de capturas de pantalla
 
 ![Captura 1](img/-015.png)
