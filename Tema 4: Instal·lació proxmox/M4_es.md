@@ -99,10 +99,10 @@ En esta unidad vamos a ver la instalación de Proxmox. En el primer capítulo ve
 
 Es importante tener claro los siguientes conceptos antes de empezar la instalación.
 
-* **AMT** funciona como un sistema independiente, por lo tanto tendrá su propia ip.
+* **AMT** funciona como un sistema independiente, por lo tanto, tendrá su propia ip.
 * Los dispositivos físicos cada vez se utilizan menos. Recuerda cuando fue la última vez que utilizaste un CD-ROM.
-* Vamos a hacer una instalación de Proxmox. No es necesario tener acceso a la consola de Proxmox en ningún momento, por lo tanto si ya tienes un hipervisor montado en el rack, no lo desmontes.
-* Las IPs utilizadas no corresponden con las indicadas a las que recomienda el SAI. Es parte de la tarea que deberéis hacer!
+* Vamos a hacer una instalación de Proxmox. No es necesario tener acceso a la consola de Proxmox en ningún momento, por lo tanto, si ya tienes un hipervisor montado en el rack, no lo desmontes.
+* Las IP utilizadas no corresponden con las indicadas a las que recomienda el SAI. Es parte de la tarea que deberéis hacer!
 
 ![Esquema orientativo](Esquema.png)
 
@@ -114,7 +114,7 @@ Para poner a punto el servidor, es recomendable, aunque no imprescindible habili
 
 ## Habilitar AMT de Intel
 
-Los servidores distribuidos en los centros disponen de la herramienta AMT de Intel para poder conectarse remotamente, no solo nos permitirá arrancar el hipervisor sino que también nos permitirá  configurar ciertas funcionalidades básicas. Pero antes de nada, habrá que entrar en la BIOS. Para acceder (Modelo SEH1) pulsamos F2 en el setup del ordenador.
+Los servidores distribuidos en los centros disponen de la herramienta AMT de Intel para poder conectarse remotamente, no solo nos permitirá arrancar el hipervisor sino que también nos permitirá  configurar ciertas funcionalidades básicas. Pero, antes de nada, habrá que entrar en la BIOS. Para acceder (Modelo SEH1) pulsamos F2 en el setup del ordenador.
 
 ![BIOS del sistema](amt-conf/Desktop--2020-11-25-18-25.png)
 
@@ -185,7 +185,7 @@ Después vamos a **TCP/IP Settings**
 Y configuramos el AMT según los siguientes parámetros
 
 ::: caution
-**Ten cuidado**: La dirección del AMT es diferente a la dirección del hipervisor. Además debes de tener en cuenta que el AMT no tiene el ICMP activado, por lo que si haces un *ping* o *nmap* no te dará respuesta.
+**Ten cuidado**: La dirección del AMT es diferente a la dirección del hipervisor. Además, debes de tener en cuenta que el AMT no tiene el ICMP activado, por lo que si haces un *ping* o *nmap* no te dará respuesta.
 :::
 
 Los parámetros que mostramos son unos parámetros de ejemplo que vamos a utilizar dentro de nuestro banco de pruebas.
@@ -195,12 +195,12 @@ Los parámetros que mostramos son unos parámetros de ejemplo que vamos a utiliz
 | IP | 172.x.y.2 – 172.x.y.254 |
 | Máscara | 255.255.255.0 |
 | Puerta de Enlace | 172.x.y.1 |
-| DNS | 172.27.111.5 y 172.27.111.6 |
+| DNS | 10.239.3.7 i 10.239.3.8 |
 
 ![Configuración red](mebx/-006.png)
 
 ::: importante
-**Acceso**: Una vez ya tengas funcionando el AMT, podrás acceder a través del navegador con la dirección http://172.x.y.238:16992 ó https://172.x.y.238:16993. Tendrás que cambiar la dirección según la que hayas escogido.
+**Acceso**: Una vez ya tengas funcionando el AMT, podrás acceder a través del navegador con la dirección http://172.x.y.238:16992 o https://172.x.y.238:16993. Tendrás que cambiar la dirección según la que hayas escogido.
 :::
 
 # Meshcomander
@@ -208,7 +208,7 @@ Los parámetros que mostramos son unos parámetros de ejemplo que vamos a utiliz
 El *AMT* junto la aplicación *Meshcommander* nos permitirá tener los servidores montados dentro del rack principal sin necesidad de tener ni un monitor ni teclado conectado. 
 
 
-> Desde febrero de 2021 existe una versión de *Meshcommander* para GNU/Linux, os dejamos un **vídeo** en recursos adicionales para hacer la instalación en GNU/Linux. En resumen se instala con el comando:
+> Desde febrero de 2021 existe una versión de *Meshcommander* para GNU/Linux, os dejamos un **vídeo** en recursos adicionales para hacer la instalación en GNU/Linux. En resumen, se instala con el comando:
 
 ```sh
 npm install meshcommander
@@ -293,31 +293,31 @@ Es altamente recomendable tener una conexión al menos de 1Gb, puesto que sino l
 
 # Instalación de Proxmox
 
-Para instalar Proxmox podemos utilizar la opción explicada. Es la más recomendable si ya tienes el servidor montado en el rack. De todas maneras, también se puede instalar con una memoria usb.
+Para instalar Proxmox podemos utilizar la opción explicada. Es la más recomendable si ya tienes el servidor montado en el rack. De todas maneras, también se puede instalar con una memoria USB.
 
 ## Creación de usb de arranque de proxmox
 
-Para hacer la instalación de la iso de proxmox, la mejor opción es utilizar **dd**. Para detectar donde está montado el usb podemos ejecutar antes y después lsblk y podemos ver donde se ha montado la partición.
+Para hacer la instalación de la ISO de Proxmox, la mejor opción es utilizar **dd**. Para detectar donde está montado el USB podemos ejecutar antes y después lsblk y podemos ver donde se ha montado la partición.
 
 ```sh
 lsblk
 ```
 
-En nuestro ejemplo (puesto que tenemos un disco duro m2 no sata, se ha montado sda). Por lo tanto nuestro comando sería:
+En nuestro ejemplo (puesto que tenemos un disco duro m2 no sata, se ha montado sda). Por lo tanto, nuestro comando sería:
 
 ```sh
 sudo dd if=./proxmox-viene_6.2-1.iso of=/dev/sda status=progress
 ```
 <!-- \awesomebox[violet]{2pt}{\faUsb}{violet}{} -->
 
-También disponemos de herremientas gráficas para grabar la iso de Proxmox en un USB. Podemos utilizar [Etcher](https://balena.io/etcher/) que es multiplataforma y muy senzilla de utilizar.
+También disponemos de herremientas gráficas para grabar la ISO de Proxmox en un USB. Podemos utilizar [Etcher](https://balena.io/etcher/) que es multiplataforma y muy sencilla de utilizar.
 
 ![Etcher](mesh/15.png)
 
 
 ## Instalación de proxmox
 
-Una vez tenemos creado el disco usb de arranque e iniciamos con el usb, o a través de IDE-R. Veremos la siguiente imagen. Pulsamos enter y continuamos.
+Una vez tenemos creado el disco USB de arranque e iniciamos con el USB, o a través de IDE-R. Veremos la siguiente imagen. Pulsamos enter y continuamos.
 
 ![Pantalla inicial de la instalación de Proxmox](inst_proxmox/1.jpg)
 
