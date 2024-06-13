@@ -100,7 +100,9 @@
 <ul>
 <li><a href="#esquema-1"><span class="toc-section-number">1.1</span> Esquema 1</a></li>
 <li><a href="#esquema-2"><span class="toc-section-number">1.2</span> Esquema 2</a></li>
-<li><a href="#esquema-de-màquines-virtuals"><span class="toc-section-number">1.3</span> Esquema de màquines virtuals</a></li>
+<li><a href="#clúster"><span class="toc-section-number">1.3</span> Clúster</a></li>
+<li><a href="#alta-disponibilitat"><span class="toc-section-number">1.4</span> Alta disponibilitat</a></li>
+<li><a href="#esquema-de-màquines-virtuals"><span class="toc-section-number">1.5</span> Esquema de màquines virtuals</a></li>
 </ul></li>
 <li><a href="#configuració-del-proxmox"><span class="toc-section-number">2</span> Configuració del proxmox</a>
 <ul>
@@ -160,34 +162,35 @@
             </tr>
             </tbody>
             </table>
-            <p>Donarem com a exemple dos esquemes clàssics de muntatge del centre. Ambós són totalment vàlids i funcionen perfectament.</p>
+            <p>Donarem com a exemple dos esquemes de muntatge de centre. Els dos són totalment vàlids, però <strong>ens centrarem en el primer en este curs</strong> ja que el segon exemple és per a instal·lacions que no tenen switches gestionables.</p>
             <div class="note">
             <p>La majoria de captures de pantalla están en anglès, ja que no tinc el costum de canviat el llenguatge original dels programes. Òbviament si algú vol configurar els paràmetres en la finestra de login al català o al español ho pot fer sense problemes.</p>
             </div>
             <h2 data-number="1.1" id="esquema-1"><span class="header-section-number">1.1</span> Esquema 1</h2>
-            <p>En aquest esquema que posem com a exemple dos switchs tenim 3 LAG configurats al switch principal per si volem muntar un cluster amb Proxmox fins a 3 ordinadors. Són 3 ordinadors ja que 3 ordinadors permeten ja fer un muntatge d’Alta disponibilitat, però és un tema que explicarem en cursos més avançats. Aquest esquema és típic de centres molts grans que tenen varies sales d’informàtica i el switch principal pràcticament l’utilitzen per a redistribuir les VLANs i només que té muntats LAGs que van a cadascun dels switch del centre.</p>
-            <div class="note">
-            <p>La Alta disponibilitat (HA) permet que quan un hipervisor s’espatlla els altres agafen les màquines virtuals del mateix i seguix donant servei sense que l’usuari ho note. Això permet canviar l’hipervisor o arreglar-lo i el servei no és interromput en cap moment. Per a fer això és necessari muntar un CEPH o una cabina externa amb molta fiabilitat.</p>
-            </div>
+            <p>En este esquema tenim com a exemple el switch principal del centre amb <em>1 LAG de 4 ports</em> connectat a les quatre targetes de xarxa del servidor. També connectem la targeta de xarxa de la placa base del servidor a una boca del switch.</p>
             <p>L’esquema seria de la següent manera:</p>
             <figure>
             <img src="Esquemes/esquemabond.png" alt="" /><figcaption>Esquema orientatiu 1</figcaption>
             </figure>
             <h2 data-number="1.2" id="esquema-2"><span class="header-section-number">1.2</span> Esquema 2</h2>
-            <p>Un dels principals avantatges del següent esquema és que no utilitza VLANs, cada targeta de de l’hipervisor va a un switch diferent. Aquest muntatge s’utilitza principalment en centre xicotets. Igualment permet el muntatge d’un cluster que podríem connectar al router del centre a les boques de la xarxa VLAN. L’equema seria de la següent manera:</p>
+            <p>En el següent esquema no s’usen switches gestionables pel que no s’usen VLANs. Cada targeta de l’hipervisor va a un switch diferent. Este esquema no aprofita els avantatges que té un LAG (augmente amplada de banda i tolerància a fallades). Este muntatge s’utilitza principalment en centres xicotets. L’esquema seriosa de la manera següent:</p>
             <figure>
             <img src="Esquemes/esquemasense.png" alt="" /><figcaption>Esquema orientatiu 2</figcaption>
             </figure>
-            <h2 data-number="1.3" id="esquema-de-màquines-virtuals"><span class="header-section-number">1.3</span> Esquema de màquines virtuals</h2>
-            <p>A la fi els dos esquemes comparteixen el muntatge de les màquines virtuals ja que la configuració d’on es connecten les targetes virtuals ho fem des del proxmox. Hem respectat els noms de les targetes en ambdós casos (vmbrX), però es pot donar el nom que vullgues.</p>
+            <h2 data-number="1.3" id="clúster"><span class="header-section-number">1.3</span> Clúster</h2>
+            <p>En aquest tema configurarem un sol hipervisor, però si tenim més hipervisors hauríem de crear més LAGs en el switch i la mateixa configuració de PROXMOX en tots els hipervisors. Una vegada tot estiga connectat, configurat i en marxa, es poden unir els servidors PROXMOX en un <strong>clúster</strong>. El clúster permet gestionar tots els servidors PROXMOX de forma unificada, moure VM d’un PROXMOX a un altre i més coses que <strong>veurem en el pròxim tema</strong>.</p>
+            <h2 data-number="1.4" id="alta-disponibilitat"><span class="header-section-number">1.4</span> Alta disponibilitat</h2>
+            <p>Una vegada hem creat un clúster, podem millorar-lo amb l’alta disponibilitat. L’alta disponibilitat (HA) permet que quan un hipervisor es trencat, els altres agafen de forma automàtica les màquines virtuals del mateix i continuen donant servei sense que l’usuari ho note. Això permet canviar l’hipervisor o arreglar-lo i el servei no és interromput en cap moment. Per a fer això és necessari muntar un <a href="https://es.wikipedia.org/wiki/Ceph_File_System">CEPH</a> o tindre una cabina/NAS de discs externa amb molta fiabilitat (i molt cares). En aquestes cabines és on es guarden els discs de totes les VM i ja no estarien emmagatzemats en els discs dels servidors PROXMOX. Aquesta configuració no es tractarà en aquest tema.</p>
+            <h2 data-number="1.5" id="esquema-de-màquines-virtuals"><span class="header-section-number">1.5</span> Esquema de màquines virtuals</h2>
+            <p>A la fi els dos esquemes comparteixen el muntatge de les màquines virtuals ja que la configuració d’on es connecten les targetes virtuals ho fem des del proxmox. Hem respectat els noms de les targetes en ambdós casos (<strong>vmbrX</strong>), però es pot donar el nom que vullgues.</p>
             <figure>
             <img src="Esquemes/Conexionshipervisor.png" alt="" /><figcaption>Esquema connexions màquines virtuals</figcaption>
             </figure>
             <h1 data-number="2" id="configuració-del-proxmox"><span class="header-section-number">2</span> Configuració del proxmox</h1>
             <p>Una vegada tenim instal·lat el proxmox i haja reiniciat, podrem accedir a ell. Tota la configuració del proxmox es realitza a través d’un servidor web que porta muntat. Per a accedir hem de fer-ho a través del port 8006 amb certificació ssl. Senzillament escrivim a una navegador d’una estació de treball que estiga a la mateixa xarxa el següent:</p>
-            <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">https</span>://<span class="st">&quot;IP_HIPERVISOR:8006</span></span></code></pre></div>
+            <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">https</span>://IP_HIPERVISOR:8006</span></code></pre></div>
             <div class="info">
-            <p>Este és un dels motius pels quals deixem ports en cada switch amb la VLAN 1, per a poder accedir a través d’eixos ports sempre al proxmox. També es pot fer des de qualsevol ordinador del centre o l’aula d’informàtica, però cal habilitar el NAT en cada servidor LliureX. I estos han d’estar funcionant. Per tant en aquest pas és necessari estar connectat a la xarxa del centre.</p>
+            <p>Este és un dels motius pels quals deixem ports en cada switch amb la VLAN 1, per a poder accedir a través d’eixos ports sempre al proxmox. També es pot fer des de qualsevol ordinador del centre o l’aula d’informàtica, però cal habilitar el NAT en cada servidor LliureX. I estos han d’estar funcionant. Per tant, en aquest pas és necessari estar connectat a la xarxa del centre.</p>
             </div>
             <h2 data-number="2.1" id="màquines-virtuals"><span class="header-section-number">2.1</span> Màquines virtuals</h2>
             <p>El primer que ens demana és l’usuari i contrasenya que hem configurat quan hem fet la instal·lació:</p>
@@ -213,15 +216,15 @@
             <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">apt</span> update</span>
             <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">apt</span> upgrade</span></code></pre></div>
             <h2 data-number="2.2" id="crear-màquina-virtual"><span class="header-section-number">2.2</span> Crear màquina virtual</h2>
-            <p>Abans de crear una màquina virtual hem de pujar un iso de LliureX Server, podem descarregar-la <a href="http://releases.lliurex.net/isos/19.07_64bits/">d’ací</a>. Tractem de buscar l’última versió editada.</p>
-            <p>Una vegada la tenim descarrega hem de pujar-la al proxmox seleccionant l’espai <strong>local</strong> i fent click en upload:</p>
+            <p>Abans de crear una màquina virtual hem de pujar un ISO de LliureX Server, podem descarregar-la <a href="https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso">d’ací</a>. Tractem de buscar l’última versió editada.</p>
+            <p>Una vegada la tenim descarrega hem de pujar-la al proxmox seleccionant l’espai <strong>local</strong> i fent clic en upload:</p>
             <figure>
             <img src="ConProxmox/prox5.png" alt="" /><figcaption>Pujar iso a proxmox</figcaption>
             </figure>
             <figure>
             <img src="ConProxmox/prox6.png" alt="" /><figcaption>Pujar iso a proxmox</figcaption>
             </figure>
-            <p>Una vegada tenim fet això, ja podem crear la primera maquina virtual. Anem de fer d’exemple el servidor MASTER i els altres es fan de manera similar. Fem click sobre <strong>Create VM</strong></p>
+            <p>Una vegada tenim fet això, ja podem crear la primera màquina virtual. Anem de fer d’exemple el servidor MASTER i els altres es fan de manera similar. Fem click sobre <strong>Create VM</strong></p>
             <figure>
             <img src="ConProxmox/prox7.png" alt="" /><figcaption>Crear màquina virtual</figcaption>
             </figure>
@@ -229,7 +232,7 @@
             <figure>
             <img src="ConProxmox/prox8.png" alt="" /><figcaption>Polsem next</figcaption>
             </figure>
-            <p>En aquest punt hem de seleccionar la iso que acabem de pujar:</p>
+            <p>En aquest punt hem de seleccionar la ISO que acabem de pujar:</p>
             <figure>
             <img src="ConProxmox/prox9.png" alt="" /><figcaption>Seleccionem ISO</figcaption>
             </figure>
@@ -239,7 +242,10 @@
             </figure>
             <p>Escollim el disc dur a utilitzar, i opcionalment canviem la cache a write back.</p>
             <div class="note">
-            <p>Write-back pot donar un poc més de rendiment al disc però és més propens a perdre dades si hi ha un tall. Queda a criteri de cadascú escollir.</p>
+            <p><strong>Write-back</strong> pot donar un poc més de rendiment al disc però és més propens a perdre dades si hi ha un tall. Queda a criteri de cadascú escollir.</p>
+            </div>
+            <div class="important">
+            <p>Depenent de la grandària del centre el disc del servidor Lliurex MAESTRO necessitarà més espai. És aconsellable afegir un disc gran com per exemple un 1TB o més ja que emmagatzemarà les dades de tot l’alumnat, professorat, mirror, clients lleugers, clonacions, etc. En els servidors ESCLAUS no és necessari tant d’espai (150GB per exemple) ja que munten /net del MESTRE.</p>
             </div>
             <figure>
             <img src="ConProxmox/prox11.png" alt="" /><figcaption>Opcions del disc dur</figcaption>
@@ -255,14 +261,18 @@
             <figure>
             <img src="ConProxmox/prox13.png" alt="" /><figcaption>Memòria RAM</figcaption>
             </figure>
-            <p>Finalment, no canviem res als paràmetre de xarxa i una vegada instal·lada la màquina ja afegirem les targetes virtuals. Podem activar el checkbox de <strong>Start after created</strong> per a poder iniciar la màquina una vegada li donem a <strong>Finish</strong>.</p>
+            <p>Finalment, no canviem res als paràmetres de xarxa i una vegada instal·lada la màquina ja afegirem les targetes virtuals.</p>
             <figure>
             <img src="ConProxmox/prox14.png" alt="" /><figcaption>Resum d’opcions</figcaption>
             </figure>
-            <h2 data-number="2.3" id="installació-de-la-màquina-virtual"><span class="header-section-number">2.3</span> Instal·lació de la màquina virtual</h2>
-            <p>Una vegada configurada la màquina virtual i haja arrancat podem veure com ens apareix una icona en la franja esquerra i es posa de color, podem desplegar el menú contextual i polsem sobre Console:</p>
+            <p>Podem activar el checkbox de <strong>Start after created</strong> per a poder iniciar la màquina una vegada li donem a <strong>Finish</strong>.</p>
             <figure>
-            <img src="ConProxmox/prox15.png" alt="" /><figcaption>Menú contextual de la VM en funcionament</figcaption>
+            <img src="ConProxmox/prox15.png" alt="" /><figcaption>Finalització de configuració VM</figcaption>
+            </figure>
+            <h2 data-number="2.3" id="installació-de-la-màquina-virtual"><span class="header-section-number">2.3</span> Instal·lació de la màquina virtual</h2>
+            <p>Una vegada configurada la màquina virtual i haja arrancat podem veure com ens apareix una icona en la franja esquerra i es posa de color, podem desplegar el menú contextual i polsem sobre <strong>Console</strong>:</p>
+            <figure>
+            <img src="ConProxmox/prox16.png" alt="" /><figcaption>Menú contextual de la VM en funcionament</figcaption>
             </figure>
             <p>Podem veure com ha arrancat la màquina:</p>
             <figure>
@@ -296,7 +306,7 @@
             <h1 data-number="3" id="configuració-de-la-xarxa"><span class="header-section-number">3</span> Configuració de la xarxa</h1>
             <p>Una vegada tenim instal·lats tots els servidors procedim a configurar la xarxa. Per a accedir a la configuració de l’hipervisor hem de seleccionar el mateix (No la màquina virtual ni el Datacenter), i anem a les opcions <strong>Network</strong>.</p>
             <h2 data-number="3.1" id="esquema-1-1"><span class="header-section-number">3.1</span> Esquema 1</h2>
-            <p>Recordem que aquest esquema té un bond al switch. Polsem sobre <strong>Create</strong> i seleccionem l’opció <strong>Linux Bond</strong>.</p>
+            <p>Recordem que aquest esquema té un <strong>bond</strong> al switch. Polsem sobre <strong>Create</strong> i seleccionem l’opció <strong>Linux Bond</strong>.</p>
             <figure>
             <img src="ConProxmox/prox18.png" alt="" /><figcaption>Selecció de bond</figcaption>
             </figure>
@@ -327,7 +337,7 @@
             <figure>
             <img src="ConProxmox/prox21.png" alt="" /><figcaption>Configuració del bond</figcaption>
             </figure>
-            <p>na vegada tenim configurat el bond anem altra vegada a <strong>Create</strong> i seleccionem <strong>Linux Bridge</strong>. A l’opció <strong>Bridge ports</strong> hem d’escriure el bond0 seguit d’un punt i el número de VLAN que volen configurar a la connexió pont.</p>
+            <p>Una vegada tenim configurat el bond anem altra vegada a <strong>Create</strong> i seleccionem <strong>Linux Bridge</strong>. A l’opció <strong>Bridge ports</strong> hem d’escriure el bond0 seguit d’un punt i el número de VLAN que volen configurar a la connexió pont.</p>
             <figure>
             <img src="ConProxmox/prox22.png" alt="" /><figcaption>Configuració de la connexió pont</figcaption>
             </figure>
@@ -336,6 +346,9 @@
             <img src="ConProxmox/prox23.png" alt="" /><figcaption>Configuració de xarxes al proxmox</figcaption>
             </figure>
             <h2 data-number="3.2" id="esquema-2-1"><span class="header-section-number">3.2</span> Esquema 2</h2>
+            <div class="important">
+            <p>Recordem que este esquema <strong>no és el que utilitzarem en este curs</strong> però s’ensenya per a casos en els quals no es dispose de switches gestionables ni VLANs.</p>
+            </div>
             <p>Aquest esquema que no presenta cap VLAN es faria de manera anàloga a l’anterior, però sense configurar el bond. Agafaríem cada targeta virtual <strong>Linux bridge</strong> i l’enllacem a la targeta de sortida. L’esquema quedaria de la següent manera:</p>
             <figure>
             <img src="ConProxmox/prox46xxx.png" alt="" /><figcaption>Configuració de xarxes al proxmox</figcaption>
@@ -345,6 +358,9 @@
             </div>
             <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">root@cefirevalencia</span>:~# ip link show enp4s0</span>
             <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">5</span>: enp4s0: <span class="op">&lt;</span>NO-CARRIER,BROADCAST,MULTICAST,SLAVE,UP<span class="op">&gt;</span> mtu 1500 qdisc pfifo_fast master bond0 state DOWN mode DEFAULT group default qlen 1000</span></code></pre></div>
+            <div class="note">
+            <p>Tant en el <strong>esquema 1</strong> (el que usarem en este curs) com el <strong>esquema 2</strong> el nom de les targetes és el mateix (vmbrXX). Per tant, la configuració de les targetes de xarxa en les VM serà exactament igual.</p>
+            </div>
             <h1 data-number="4" id="configuració-de-la-xarxa-en-cada-màquina-virtual"><span class="header-section-number">4</span> Configuració de la xarxa en cada màquina virtual</h1>
             <p>Hem de recordar que cada servidor LliureX ha de tenir 3 targetes:</p>
             <table>
@@ -392,7 +408,7 @@
             </tr>
             </tbody>
             </table>
-            <p>Per a configurar cada màquina virtual seleccionem la màquina i anem a les opcions de <strong>Hardware</strong>, fem click sobre <strong>Add</strong> i escollim <strong>Network device</strong>.</p>
+            <p>Per a configurar cada màquina virtual seleccionem la màquina i anem a les opcions de <strong>Hardware</strong>, fem clic sobre <strong>Add</strong> i escollim <strong>Network device</strong>.</p>
             <figure>
             <img src="ConProxmox/prox24.png" alt="" /><figcaption>Configuració de xarxa de VM</figcaption>
             </figure>
@@ -445,7 +461,7 @@
             <img src="ConProxmox/prox27.png" alt="" /><figcaption>Inicialitzar el servidor</figcaption>
             </figure>
             <div class="warning">
-            <p>És molt important que habilites l’opció d’exportar el /net al servidor mestre.</p>
+            <p>És molt important que habilites l’opció d’<strong><em>exportar</em></strong> el /net al servidor mestre.</p>
             </div>
             <p>Un procediment extra que no ens ha d’oblidar en cap servidor és actualitzar-los sempre abans de fer res. I en el màster hem de configurar el lliurex mirror:</p>
             <figure>
@@ -484,20 +500,24 @@
             <img src="ConProxmox/prox36.png" alt="" /><figcaption>Configuració d’orde d’arrancada al servidor de l’Aula d’informàtica</figcaption>
             </figure>
             <h2 data-number="5.2" id="muntatge-de-cabina-externa-opcional"><span class="header-section-number">5.2</span> Muntatge de cabina externa (Opcional)</h2>
-            <p>És possible que ens interesse l’opció d’una cabina externa. Té nombrosos avantatges, a l’espai de la cabina externa podem tindre emmagatzemat isos, discs durs de màquines virtuals, còpies de seguretat…</p>
+            <p>És possible que ens interesse l’opció d’una cabina externa. Té nombrosos avantatges, a l’espai de la cabina externa podem tindre emmagatzemat arxius ISO, discs durs de màquines virtuals, còpies de seguretat…</p>
+            <div class="note">
+            <p>El que s’explica en este punt no és per a aconseguir l’alta disponibilitat (HA). És per a afegir un emmagatzematge comú al clúster on fer còpies de seguretat, emmagatzemar el disc d’alguna VM, isos, etc. Les cabines no entren dins de la dotació, per tant, seria una adquisició pròpia del centre i no es tractarà en este tema com es configuren.</p>
+            </div>
             <div class="warning">
-            <p>Si decidiu muntar el /net a una cabina externa. Aneu amb compte amb les ACL!!!. Ja que solen donar problemes. L’opció en aquest cas més segura per a que funcione és tenir el /net en un disc dur virtual. A més, si aneu a tenir espai emmagatzemat a una cabina, la cabina ha de tenir unes característiques adeqüades. Jo recomanaria com a mínim:</p>
+            <p>Existix la possibilitat d’emmagatzemar /net del servidor mestre en una cabina externa. Segons com es realitze pot donar problemes amb les ACL dels arxius i no funcionar. L’opció per a aconseguir això és crear un segon disc virtual en el servidor mestre però emmagatzemar-lo en la cabina externa. Quan es realitza la instal·lació de la VM (en l’apartat de particionamiento de disc) s’indicaria que eixe segon disc s’usarà per a /net. Això funciona perfectament ja que per a la VM és com si fora un disc local.</p>
+            <p>A més, per a fer això és aconsellable que la cabina tinga unes característiques adequades. Es recomanaria com a mínim:</p>
             <ul>
-            <li>Possibilitat de crear un bond amb 4 targetes de xarxa, o targeta de 10G (caldria un switch que ho suporte)</li>
-            <li>Al menys 4 discs durs per muntar un RAID10</li>
+            <li>Possibilitat de crear un bond amb 4 targetes de xarxa, o targeta de 10G (faria falta un switch que ho suporte)</li>
+            <li>Almenys 4 discos durs per a muntar un RAID10</li>
             <li>Cache de disc SSD</li>
             </ul>
-            <p>D’aquesta manera es podria muntar un sistema amb Alta disponibilitat.</p>
+            <p>Amb estàs característiques es podria muntar fins i tot un sistema amb Alta disponibilitat.</p>
             </div>
             <div class="note">
             <p>En aquest curs no explicarem com configurar una cabina per a que funcione al model de xarxa. Les cabines no entren dins de la dotació de centre, per tant seria una adquisició pròpia del centre</p>
             </div>
-            <p>Una vegada tenim la cabina configurada podem afegir-la al nostre <strong>Datacenter</strong> seleccionant-lo i anant a l’opció de <strong>Storage</strong>. Fem click sobre <strong>Add</strong> i escollim <strong>NFS</strong>.</p>
+            <p>Si el centre disposa d’una cabina funcionant, configurada i connectada en la xarxa del centre podem afegir-la al nostre <strong>Datacenter</strong> seleccionant-lo i anant a l’opció de <strong>Storage</strong>. Fem clic sobre <strong>Add</strong> i triem <strong>NFS</strong>.</p>
             <figure>
             <img src="ConProxmox/prox37.png" alt="" /><figcaption>Configuració de cabina</figcaption>
             </figure>
@@ -506,7 +526,11 @@
             <img src="ConProxmox/prox38.png" alt="" /><figcaption>Configuració de cabina</figcaption>
             </figure>
             <h2 data-number="5.3" id="creació-de-backup-opcional"><span class="header-section-number">5.3</span> Creació de backup (Opcional)</h2>
-            <p>En principi no seria necessari crear un backup de les màquines virtuals ja que hem muntat un RAID1. Però hi han varies configuracions que podem recomanar l’opció del backup. Per a configurar la còpia de seguretat seleccionem el datacenter, anem a l’opció de Backup i fem click sobre <strong>Add</strong>.</p>
+            <p>La creació de còpies de seguretat periòdiques de les VM és molt aconsellable. En PROXMOX és molt fàcil fer còpies de seguretat de les VM i restaurar-los. Poden succeir imprevistos com desconfigurar un servidor per error, esborrar /net per error o qualsevol desastre que ens puguem imaginar. En estos casos tindre una còpia de seguretat de nostres VM és de gran utilitat.</p>
+            <div class="note">
+            <p>Una cabina de discos o NAS amb unes prestacions modestes seria suficient per a fer estes tasques. També es podria usar un segon disc de l’hipervisor si no hem fet un RAID1.</p>
+            </div>
+            <p>Per a configurar la còpia de seguretat seleccionem el datacenter, anem a l’opció de Còpia de seguretat i fem clic sobre <strong>Add</strong>.</p>
             <figure>
             <img src="ConProxmox/prox39.png" alt="" /><figcaption>Configuració de cabina</figcaption>
             </figure>
@@ -514,7 +538,7 @@
             <figure>
             <img src="ConProxmox/prox40.png" alt="" /><figcaption>Configuració de la còpia de seguretat</figcaption>
             </figure>
-            <p>També és pot fer una còpia de seguretat en qualsevol moment. Les còpies de seguretat porten temps, per tant no és recomanable fer-ho en hores on s’estiguen utilitzant els servidors.</p>
+            <p>També és pot fer una còpia de seguretat en qualsevol moment. Les còpies de seguretat porten temps, per tant, no és recomanable fer-ho en hores on s’estiguen utilitzant els servidors.</p>
             <figure>
             <img src="ConProxmox/prox41.png" alt="" /><figcaption>Creació de la còpia de seguretat</figcaption>
             </figure>
