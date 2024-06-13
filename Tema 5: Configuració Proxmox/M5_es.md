@@ -102,7 +102,7 @@ En esta Unidad configuraremos el hipervisor con PROXMOX. Montaremos 3 servidores
 | AULA1 | DHCP a los ordenadores del aula de informática |
 | WIFI |No montaremos el servidor WIFI en esta unidad |
 
-Daremos como ejemplo dos esquemas de montaje de centro. Los dos son totalmente válidos pero **nos centraremos en el primero en este curso** ya que el segundo ejemplo es para instalaciones que no tienen switches gestionables. 
+Daremos como ejemplo dos esquemas de montaje de centro. Los dos son totalmente válidos, pero **nos centraremos en el primero en este curso** ya que el segundo ejemplo es para instalaciones que no tienen switches gestionables. 
 
 :::note
 La mayoría de capturas de pantalla están en inglés ya que viene por defecto. Obviamente si alguien quiere configurar los parámetros en la ventana de login al catalán o al español lo puede hacer sin problemas.
@@ -118,7 +118,7 @@ El esquema seria de la siguiente manera:
 
 ## Esquema 2
 
-En el siguiente esquema no se usan switches gestionables por lo que no se usan VLANs. Cada tarjeta del hipervisor va a un switch diferente. Este esquema no aprovecha las ventajas que tiene un LAG (aumento ancho de banda y tolerancia a fallos).Este montaje se utiliza principalmente en centros pequeños. El esquema seria de la siguiente manera:
+En el siguiente esquema no se usan switches gestionables por lo que no se usan VLANs. Cada tarjeta del hipervisor va a un switch diferente. Este esquema no aprovecha las ventajas que tiene un LAG (aumento ancho de banda y tolerancia a fallos). Este montaje se utiliza principalmente en centros pequeños. El esquema seria de la siguiente manera:
 
 ![Esquema orientativo 2](Esquemes/esquemasense.png)
 
@@ -141,11 +141,11 @@ En ambos esquemas la configuración de las máquinas virtuales es igual ya que l
 Una vez tenemos instalado PROXMOX y haya reiniciado, podremos acceder en él. Toda la configuración del PROXMOX se realiza a través de un servidor web que lleva el sistema. Para acceder tenemos que hacerlo a través del puerto 8006 con certificación ssl. Sencillamente escribimos en un navegador de una estación de trabajo que esté en la misma red lo siguiente:
 
 ```sh
-https://"IP_HIPERVISOR:8006
+https://IP_HIPERVISOR:8006
 ```
 
 :::note
-Este es uno de los motivos por los cuales dejamos puertos en cada switch con la VLAN 1, para poder acceder a través de esos puertos siempre al PROXMOX. También se puede hacer desde cualquier ordenador del centro o el aula de informática, pero hay que habilitar el NAT en cada servidor LliureX. Y estos tienen que estar funcionando. Por lo tanto es necesario estar conectado en la red del centro.
+Este es uno de los motivos por los cuales dejamos puertos en cada switch con la VLAN 1, para poder acceder a través de esos puertos siempre al PROXMOX. También se puede hacer desde cualquier ordenador del centro o el aula de informática, pero hay que habilitar el NAT en cada servidor LliureX. Y estos tienen que estar funcionando. Por lo tanto, es necesario estar conectado en la red del centro.
 :::
 
 ## Máquinas virtuales
@@ -188,15 +188,15 @@ apt upgrade
 
 ## Crear máquina virtual
 
-Antes de crear una máquina virtual tenemos que subir la iso de LliureX Server, podemos descargarla [de aquí](https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso). Tratamos de buscar la última versión editada.
+Antes de crear una máquina virtual tenemos que subir la ISO de LliureX Server, podemos descargarla [de aquí](https://releaseslliurexnet.gva.es/isos/23/LliureX-server_64bits_23_latest.iso). Tratamos de buscar la última versión editada.
 
-Una vez ya tenemos la descarga es necesario subirla al PROXMOX, lo hacemos seleccionando el espacio **local** y haciendo click en **upload**:
+Una vez ya tenemos la descarga es necesario subirla al PROXMOX, lo hacemos seleccionando el espacio **local** y haciendo clic en **upload**:
 
 ![Subir iso a PROXMOX](ConProxmox/prox5.png)
 
 ![Subir iso a PROXMOX](ConProxmox/prox6.png)
 
-Una vez tenemos hecho esto, ya podemos crear la primera maquina virtual. Haremos de ejemplo el servidor MASTER y los otros se hacen de manera similar. Hagamos click sobre **Create VM**.
+Una vez tenemos hecho esto, ya podemos crear la primera máquina virtual. Haremos de ejemplo el servidor MASTER y los otros se hacen de manera similar. Hagamos click sobre **Create VM**.
 
 ![Crear máquina virtual](ConProxmox/prox7.png)
 
@@ -204,7 +204,7 @@ Se abrirá una ventana para especificar los parámetros de configuración. En la
 
 ![Pulsamos next](ConProxmox/prox8.png)
 
-En este punto tenemos que seleccionar la iso que acabamos de subir:
+En este punto tenemos que seleccionar la ISO que acabamos de subir:
 
 ![Seleccionamos ISO](ConProxmox/prox9.png)
 
@@ -219,7 +219,7 @@ Escogemos el disco a utilizar, y opcionalmente cambiamos la cache a **write back
 :::
 
 :::important
-Dependiendo del tamaño del centro el disco del servidor lliurex MAESTRO necesitará más espacio. Es aconsejable añadir un disco grande como por ejemplo un 1TB o más ya que almacenará los datos de todo el alumnado, profesorado, mirror, clientes ligeros, clonaciones, etc. En los servidores ESCLAVOS no es necesario tanto espacio (150GB por ejemplo) ya que montan /net del MAESTRO.
+Dependiendo del tamaño del centro el disco del servidor Lliurex MAESTRO necesitará más espacio. Es aconsejable añadir un disco grande como por ejemplo un 1TB o más ya que almacenará los datos de todo el alumnado, profesorado, mirror, clientes ligeros, clonaciones, etc. En los servidores ESCLAVOS no es necesario tanto espacio (150GB por ejemplo) ya que montan /net del MAESTRO.
 :::
 
 ![Opciones del disco](ConProxmox/prox11.png)
@@ -236,7 +236,7 @@ La suma de la memoria RAM de todas las máquinas puede ser sin problemas mayor q
 
 ![Memoria RAM](ConProxmox/prox13.png)
 
-Finalmente, no cambiamos nada en los parámetro de red y una vez instalada la máquina ya añadiremos las tarjetas virtuales. 
+Finalmente, no cambiamos nada en los parámetros de red y una vez instalada la máquina ya añadiremos las tarjetas virtuales. 
 
 ![Red](ConProxmox/prox14.png)
 
@@ -284,7 +284,7 @@ Se nos abrirá la ventana siguiente y tenemos que escribir todas las tarjetas do
 | Modo | LACP |
 | hash-policy | layer2+3 |
 
-Y polsem sobre **Create**.
+Y pulsamos sobre **Create**.
 
 ![Configuración del bond](ConProxmox/prox21.png)
 
@@ -302,12 +302,12 @@ De manera análoga realizamos todas las otras configuraciones y nos quedaría de
 Recordemos que este esquema **no es el que utilizaremos en este curso** pero se enseña para casos en los que no se disponga de switches gestionables ni VLANs.
 :::
 
-Este esquema que no presenta ninguna VLAN se haría de manera análoga al anterior, pero sin configurar el bond. Cogeríamos cada tarjeta virtual Linux bridge y la enlazamos a la tarjeta de salida. El esquema quedaría de la siguiente manera:
+Este esquema que no presenta ninguna VLAN se haría de manera análoga al anterior, pero sin configurar el bond. Cogeríamos cada tarjeta virtual **Linux bridge** y la enlazamos a la tarjeta de salida. El esquema quedaría de la siguiente manera:
 
 ![Configuración de redes en el PROXMOX](ConProxmox/prox46xxx.png)
 
 :::caution
-Uno de los problemas que presenta esta configuración es saber qué tarjeta es cada una, podemos ir probando y ver cuál está activa con la herramienta **ip** para saber cuál es. Podemos ir desconectando los cables para ver que aparece state DOWN y asociar la conexión.
+Uno de los problemas que presenta esta configuración es saber qué tarjeta es cada una, podemos ir probando y ver cuál está activa con la herramienta **ip** para saber cuál es. Podemos ir desconectando los cables para ver que aparece **state DOWN** y asociar la conexión.
 :::
 
 ```sh
@@ -316,7 +316,7 @@ root@cefirevalencia:~# ip link show enp4s0
 ``` 
 
 :::note
-Tanto en el **esquema 1** (el que usaremos en este curso) como el **esquema 2** el nombre de las tarjetas es el mismo (vmbrXX). Por tanto la configuración de las tarjetas de red en las VM será exactamente igual.
+Tanto en el **esquema 1** (el que usaremos en este curso) como el **esquema 2** el nombre de las tarjetas es el mismo (vmbrXX). Por tanto, la configuración de las tarjetas de red en las VM será exactamente igual.
 :::
 
 # Configuración de la red en cada máquina virtual
@@ -337,7 +337,7 @@ En nuestro caso recordamos que las tenemos configuradas de la siguiente manera:
 | Tarjeta interna | vmbr2, vmbr3, vmbr4, vmbr5 |
 | Tarjeta de replicación | vmbr10 |
 
-Para configurar cada máquina virtual seleccionamos la máquina y vamos a las opciones de **Hardware**, hacemos click sobre **Add** y escogemos **Network device**.
+Para configurar cada máquina virtual seleccionamos la máquina y vamos a las opciones de **Hardware**, hacemos clic sobre **Add** y escogemos **Network device**.
 
 ![Configuración de red de VM](ConProxmox/prox24.png)
 
@@ -413,10 +413,10 @@ En el servidor de centro y esclavo las opciones quedarían de la siguiente maner
 
 ## Montaje de cabina externa (Opcional)
 
-Es posible que nos interese la opción de una cabina externa. Tiene numerosas ventajas, en el espacio de la cabina externa podemos tener almacenado isos, discos duros de máquinas virtuales, copias de seguridad...
+Es posible que nos interese la opción de una cabina externa. Tiene numerosas ventajas, en el espacio de la cabina externa podemos tener almacenado archivos ISOS, discos duros de máquinas virtuales, copias de seguridad...
 
 :::note
-Lo que se explica en este punto no es para conseguir la alta disponibilidad (HA). Es para añadir un almacenamiento común al clúster donde hacer backups, almacenar el disco de alguna VM, isos, etc. Las cabinas no entran dentro de la dotación, por lo tanto sería una adquisición propia del centro y no se tratará en este tema cómo se configuran.
+Lo que se explica en este punto no es para conseguir la alta disponibilidad (HA). Es para añadir un almacenamiento común al clúster donde hacer backups, almacenar el disco de alguna VM, isos, etc. Las cabinas no entran dentro de la dotación, por lo tanto, sería una adquisición propia del centro y no se tratará en este tema cómo se configuran.
 :::
 
 :::warning
@@ -432,7 +432,11 @@ Además, para hacer esto es aconsejable que la cabina tenga unas característica
 Con estás características se podría montar incluso un sistema con Alta disponibilidad.
 :::
 
-Si el centro dispone de una cabina funcionando, configurada y conectada en la red del centro podemos añadirla a nuestro **Datacenter** seleccionándolo y yendo a la opción de **Storage**. Hagamos click sobre **Add** y escogemos **NFS**.
+:::note
+En este curso no explicaremos cómo configurar una cabina para que funciono al modelo de red. Las cabinas no entran dentro de la dotación de centro, por lo tanto sería una adquisición propia del centro
+:::
+
+Si el centro dispone de una cabina funcionando, configurada y conectada en la red del centro podemos añadirla a nuestro **Datacenter** seleccionándolo y yendo a la opción de **Storage**. Hagamos clic sobre **Add** y escogemos **NFS**.
 
 ![Configuración de cabina](ConProxmox/prox37.png)
 
@@ -448,7 +452,7 @@ La creación de backups periódicos de las VM es muy aconsejable. En PROXMOX es 
 Una cabina de discos o NAS con unas prestaciones modestas sería suficiente para realizar estas tareas. También se podría usar un segundo disco del hipervisor si no hemos hecho un RAID1.
 ::: 
 
- Para configurar la copia de seguridad seleccionamos el datacenter, vamos a la opción de Backup y hacemos click sobre Add. 
+ Para configurar la copia de seguridad seleccionamos el datacenter, vamos a la opción de Backup y hacemos click sobre **Add**. 
 
 ![Configuración de cabina](ConProxmox/prox39.png)
 
@@ -456,7 +460,7 @@ Nos aparecerá la siguiente ventana, tenemos que tener en cuenta en qué lugar q
 
 ![Configuración de la copia de seguridad](ConProxmox/prox40.png)
 
-También se puede hacer una copia de seguridad en cualquier momento. Las copias de seguridad llevan tiempo, por lo tanto no es recomendable hacerlo en horas donde se estén utilizando los servidores.
+También se puede hacer una copia de seguridad en cualquier momento. Las copias de seguridad llevan tiempo, por lo tanto, no es recomendable hacerlo en horas donde se estén utilizando los servidores.
 
 ![Creación de la copia de seguridad](ConProxmox/prox41.png)
 
