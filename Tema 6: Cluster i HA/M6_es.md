@@ -123,10 +123,10 @@ Puesto que no disponemos de tres ordenadores, se puede montar un sistema de alta
 
 
 :::warning
-La cantidad mínima de hipervisores para poder hacer funcionar un sistema de alta disponibilidad es de 3. Se necesita para hacer votación para saber quien está vivo, que es el que gana con dos votos (él y otro), esto significa tener **quorum** , quien tenga solo un voto está muerto (significaría que no tiene acceso en la red). Para ser justos podemos decir que, en realidad podemos tener 2 hipervisores i una máquina que solo vote para hacer quorom, para ellos instalaríamos el corosync en esa máquina que podría ser perfectamente una raspberry pi por ejemplo. Pero no lo vamos a tratar en este curso.
+La cantidad mínima de hipervisores para poder hacer funcionar un sistema de alta disponibilidad es de 3. Se necesita para hacer votación para saber quién está vivo, que es el que gana con dos votos (él y otro), esto significa tener **quorum**, quien tenga solo un voto está muerto (significaría que no tiene acceso en la red). Para ser justos podemos decir que, en realidad podemos tener 2 hipervisores i una máquina que solo vote para hacer quorom, para ellos instalaríamos el corosync en esa máquina que podría ser perfectamente una raspberry pi por ejemplo. Pero no lo vamos a tratar en este curso.
 :::
 
-Lo primero que hay que hacer es tener 3 servidores instalados con PROXMOX. En este caso hemos montado los 3 hipervisors con una única tarjeta de red. Si se montara el modelo de centro los 3 hipervisores, tendrían que tener la misma configuración de red a excepción de su ip, obviamente.
+Lo primero que hay que hacer es tener 3 servidores instalados con PROXMOX. En este caso hemos montado los 3 hipervisores con una única tarjeta de red. Si se montara el modelo de centro los 3 hipervisores, deberían de tener la misma configuración de red a excepción de su IP, obviamente.
 
 ![Máquinas virtuales en el Virtualbox](media_es/1.png)
 
@@ -134,7 +134,7 @@ Lo primero que hay que hacer es tener 3 servidores instalados con PROXMOX. En es
 Es necesario recordar que cada PROXMOX tiene un hostname diferente. Si el nombre del nodo coincide hay que cambiarlo. Se debe de modificar en los archivos */etc/hostname*, y  */etc/hosts*.
 :::
 
-Una vez tenemos los 3 hipervisores funcionando. Hacemos click sobre el datacenter y vamos a **Cluster** y luego a **Create cluster**.
+Una vez tenemos los 3 hipervisores funcionando. Hacemos clic sobre el datacenter y vamos a **Cluster** y luego a **Create cluster**.
 
 ![Creación de cluster](media_es/2.png)
 
@@ -146,7 +146,7 @@ Cuando pulsamos en **Create** nos aparecerá la siguiente ventana:
 
 ![Creación de cluster con éxito](media_es/4.png)
 
-Como podemos ver en estos momentos solo tendremos un hipervisor en nuestro cluster. Si queremos añadir más hipervisores haremos click sobre **Join information** :
+Como podemos ver en estos momentos solo tendremos un hipervisor en nuestro clúster. Si queremos añadir más hipervisores haremos clic sobre **Join information** :
 
 
 ![Miembros del cluster](media_es/5.png)
@@ -184,7 +184,7 @@ En estos momentos ya tenemos nuestro clúster montado.
 
 # Montaje de alta disponibilidad
 
-Para realizar nuestro montaje de alta disponibilidad utilizaremos una cabina externa.En este caso se ha utilizado la distro [Tiny Core](http://tinycorelinux.net/), la versión de 16 Mb. Se trata de una distro que a penas consume recursos y se pueden hacer pruebas con ella en virtualización anidada sin consumir demasiados recursos.
+Para realizar nuestro montaje de alta disponibilidad utilizaremos una cabina externa. En este caso se ha utilizado la distro [Tiny Core](http://tinycorelinux.net/), la versión de 16 Mb. Se trata de una distro que a penas consume recursos y se pueden hacer pruebas con ella en virtualización anidada sin consumir demasiados recursos.
 
 :::warning
 Si se decide hacer el montaje de alta disponibilidad con una cabina, hay que disponer de una cabina con 4 tarjetas de red para montar un bond, o de una tarjeta de 10Gb que obligaría a tener un switch que soportara 10 Gb.
@@ -192,7 +192,7 @@ Si se decide hacer el montaje de alta disponibilidad con una cabina, hay que dis
 
 # NAS y máquina virtual
 
-En primer lugar añadimos nuestro NAS al Proxmox. Cuando lo añadimos al datacenter será visible por parte de todos los hipervisores.
+En primer lugar, añadimos nuestro NAS al Proxmox. Cuando lo añadimos al datacenter será visible por parte de todos los hipervisores.
 
 ![Añadir NAS](media_es/13.png) 
 
