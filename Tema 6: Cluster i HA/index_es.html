@@ -8,10 +8,19 @@
     <style>
         code{white-space: pre-wrap;}
         span.smallcaps{font-variant: small-caps;}
-        span.underline{text-decoration: underline;}
-        div.column{display: inline-block; vertical-align: top; width: 50%;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-        ul.task-list{list-style: none;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     </style>
         <link rel="stylesheet" href="aqua.css" />  
     <!--[if lt IE 9]>
@@ -23,10 +32,12 @@
 <body>
     <div id="content">
                  <header id="title-block-header">
-            <h1 class="title">Montar cluster y alta disponibilidad en Proxmox</h1>
+            <h1 class="title">Montar cluster y alta disponibilidad en
+Proxmox</h1>
             <!--        <p class="subtitle">Configuración de PROXMOX</p>
         -->
-            <!--         <p class="author">Alfredo Rafael Vicente Boix i Javier Estellés Dasi</p>
+            <!--         <p class="author">Alfredo Rafael Vicente Boix i
+Javier Estellés Dasi</p>
          -->
                         <p class="date">05-05-2024</p>
                     </header>
@@ -34,32 +45,70 @@
             <div class="navContainer">
                                 <h2 id="toc-title">Contenidos</h2>
                  <ul>
-<li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a></li>
-<li><a href="#montar-clúster-en-proxmox"><span class="toc-section-number">2</span> Montar clúster en PROXMOX</a></li>
-<li><a href="#montaje-de-alta-disponibilidad"><span class="toc-section-number">3</span> Montaje de alta disponibilidad</a></li>
-<li><a href="#consideraciones-finales"><span class="toc-section-number">4</span> Consideraciones finales</a></li>
+<li><a href="#introducción" id="toc-introducción"><span
+class="toc-section-number">1</span> Introducción</a></li>
+<li><a href="#montar-clúster-en-proxmox"
+id="toc-montar-clúster-en-proxmox"><span
+class="toc-section-number">2</span> Montar clúster en PROXMOX</a></li>
+<li><a href="#montaje-de-alta-disponibilidad"
+id="toc-montaje-de-alta-disponibilidad"><span
+class="toc-section-number">3</span> Montaje de alta
+disponibilidad</a></li>
+<li><a href="#nas-y-máquina-virtual"
+id="toc-nas-y-máquina-virtual"><span class="toc-section-number">4</span>
+NAS y máquina virtual</a></li>
+<li><a href="#alta-disponibilidad" id="toc-alta-disponibilidad"><span
+class="toc-section-number">5</span> Alta disponibilidad</a></li>
+<li><a href="#consideraciones-finales"
+id="toc-consideraciones-finales"><span
+class="toc-section-number">6</span> Consideraciones finales</a></li>
 </ul>
             </div>
         </nav>
                 <main>
             <p><img src="img/cc.png" height="50" /></p>
-            <p>Este documento está sujeto a una licencia creative commons que permite su difusión y uso comercial reconociendo siempre la autoría de su creador. Este documento se encuentra para ser modificado en el siguiente repositorio de github: <!-- CAMBIAR EL ENLACE --> <a href="https://github.com/arvicenteboix/lliurexproxmox">https://github.com/arvicenteboix/lliurexproxmox</a> </p>
+            <p>Este documento está sujeto a una licencia creative
+            commons que permite su difusión y uso comercial reconociendo
+            siempre la autoría de su creador. Este documento se
+            encuentra para ser modificado en el siguiente repositorio de
+            github: <!-- CAMBIAR EL ENLACE --> <a
+            href="https://github.com/arvicenteboix/lliurexproxmox">https://github.com/arvicenteboix/lliurexproxmox</a>
+            </p>
             <!-- \awesomebox[violet]{2pt}{\faRocket}{violet}{Lorem ipsum…} -->
-            <h1 data-number="1" id="introducción"><span class="header-section-number">1</span> Introducción</h1>
-            <p>En esta última unidad, explicaremos como montar un clúster en PROXMOX. Es un procedimiento muy sencillo, pero hay que tener en cuenta las siguientes consideraciones:</p>
+            <h1 data-number="1" id="introducción"><span
+            class="header-section-number">1</span> Introducción</h1>
+            <p>En esta última unidad, explicaremos como montar un
+            clúster en PROXMOX. Es un procedimiento muy sencillo, pero
+            hay que tener en cuenta las siguientes consideraciones:</p>
             <ul>
-            <li>Al montar un clúster se puede tener diferentes máquinas entre los hipervisors del clúster.</li>
-            <li>Si no montamos un sistema de alta disponibilidad, no tiene demasiado sentido.</li>
-            <li>Para montar un sistema de alta disponibilidad hay que montar un CEPH (no se explica en este curso) o tener una cabina externa.</li>
+            <li>Al montar un clúster se puede tener diferentes máquinas
+            entre los hipervisores del clúster.</li>
+            <li>Si no montamos un sistema de alta disponibilidad, no
+            tiene demasiado sentido.</li>
+            <li>Para montar un sistema de alta disponibilidad hay que
+            montar un CEPH (no se explica en este curso) o tener una
+            cabina externa.</li>
             </ul>
             <div class="warning">
-            <p>Las cabinas externas son sistemas muy fiables y difícilmente fallan, puesto que solo sirven datos. Todo el procesamiento se haría en el sistema PROXMOX.</p>
+            <p>Las cabinas externas son sistemas muy fiables y
+            difícilmente fallan, puesto que solo sirven datos. Todo el
+            procesamiento se haría en el sistema PROXMOX.</p>
             </div>
             <div class="tip">
-            <p>Un sistema de alta disponibilidad permitirá que cuando una máquina deja de funcionar inmediatamente otro hipervisor se dará cuenta que algo está pasando y la pondrá en marcha, sin necesidad que intervenga una persona.</p>
+            <p>Un sistema de alta disponibilidad permitirá que cuando
+            una máquina deja de funcionar, inmediatamente otro
+            hipervisor se dará cuenta de que algo está pasando y la
+            pondrá en marcha, sin necesidad que intervenga una
+            persona.</p>
             </div>
-            <h1 data-number="2" id="montar-clúster-en-proxmox"><span class="header-section-number">2</span> Montar clúster en PROXMOX</h1>
-            <p>Puesto que no disponemos de tres ordenadores, se puede montar un sistema de alta disponibilidad en Virtualbox para ver su funcionamiento. La máquina utilizada es un Ryzen 5 con 8 GB de RAM y un NAS. Se ha montado el siguiente sistema:</p>
+            <h1 data-number="2" id="montar-clúster-en-proxmox"><span
+            class="header-section-number">2</span> Montar clúster en
+            PROXMOX</h1>
+            <p>Puesto que no disponemos de tres ordenadores, se puede
+            montar un sistema de alta disponibilidad en Virtualbox para
+            ver su funcionamiento. La máquina utilizada es un Ryzen 5
+            con 8 GB de RAM y un NAS. Se ha montado el siguiente
+            sistema:</p>
             <table>
             <thead>
             <tr class="header">
@@ -87,128 +136,268 @@
             </tbody>
             </table>
             <div class="warning">
-            <p>La cantidad mínima de hipervisores para poder hacer funcionar un sistema de alta disponibilidad es de 3. Se necesita para hacer votación para saber quien está vivo, que es el que gana con dos votos (él y otro), esto significa tener quorum , quien tenga solo un voto está muerto (significaría que no tiene acceso en la red).</p>
+            <p>La cantidad mínima de hipervisores para poder hacer
+            funcionar un sistema de alta disponibilidad es de 3. Se
+            necesita para hacer votación para saber quién está vivo, que
+            es el que gana con dos votos (él y otro), esto significa
+            tener <strong>quorum</strong>, quien tenga solo un voto está
+            muerto (significaría que no tiene acceso en la red). Para
+            ser justos podemos decir que, en realidad podemos tener 2
+            hipervisores i una máquina que solo vote para hacer quorom,
+            para ellos instalaríamos el corosync en esa máquina que
+            podría ser perfectamente una raspberry pi por ejemplo. Pero
+            no lo vamos a tratar en este curso.</p>
             </div>
-            <p>Lo primero que hay que hacer es tener 3 servidores instalados con PROXMOX. En este caso hemos montado los 3 hipervisors con una única tarjeta de red. Si se montara el modelo de centro los 3 hipervisors, tendrían que tener la misma configuración de red a excepción de su ip, obviamente.</p>
+            <p>Lo primero que hay que hacer es tener 3 servidores
+            instalados con PROXMOX. En este caso hemos montado los 3
+            hipervisores con una única tarjeta de red. Si se montara el
+            modelo de centro los 3 hipervisores, deberían de tener la
+            misma configuración de red a excepción de su IP,
+            obviamente.</p>
             <figure>
-            <img src="media_es/1.png" alt="" /><figcaption>Máquinas virtuales en el Virtualbox</figcaption>
+            <img src="media_es/1.png"
+            alt="Máquinas virtuales en el Virtualbox" />
+            <figcaption aria-hidden="true">Máquinas virtuales en el
+            Virtualbox</figcaption>
             </figure>
-            <p>::tip Es necesario recordar que cada PROXMOX tiene un hostname diferente. Si el nombre del nodo coincide hay que cambiarlo. Se debe de modificar al archivo /etc/hostname, y a /etc/hosts. :::</p>
-            <p>Una vez tenemos los 3 hipervisors están funcionando. Hacemos click sobre el datacenter y vamos <strong>Cluster</strong> y luego a <strong>Create cluster</strong>.</p>
+            <p>::tip Es necesario recordar que cada PROXMOX tiene un
+            hostname diferente. Si el nombre del nodo coincide hay que
+            cambiarlo. Se debe de modificar en los archivos
+            <em>/etc/hostname</em>, y <em>/etc/hosts</em>. :::</p>
+            <p>Una vez tenemos los 3 hipervisores funcionando. Hacemos
+            clic sobre el datacenter y vamos a <strong>Cluster</strong>
+            y luego a <strong>Create cluster</strong>.</p>
             <figure>
-            <img src="media_es/2.png" alt="" /><figcaption>Creación de cluster</figcaption>
+            <img src="media_es/2.png" alt="Creación de cluster" />
+            <figcaption aria-hidden="true">Creación de
+            cluster</figcaption>
             </figure>
-            <p>Una vez pulsamos en <strong>Create cluster</strong> nos aparecerá la siguiente ventana donde le daremos el nombreal clúster que queramos:</p>
+            <p>Una vez pulsamos en <strong>Create cluster</strong> nos
+            aparecerá la siguiente ventana donde le daremos el nombre al
+            clúster que queramos:</p>
             <figure>
-            <img src="media_es/3.png" alt="" /><figcaption>Nombre del cluster</figcaption>
+            <img src="media_es/3.png" alt="Nombre del cluster" />
+            <figcaption aria-hidden="true">Nombre del
+            cluster</figcaption>
             </figure>
-            <p>Cuando pulsamos en <strong>Create</strong> nos aparecerá la siguiente ventana:</p>
+            <p>Cuando pulsamos en <strong>Create</strong> nos aparecerá
+            la siguiente ventana:</p>
             <figure>
-            <img src="media_es/4.png" alt="" /><figcaption>Creación de cluster con éxito</figcaption>
+            <img src="media_es/4.png"
+            alt="Creación de cluster con éxito" />
+            <figcaption aria-hidden="true">Creación de cluster con
+            éxito</figcaption>
             </figure>
-            <p>Como podemos ver en estos momentos solo tendremos un hipervisor en nuestro cluster. Si queremos añadir más hipervisores haremos click sobre <strong>Join information</strong> :</p>
+            <p>Como podemos ver en estos momentos solo tendremos un
+            hipervisor en nuestro clúster. Si queremos añadir más
+            hipervisores haremos clic sobre <strong>Join
+            information</strong> :</p>
             <figure>
-            <img src="media_es/5.png" alt="" /><figcaption>Miembros del cluster</figcaption>
+            <img src="media_es/5.png" alt="Miembros del cluster" />
+            <figcaption aria-hidden="true">Miembros del
+            cluster</figcaption>
             </figure>
-            <p>Y le daremos a <strong>Copy information</strong>. Estos son los parámetros que utilizará PROXMOX para añadir los otros hipervisores al clúster.</p>
-            <p><img src="media_es/6.png" alt="Información a pasar a otras hipervisores" /> 6</p>
-            <p>Cambiamos de hipervisor y vamos nuevamente a Clúster en nuestro Datacenter:</p>
+            <p>Y le daremos a <strong>Copy information</strong>. Estos
+            son los parámetros que utilizará PROXMOX para añadir los
+            otros hipervisores al clúster.</p>
+            <p><img src="media_es/6.png"
+            alt="Información a pasar a otras hipervisores" /> 6</p>
+            <p>Cambiamos de hipervisor y vamos nuevamente a Clúster en
+            nuestro Datacenter:</p>
             <figure>
-            <img src="media_es/7.png" alt="" /><figcaption>Unirse a un clúster</figcaption>
+            <img src="media_es/7.png" alt="Unirse a un clúster" />
+            <figcaption aria-hidden="true">Unirse a un
+            clúster</figcaption>
             </figure>
-            <p>Pulsaremos sobre <strong>Join cluster</strong> y pegaremos la información copiada del primer hipervisor:</p>
+            <p>Pulsaremos sobre <strong>Join cluster</strong> y
+            pegaremos la información copiada del primer hipervisor:</p>
             <figure>
-            <img src="media_es/8.png" alt="" /><figcaption>Pegar información</figcaption>
+            <img src="media_es/8.png" alt="Pegar información" />
+            <figcaption aria-hidden="true">Pegar
+            información</figcaption>
             </figure>
-            <p>Al clicar sobre <strong>Join cluster</strong> nos aparecerá la siguiente información:</p>
+            <p>Al clicar sobre <strong>Join cluster</strong> nos
+            aparecerá la siguiente información:</p>
             <figure>
-            <img src="media_es/9.png" alt="" /><figcaption>Unión al clúster con éxito</figcaption>
+            <img src="media_es/9.png"
+            alt="Unión al clúster con éxito" />
+            <figcaption aria-hidden="true">Unión al clúster con
+            éxito</figcaption>
             </figure>
             <p>Este proceso se repetirá para otro hipervisor:</p>
             <figure>
-            <img src="media_es/10.png" alt="" /><figcaption>Tercer hipervisor</figcaption>
+            <img src="media_es/10.png" alt="Tercer hipervisor" />
+            <figcaption aria-hidden="true">Tercer
+            hipervisor</figcaption>
             </figure>
             <figure>
-            <img src="media_es/11.png" alt="" /><figcaption>Unión al clúster con éxito</figcaption>
+            <img src="media_es/11.png"
+            alt="Unión al clúster con éxito" />
+            <figcaption aria-hidden="true">Unión al clúster con
+            éxito</figcaption>
             </figure>
-            <p>Ahora podremos ver como tenemos los tres hipervisores en el mismo clúster:</p>
+            <p>Ahora podremos ver cómo tenemos los tres hipervisores en
+            el mismo clúster:</p>
             <figure>
-            <img src="media_es/12.png" alt="" /><figcaption>Relación de hipervisores en el clúster</figcaption>
+            <img src="media_es/12.png"
+            alt="Relación de hipervisores en el clúster" />
+            <figcaption aria-hidden="true">Relación de hipervisores en
+            el clúster</figcaption>
             </figure>
             <p>En estos momentos ya tenemos nuestro clúster montado.</p>
-            <h1 data-number="3" id="montaje-de-alta-disponibilidad"><span class="header-section-number">3</span> Montaje de alta disponibilidad</h1>
-            <p>Para realizar nuestro montaje de alta disponibilidad utilizaremos una cabina externa.En este caso se ha utilizado la distro Tiny Core, la versión de 16 Mb. Se trata de una distro que a penas consume recursos y se pueden hacer pruebas con ella en virtualización anidada sin consumir demasiados recursos.</p>
+            <h1 data-number="3"
+            id="montaje-de-alta-disponibilidad"><span
+            class="header-section-number">3</span> Montaje de alta
+            disponibilidad</h1>
+            <p>Para realizar nuestro montaje de alta disponibilidad
+            utilizaremos una cabina externa. En este caso se ha
+            utilizado la distro <a href="http://tinycorelinux.net/">Tiny
+            Core</a>, la versión de 16 Mb. Se trata de una distro que a
+            penas consume recursos y se pueden hacer pruebas con ella en
+            virtualización anidada sin consumir demasiados recursos.</p>
             <div class="warning">
-            <p>Si se decide hacer el montaje de alta disponibilidad con una cabina, hay que disponer de una cabina con 4 tarjetas de red para montar un bond, o de una tarjeta de 10Gb que obligaría a tener un switch que soportara 10 Gb.</p>
+            <p>Si se decide hacer el montaje de alta disponibilidad con
+            una cabina, hay que disponer de una cabina con 4 tarjetas de
+            red para montar un bond, o de una tarjeta de 10Gb que
+            obligaría a tener un switch que soportara 10 Gb.</p>
             </div>
-            <p>#3.1 NAS y máquina virtual</p>
-            <p>En primer lugar añadimos nuestra NAS al Proxmox. Cuando lo añadimos al datacenter será visible por parte de todos los hipervisores.</p>
+            <h1 data-number="4" id="nas-y-máquina-virtual"><span
+            class="header-section-number">4</span> NAS y máquina
+            virtual</h1>
+            <p>En primer lugar, añadimos nuestro NAS al Proxmox. Cuando
+            lo añadimos al datacenter será visible por parte de todos
+            los hipervisores.</p>
             <figure>
-            <img src="media_es/13.png" alt="" /><figcaption>Añadir NAS</figcaption>
+            <img src="media_es/13.png" alt="Añadir NAS" />
+            <figcaption aria-hidden="true">Añadir NAS</figcaption>
             </figure>
-            <p>Subimos nuestra ISO (no tenemos el porqué de hacerlo en la NAS)</p>
+            <p>Subimos nuestra ISO (no tenemos el porqué de hacerlo en
+            la NAS)</p>
             <figure>
-            <img src="media_es/14.png" alt="" /><figcaption>Subir ISO</figcaption>
+            <img src="media_es/14.png" alt="Subir ISO" />
+            <figcaption aria-hidden="true">Subir ISO</figcaption>
             </figure>
             <p>Y creamos nuestra máquina virtual:</p>
             <figure>
-            <img src="media_es/15.png" alt="" /><figcaption>Creación de máquina virtual</figcaption>
+            <img src="media_es/15.png"
+            alt="Creación de máquina virtual" />
+            <figcaption aria-hidden="true">Creación de máquina
+            virtual</figcaption>
             </figure>
             <figure>
-            <img src="media_es/16.png" alt="" /><figcaption>Creación de máquina virtual</figcaption>
+            <img src="media_es/16.png"
+            alt="Creación de máquina virtual" />
+            <figcaption aria-hidden="true">Creación de máquina
+            virtual</figcaption>
             </figure>
             <figure>
-            <img src="media_es/17.png" alt="" /><figcaption>Creación de máquina virtual</figcaption>
+            <img src="media_es/17.png"
+            alt="Creación de máquina virtual" />
+            <figcaption aria-hidden="true">Creación de máquina
+            virtual</figcaption>
             </figure>
             <p>No hay que dar mucha memoria a esta máquina:</p>
             <figure>
-            <img src="media_es/18.png" alt="" /><figcaption>Creación de máquina virtual</figcaption>
+            <img src="media_es/18.png"
+            alt="Creación de máquina virtual" />
+            <figcaption aria-hidden="true">Creación de máquina
+            virtual</figcaption>
             </figure>
             <p>Y arrancamos la máquina:</p>
             <figure>
-            <img src="media_es/19.png" alt="" /><figcaption>Máquina en funcionamiento</figcaption>
+            <img src="media_es/19.png"
+            alt="Máquina en funcionamiento" />
+            <figcaption aria-hidden="true">Máquina en
+            funcionamiento</figcaption>
             </figure>
             <p>La máquina arranca enseguida y funciona muy fluida:</p>
-            <p>#3.2 Alta disponibilidad</p>
-            <p>Una vez tenemos la máquina funcionando iremos a Datacenter y después HA y clicaremos sobre <strong>Add</strong>.</p>
+            <h1 data-number="5" id="alta-disponibilidad"><span
+            class="header-section-number">5</span> Alta
+            disponibilidad</h1>
+            <p>Una vez tenemos la máquina funcionando iremos a
+            Datacenter y después HA y haremos clic sobre
+            <strong>Add</strong>.</p>
             <figure>
-            <img src="media_es/20.png" alt="" /><figcaption>Alta disponibilidad</figcaption>
+            <img src="media_es/20.png" alt="Alta disponibilidad" />
+            <figcaption aria-hidden="true">Alta
+            disponibilidad</figcaption>
             </figure>
-            <p>Nos aparecerá la siguiente ventana donde tendremos que escoger la máquina que queremos tener funcionando en todo momento:</p>
+            <p>Nos aparecerá la siguiente ventana donde tendremos que
+            escoger la máquina que queremos tener funcionando en todo
+            momento:</p>
             <figure>
-            <img src="media_es/21.png" alt="" /><figcaption>Escoger máquina</figcaption>
+            <img src="media_es/21.png" alt="Escoger máquina" />
+            <figcaption aria-hidden="true">Escoger máquina</figcaption>
             </figure>
             <figure>
-            <img src="media_es/22.png" alt="" /><figcaption>Escoger máquina</figcaption>
+            <img src="media_es/22.png" alt="Escoger máquina" />
+            <figcaption aria-hidden="true">Escoger máquina</figcaption>
             </figure>
-            <p>En <strong>Request state</strong> hay que tener <em>started</em>.</p>
+            <p>En <strong>Request state</strong> hay que tener
+            <em>started</em>.</p>
             <p>Y ya tenemos nuestro sistema montado:</p>
             <figure>
-            <img src="media_es/23.png" alt="" /><figcaption>Listado de máquinas con Alta disponibilidad</figcaption>
+            <img src="media_es/23.png"
+            alt="Listado de máquinas con Alta disponibilidad" />
+            <figcaption aria-hidden="true">Listado de máquinas con Alta
+            disponibilidad</figcaption>
             </figure>
-            <p>Con Virtualbox podemos probar de apagar una máquina para ver qué pasa:</p>
+            <p>Con Virtualbox podemos probar de apagar una máquina para
+            ver qué pasa:</p>
             <figure>
-            <img src="media_es/24.png" alt="" /><figcaption>Prueba de pérdida de un hipervisor</figcaption>
+            <img src="media_es/24.png"
+            alt="Prueba de pérdida de un hipervisor" />
+            <figcaption aria-hidden="true">Prueba de pérdida de un
+            hipervisor</figcaption>
             </figure>
-            <p>Al cabe de un tiempo podemos ver como nuestro hipervisor ya no está en marcha, cómo la máquina ha cambiado de hipervisor y ahora está funcionando en el hipervisor 2:</p>
+            <p>Al cabo de un tiempo podemos ver cómo nuestro hipervisor
+            ya no está en marcha, cómo la máquina ha cambiado de
+            hipervisor y ahora está funcionando en el hipervisor 2:</p>
             <figure>
-            <img src="media_es/25.png" alt="" /><figcaption>Máquina que ha pasado automáticamente a otro hipervisor</figcaption>
+            <img src="media_es/25.png"
+            alt="Máquina que ha pasado automáticamente a otro hipervisor" />
+            <figcaption aria-hidden="true">Máquina que ha pasado
+            automáticamente a otro hipervisor</figcaption>
             </figure>
             <p>Podemos ver que la máquina está funcionando:</p>
             <figure>
-            <img src="media_es/26.png" alt="" /><figcaption>Tiny Core funcionando en otro hipervisor</figcaption>
+            <img src="media_es/26.png"
+            alt="Tiny Core funcionando en otro hipervisor" />
+            <figcaption aria-hidden="true">Tiny Core funcionando en otro
+            hipervisor</figcaption>
             </figure>
             <div class="warning">
-            <p>No espereis que la máquina se ponga en marcha enseguida, el proceso puede tardar unos 5 minutos y si hay clientes semiligeros funcionando, probablemente dejarán de funcionar correctamente. En este roceso puede haber cierta pérdida de información puesto que no se recupera el estado de la máquina.</p>
+            <p>No esperéis que la máquina se ponga en marcha enseguida,
+            el proceso puede tardar unos 5 minutos y si hay clientes
+            semiligeros funcionando, probablemente dejarán de funcionar
+            correctamente. En este proceso puede haber cierta pérdida de
+            información puesto que no se recupera el estado de la
+            máquina.</p>
             </div>
-            <h1 data-number="4" id="consideraciones-finales"><span class="header-section-number">4</span> Consideraciones finales</h1>
-            <p>Se puede tratar de tener un sistema donde haya una mínima pérdida de información con dos hipervisores y si no dispones de NAS. Se podrían tener dos máquinas duplicadas con dos hipervisores y utilizar la replicación.</p>
-            <p>Se podría tener el /net en otro disco virtual de la máquina y que este fuera replicándose cada 30 min entre los dos hipervisores, si uno de ellos cayera. Se podría poner en marcha la otra máquina en el otro hipervisor y, como mucho, se habrían perdido 30 minutos de información.</p>
-            <p>Podrían configurarlo dentro de la máquina virtual en el apartado de <strong>Replication</strong>.</p>
+            <h1 data-number="6" id="consideraciones-finales"><span
+            class="header-section-number">6</span> Consideraciones
+            finales</h1>
+            <p>Se puede tratar de tener un sistema donde haya una mínima
+            pérdida de información con dos hipervisores y si no dispones
+            de NAS. Se podrían tener dos máquinas duplicadas con dos
+            hipervisores y utilizar la replicación.</p>
+            <p>Se podría tener el /net en otro disco virtual de la
+            máquina y que este fuera replicándose cada 30 min entre los
+            dos hipervisores, si uno de ellos cayera. Se podría poner en
+            marcha la otra máquina en el otro hipervisor y, como mucho,
+            se habrían perdido 30 minutos de información.</p>
+            <p>Se podría configurar dentro de la máquina virtual en el
+            apartado de <strong>Replication</strong>.</p>
             <figure>
-            <img src="media_es/27.png" alt="" /><figcaption>Replicación de discos</figcaption>
+            <img src="media_es/27.png" alt="Replicación de discos" />
+            <figcaption aria-hidden="true">Replicación de
+            discos</figcaption>
             </figure>
-            <p>Se podrían hacer muchas más cosas, puesto que PROXMOX permite automatizar muchas tareas y tener un montón de servicios. En este curso hemos tratado de daros unas pinceladas sobre el que se puede hacer y como se está utilizando en los centros educativos.</p>
+            <p>Se podrían hacer muchas más cosas, puesto que PROXMOX
+            permite automatizar muchas tareas y tener un montón de
+            servicios. En este curso hemos tratado de daros unas
+            pinceladas sobre lo que se puede hacer y cómo se podría
+            utilizar en un centro educativo.</p>
         </main>
         
 
