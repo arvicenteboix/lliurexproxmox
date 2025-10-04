@@ -22,8 +22,9 @@
         }
         .display.math{display: block; text-align: center; margin: 0.5rem auto;}
         /* CSS for syntax highlighting */
+        html { -webkit-text-size-adjust: 100%; }
         pre > code.sourceCode { white-space: pre; position: relative; }
-        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
         pre > code.sourceCode > span:empty { height: 1.2em; }
         .sourceCode { overflow: visible; }
         code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@
         }
         @media print {
         pre > code.sourceCode { white-space: pre-wrap; }
-        pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
         }
         pre.numberSource code
           { counter-reset: source-line 0; }
@@ -358,21 +359,21 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             fer-lo hem utilitzat:</p>
             <table>
             <thead>
-            <tr class="header">
+            <tr>
             <th>Dispositiu</th>
             <th>Característiques</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>Dlink DGS-12-10-48</td>
             <td>Switch de 48 ports a 1Gb</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>Netgear GS724T</td>
             <td>Switch de 24 ports a 1 Gb</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>Servidor SEH1</td>
             <td>Ordinador de 32 Gb i processador i7</td>
             </tr>
@@ -397,17 +398,17 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             <p>Les adreces IP dels <em>switches</em> seran:</p>
             <table>
             <thead>
-            <tr class="header">
+            <tr>
             <th>Switch</th>
             <th>Adreça</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>Dlink DGS-12-10-48</td>
             <td>172.254.254.11</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>Netgear GS724T</td>
             <td>172.254.254.10</td>
             </tr>
@@ -421,39 +422,39 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             switch quedaria de la següent manera:</p>
             <table>
             <thead>
-            <tr class="header">
+            <tr>
             <th>Ports</th>
             <th>VLAN</th>
             <th>Bond</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>P1 a P4</td>
             <td>1</td>
             <td>No</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>P5 a P10</td>
             <td>110</td>
             <td>No</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>P11 a P12</td>
             <td>1,110,120,130</td>
             <td>Si LAG1</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>P13 a P16</td>
             <td>1,110,120,130</td>
             <td>Si LAG4</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>P17 a P20</td>
             <td>1,110,120,130</td>
             <td>Si LAG3</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>P21 a P24</td>
             <td>1,110,120,130</td>
             <td>Si LAG2</td>
@@ -470,31 +471,31 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             <col style="width: 50%" />
             </colgroup>
             <thead>
-            <tr class="header">
+            <tr>
             <th>VLANs</th>
             <th>Ports</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>1</td>
             <td>U-P1, U-P2, U-P3, U-P4, U-LAG1, T-LAG2, T-LAG3,
             T-LAG4</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>110</td>
             <td>U-P5, U-P6, U-P7, U-P8, U-P9, U-P10 T-LAG1, T-LAG2,
             T-LAG3, T-LAG4</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>120</td>
             <td>T-LAG1, T-LAG2, T-LAG3, T-LAG4</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>130</td>
             <td>T-LAG1, T-LAG2, T-LAG3, T-LAG4</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>200</td>
             <td>T-LAG2, T-LAG3, T-LAG4</td>
             </tr>
@@ -686,25 +687,25 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             manera:</p>
             <table>
             <thead>
-            <tr class="header">
+            <tr>
             <th>VLANs</th>
             <th>Ports</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>1</td>
             <td>U-P1, U-P2, U-P3, U-P4, U-LAG1 (U-P47,U-P48)</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>110</td>
             <td>U-P5 a U-P16, T-LAG1 (T-P47,T-P48)</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>120</td>
             <td>U-P17 a U-P46, T-LAG1 (T-P47,T-P48)</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>130</td>
             <td>T-LAG1 (T-P47,T-P48)</td>
             </tr>
@@ -891,38 +892,38 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             <col style="width: 81%" />
             </colgroup>
             <thead>
-            <tr class="header">
+            <tr>
             <th>VLAN</th>
             <th>Descripció</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="odd">
+            <tr>
             <td>100</td>
             <td>Xarxa de centre</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>111 a 120</td>
             <td>Xarxa d’Aules (111 Aula 1 … 120 Aula 10)</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>198</td>
             <td>Xarxa de replicació - per a replicació de servidors
             LliureX, o Proxmox</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>200</td>
             <td>Xarxa Wifi</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>90-91</td>
             <td>Reservades per a VoIP</td>
             </tr>
-            <tr class="even">
+            <tr>
             <td>40-41</td>
             <td>Reservades per a Xarxa d’Aules (Antiga MacroLAN)</td>
             </tr>
-            <tr class="odd">
+            <tr>
             <td>10-11</td>
             <td>Reservades per a Xarxa de secretaria</td>
             </tr>
@@ -1236,7 +1237,7 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             <ol class="example" type="1">
             <li>https://es.wikipedia.org/wiki/VLAN</li>
             </ol>
-            <aside id="footnotes"
+            <section id="footnotes"
             class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -1247,7 +1248,7 @@ class="toc-section-number">5</span> Bibliografia i referències</a></li>
             es pot monitoritzar l’estat de la xarxa.<a href="#fnref1"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
             </ol>
-            </aside>
+            </section>
         </main>
         
 
