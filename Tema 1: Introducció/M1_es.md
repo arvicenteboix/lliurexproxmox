@@ -314,37 +314,30 @@ Vemos a continuación las diferentes pantallas que se nos presentan y las difere
 ![Pantalla de arranque de LliureX Live](img/instllx1.png){ width=350px }
 
 
-2. **Menú de inicio del sistema Live**, con diferentes opciones, como hacer un testeo de memoria o comprobar si el CD/USB de instalación tiene defectos. Elegiremos la opción **Probar LliureX sin instalarlo**, para iniciar el modo live y desde ahí empezar la instalación.
+2. **Menú de inicio del sistema Live**, con diferentes opciones, como hacer un testeo de memoria o comprobar si el CD/USB de instalación tiene defectos. Elegiremos la opción **Probar LliureX sin instalarlo**, para iniciar el modo live y desde ahí empezar la instalación. En versiones más nuevas esto no aparece.
 
 ![Menú de inicio del sistema Live](img/instllx2.png){ width=350px }
 
 En caso de que tengamos el modo UEFI activado en nuestro ordenador, es posible que estas opciones de arranque cambien, dando opción a iniciar LliureX Live en modo UEFI o bien a instalar directamente el sistema. En este caso, podemos bien lanzar directamente el instalador o bien arrancar la sesión Live, y desde esta instalar LliureX directamente. Disponéis de un [extenso artículo](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=uefi) en la wiki de LliureX sobre qué es UEFI y cómo activarlo y desactivarlo al ordenador.
 
-3. **LliureX Live**: Se iniciará LliureX en modo Live desde el USB, y a partir de aquí podremos iniciar la instalación. Para lo cual ***haremos doble clic al icono Instala la versión LliureX*** que aparece en el Escritorio.
+3. **LliureX Live**: Se iniciará LliureX en modo Live desde el USB, y a partir de aquí podremos iniciar la instalación. Primero elegiremos el idioma y la distribución del teclado con los que se desea arrancar la sesiónde prueba de la iso y después aparecerá un escritorio de Lliurex donde ya podrmos iniciar la instalación. Para lo cual ***haremos doble clic al icono Instala la versión LliureX*** que aparece en el Escritorio.
 
-![LliureX Live](img/instllx3.png){ width=350px }
+![LliureX Live](img/instllx3a.png){ width=350px } ![LliureX Live](img/instllx3b.png){ width=350px } 
 
 4. **Instalador de LliureX**: Ahora se iniciará el instalador de LliureX. La primera ventana de este asistente de instalación nos pedirá qué idioma deseamos para la instalación y el sistema.
 
 ![Selección de idioma](img/instllx4.png){ width=350px }
 
+
 5. **Selección de la distribución del teclado**, en este caso, elegiremos la *Disposición en Español* y la variante del catalán para tener habilitado el punto medio (el de la ele geminada **l·l**).
 
 ![Selección de la distribución del teclado](img/instllx5.png){ width=350px }
 
-6. **Selección de la distribución del escritorio**, donde podremos elegir qué apariencia queremos darle a nuestro escritorio LliureX. Tenemos dos opciones. La primero es la distribución por defecto (*Default Layout*), con una barra superior y el *dock* a la parte inferior, tal y como se ha estado trabajando en las últimas versiones de LliureX. La segunda opción es una distribución más clásica (*Classic Layout*) con una única barra a la parte inferior. **En principio escogeremos la distribución por defecto**.
+6.   **Selección de la ubicación**. La siguiente ventana nos pregunta la región donde estamos, para establecer el huso horario correctamente. A la parte inferior de la ventana, podremos ver el progreso de la instalación.
 
-![Distribución del escritorio](img/instllx6.png){ width=350px }
+![Configuración regional](img/instllx11.png){ width=350px }
 
-7. **Selección de software adicional**, en principio no tendremos que instalar este software por defecto, por el que **no marcaremos nada y pulsaremos en Continua**.
-
-![Software adicional](img/instllx7.png){ width=350px }
-
-8. **Complementos del sistema**, desde donde podremos habilitar el apoyo de flash, así como el envío de estadísticas de uso de LliureX de forma anónima y el servicio de inventario, para recoger información del hardware. En nuestro caso, dejaremos marcado el apoyo de flash y el uso de estadíticas.
-
-![Complementos del sistema](img/instllx8.png){ width=350px }
-
-9. **Tipo de instalación**. Este es uno de los puntos más delicados de la instalación, y es donde decidiremos la parte de disco que vamos a dedicar a LliureX. El propio particionador ya nos sugerirá la distribución que considero más adecuada según el espacio que encuentra disponible en el disco duro bajo la opción de *particionamento guiado*.
+7. **Tipo de instalación**. Este es uno de los puntos más delicados de la instalación, y es donde decidiremos la parte de disco que vamos a dedicar a LliureX. El propio particionador ya nos sugerirá la distribución que considero más adecuada según el espacio que encuentra disponible en el disco duro bajo la opción de *particionamento guiado*.
 
 ![Tipo de instalación](img/instllx9.png){ width=500px }
 
@@ -368,17 +361,28 @@ Una vez elegimos el tipo de instalación nos mostrará el siguiente mensaje advi
 
 Una vez le damos a *Continuar* el sistema empezará a instalarse, mientras sigue el asistente para configurar el sistema.
 
-10. **Selección de la ubicación**. La siguiente ventana nos pregunta la región donde estamos, para establecer el huso horario correctamente. A la parte inferior de la ventana, podremos ver el progreso de la instalación.
+8. **Selección de software adicional**, en principio no tendremos que instalar este software por defecto, por el que **no marcaremos nada y pulsaremos en Continua**.
 
-![Configuración regional](img/instllx11.png){ width=350px }
+![Software adicional](img/instllx7.png){ width=350px }
+
+9. **Complementos del sistema**, desde donde podremos habilitar el apoyo de flash, así como el envío de estadísticas de uso de LliureX de forma anónima y el servicio de inventario, para recoger información del hardware. En nuestro caso, dejaremos marcado el apoyo de flash y el uso de estadíticas.
+
+![Complementos del sistema](img/instllx8.png){ width=350px }
+
+10. **Selección de la distribución del escritorio**, donde podremos elegir qué apariencia queremos darle a nuestro escritorio LliureX. Tenemos dos opciones. La primero es la distribución por defecto (*Default Layout*), con una barra superior y el *dock* a la parte inferior, tal y como se ha estado trabajando en las últimas versiones de LliureX. La segunda opción es una distribución más clásica (*Classic Layout*) con una única barra a la parte inferior. **En principio escogeremos la distribución por defecto**.
+
+![Distribución del escritorio](img/instllx6.png){ width=350px }
+
+
+
 
 11. **Configuración del usuario primario**. En la siguiente ventana configuraremos el nombre del usuario primario (que tendrá permiso de administrador), su contraseña y así como el nombre del sistema. Además, determinaremos si hace falta una contraseña para entrar al ordenador. Indicaremos nuestro nombre, el nombre de usuario que utilizaremos, nuestra contraseña (dos veces) y que sí que queremos una contraseña para entrar.
 
 ![Creación del usuario](img/instllx12.png){ width=350px }
 
-12 . **Últimos pasos de la instalación**. Una vez configurado el sistema, este sigue con su instalación. Mientras lo hace, nos muestra las principales novedades de la versión. Ahora tendremos que esperar un tiempo para que el sistema esté instalado por completo.
+12. **Últimos pasos de la instalación**. Una vez configurado el sistema, aparece un resumen de la configuración realizada para la instalación y pulsaremos en siguiente para que comience la instalación. Mientras lo hace, nos muestra las principales novedades de la versión. Ahora tendremos que esperar un tiempo para que el sistema esté instalado por completo.
 
-![Proceso de instalación](img/instllx13.png){ width=350px }
+![Procés d'instal·lació](img/instllx13a.png){ width=350px } ![Procés d'instal·lació](img/instllx13b.png){ width=350px }
 
 13. Cuando finaliza la instalación por completo, nos muestra la siguiente ventana informándonos, y pidiéndonos si queremos reiniciar el equipo o seguir con la prueba. Elegimos la opción de reiniciar, y quitamos el USB cuando nos diga el sistema. Cuando el ordenador se inicie de nuevo, nos mostrará el menú de inicio, al cual podremos elegir qué sistema operativo iniciar.
 
@@ -453,7 +457,7 @@ A pesar de que no entraremos a verlo en detalle, vamos a hacer un breve paseo po
 
 ## El escritorio
 
-A la Wiki de LliureX tenéis disponible [el artículo Primeros pasos en el nuevo entorno de LliureX 19](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=primers-passos-en-el-nou-entorn-de-lliurex-19) donde se habla más extensamente del escritorio de LliureX 19. En este apartado vamos a hacer un resumen, **basándonos en la configuración de escritorio por defecto** y poniendo atención a aquellos aspectos que más nos interesarán para el desarrollo del curso.
+A la Wiki de LliureX tenéis disponible [el artículo Primeros pasos en el nuevo entorno de LliureX 23](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=Primeros+pasos+en+el+nuevo+entorno+de+LliureX+23&structure=Informaci%C3%B3n+LliureX+23&page_ref_id=2156) donde se habla más extensamente del escritorio de LliureX 23. En este apartado vamos a hacer un resumen, **basándonos en la configuración de escritorio por defecto** y poniendo atención a aquellos aspectos que más nos interesarán para el desarrollo del curso.
 
 Cuando iniciamos sesión, el aspecto de nuestro escritorio es el que se muestra en la imagen siguiente, donde podemos distinguir tres áreas muy diferenciadas:
 
