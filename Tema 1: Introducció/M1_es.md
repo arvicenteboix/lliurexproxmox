@@ -467,7 +467,7 @@ Cuando iniciamos sesión, el aspecto de nuestro escritorio es el que se muestra 
 
 ![Escritorio de LliureX](img/escriptori1.png){ width=500px }
 
-Como podemos ver, la barra de menú consta de varias partes:
+Como podemos ver, la barra de menú consta de varias partes :
 
 * El **Menú de inicio**, a través del cual podremos acceder a las aplicaciones, organizadas por categorías, o buscarlas a través del cuadro de busca, así como gestionar la sesión y la parada del ordenador a través de la opción *Energía/Sesión*. Además, en la parte izquierda dispondremos de una barra de *Preferidos*, con accesos directos a las aplicaciones más importantes, tales como el navegador Firefox, el centro de control, el Zero Center, el gestor de ficheros Dolphin, la LliureX Store o la terminal. En la parte superior de esta barra de accesos directos tendremos también tres accesos para salir de la sesión, reiniciar el equipo o apagarlo.
 * **Lugares** o **Directorios Habituales**, nos mostrará aquellas ubicaciones más usuales de nuestro equipo, como nuestra carpeta personal (Inicio), la carpeta del Escritorio, los Documentos o las Bajadas, entre otros.
