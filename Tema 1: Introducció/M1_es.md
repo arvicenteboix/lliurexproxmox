@@ -459,15 +459,27 @@ A pesar de que no entraremos a verlo en detalle, vamos a hacer un breve paseo po
 
 A la Wiki de LliureX tenéis disponible [el artículo Primeros pasos en el nuevo entorno de LliureX 23](https://wiki.edu.gva.es/lliurex/tiki-index.php?page=Primeros+pasos+en+el+nuevo+entorno+de+LliureX+23&structure=Informaci%C3%B3n+LliureX+23&page_ref_id=2156) donde se habla más extensamente del escritorio de LliureX 23. En este apartado vamos a hacer un resumen, **basándonos en la configuración de escritorio por defecto** y poniendo atención a aquellos aspectos que más nos interesarán para el desarrollo del curso.
 
-Cuando iniciamos sesión, el aspecto de nuestro escritorio es el que se muestra en la imagen siguiente, donde podemos distinguir tres áreas muy diferenciadas:
+Cuando iniciamos sesión, el aspecto de nuestro escritorio tiene dos configuraciones:
 
-* El **Escritorio**, 
-* La **barra superior** o **barra de menú**,
-* El ***Dock*** inferior o **barra de tareas**.
+* **Configuración por defecto**: parecido a la configuración clásica, con la barra de menú con una longitud y anchura personalizada para darle un aspecto más moderno al escritorio.
 
-![Escritorio de LliureX](img/escriptori1.png){ width=500px }
+![Escritorio de LliureX](img/escriptoridefecte.png){ width=500px }
+
+* **Configuración clásica**: con la barra de menú en la parte inferior del escritorio y sin gestor de tareas independiente (igual que en LliureX 19).
+
+![Escritorio de LliureX](img/escriptoriclassic.png){ width=500px }
+
 
 Como podemos ver, la barra de menú consta de varias partes :
+
+* Menú de inicio (1)
+* Directorios habituales (2)
+* Bandeja del sistema (3)
+* Calendario (4)
+* Selector de usuario (5)
+* Gestor de tareas (6)
+
+![Escritorio de LliureX](img/escriptori1b.png){ width=500px }
 
 * El **Menú de inicio**, a través del cual podremos acceder a las aplicaciones, organizadas por categorías, o buscarlas a través del cuadro de busca, así como gestionar la sesión y la parada del ordenador a través de la opción *Energía/Sesión*. Además, en la parte izquierda dispondremos de una barra de *Preferidos*, con accesos directos a las aplicaciones más importantes, tales como el navegador Firefox, el centro de control, el Zero Center, el gestor de ficheros Dolphin, la LliureX Store o la terminal. En la parte superior de esta barra de accesos directos tendremos también tres accesos para salir de la sesión, reiniciar el equipo o apagarlo.
 * **Lugares** o **Directorios Habituales**, nos mostrará aquellas ubicaciones más usuales de nuestro equipo, como nuestra carpeta personal (Inicio), la carpeta del Escritorio, los Documentos o las Bajadas, entre otros.
