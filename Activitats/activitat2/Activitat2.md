@@ -3,7 +3,7 @@
 # Metainformació del document
 title: "Model de centre amb Virtualbox"
 author: [Alfredo Rafael Vicente Boix i Javier Estellés Dasi]
-date: "05-05-2024"
+date: "07-10-2025"
 subject: "Proxmox"
 keywords: [Xarxa, Instal·lació]
 subtitle: "ACTIVITAT"
@@ -24,7 +24,7 @@ toc-depth: 2
 
 # capçalera i peu
 header-left: \thetitle
-header-right: Curs 2023-2024
+header-right: Curs 2025-2026
 footer-left: CEFIRE València
 footer-right: \thepage/\pageref{LastPage}
 
