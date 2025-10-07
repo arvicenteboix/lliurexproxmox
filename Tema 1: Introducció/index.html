@@ -40,7 +40,7 @@ bàsics de LliureX</p>
 Adaptat per Alfredo Vicente</p>
                 <p class="author">Revisat per Sergio Balaguer</p>
          -->
-                        <p class="date">05-05-2024</p>
+                        <p class="date">05-10-2025</p>
                     </header>
                  <nav id="TOC" role="doc-toc">
             <div class="navContainer">
@@ -726,8 +726,8 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             diferents opcions, com fer un testeig de memòria o comproar
             si el CD/USB d’instal·lació té defectes. Triarem l’opció
             <strong>Proveu LliureX sense instal·lar-lo</strong>, per
-            iniciar el mode live i des d’ací començar la
-            instal·lació.</li>
+            iniciar el mode live i des d’ací començar la instal·lació.
+            En versions més noves això no apareix.</li>
             </ol>
             <figure>
             <img src="img/instllx2.png" width="350"
@@ -748,15 +748,16 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             <ol start="3" type="1">
             <li><strong>LliureX Live</strong>: S’iniciarà LliureX en
             mode Live des de l’USB, i a partir d’ací podrem iniciar la
-            instal·lació. Per a això <strong>farem doble clic a la icona
-            <em>Instal·la la versió LliureX</em></strong> que apareix a
-            l’escriptori.</li>
+            instal·lació. En primer lloc, seleccionarem l’idioma i la
+            distribució del teclat amb què es desitja iniciar la sessió
+            de prova de la imatge ISO i després apareixerà un escriptori
+            de LliureX on ja podrem iniciar la instal·lació. Per a això
+            <strong>farem doble clic a la icona <em>Instal·la la versió
+            LliureX</em></strong> que apareix a l’escriptori.</li>
             </ol>
-            <figure>
-            <img src="img/instllx3.png" width="350"
-            alt="LliureX Live" />
-            <figcaption aria-hidden="true">LliureX Live</figcaption>
-            </figure>
+            <p><img src="img/instllx3a.png" width="350"
+            alt="LliureX Live" /> <img src="img/instllx3b.png"
+            width="350" alt="LliureX Live" /></p>
             <ol start="4" type="1">
             <li><strong>Instal·lador de LliureX</strong>: Ara s’iniciarà
             l’instal·lador de LliureX. La primera finestra d’aquest
@@ -782,51 +783,18 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             del teclat</figcaption>
             </figure>
             <ol start="6" type="1">
-            <li><strong>Selecció de la distribució de
-            l’escriptori</strong>, on podrem triar quina aparença volem
-            donar-li al nostre escriptori LliureX. Tenim dues opcions.
-            La primer és la <em>distribució per defecte</em>
-            (<em>Default Layout</em>), amb una barra superior i el
-            <em>dock</em> a la part inferior, tal i com s’ha estat
-            treballant a les últimes versions de LliureX. La segona
-            opció és una distribució més clàssica (<em>Classic
-            Layout</em>) amb una única barra a la part inferior.
-            <strong>En principi escollirem la distribució per
-            defecte</strong>.</li>
+            <li><strong>Selecció de la ubicació</strong>. La següent
+            finestra ens pregunta la regió on estem, per tal d’establir
+            el fus horari correctament. A la part inferior de la
+            finestra, podrem veure el progrés de la instal·lació.</li>
             </ol>
             <figure>
-            <img src="img/instllx6.png" width="350"
-            alt="Distribució de l’escriptori" />
-            <figcaption aria-hidden="true">Distribució de
-            l’escriptori</figcaption>
+            <img src="img/instllx11.png" width="350"
+            alt="Configuració regional" />
+            <figcaption aria-hidden="true">Configuració
+            regional</figcaption>
             </figure>
             <ol start="7" type="1">
-            <li><strong>Tria de programari addicional</strong>, en
-            principi no haurem d’instal·lar aquest programari per
-            defecte, pel que <strong>no marcarem res i polsarem en
-            Continua</strong>.</li>
-            </ol>
-            <figure>
-            <img src="img/instllx7.png" width="350"
-            alt="Programari addicional" />
-            <figcaption aria-hidden="true">Programari
-            addicional</figcaption>
-            </figure>
-            <ol start="8" type="1">
-            <li><strong>Complements del sistema</strong>, des d’on
-            podrem habilitar el suport de flash, així com l’enviament
-            d’estadístiques d’ús de LliureX de forma anònima i el servei
-            d’inventari, per recollir informació del maquinari. Al
-            nostre cas, deixarem marcat el suport de flash i l’ús
-            d’estadístiques.</li>
-            </ol>
-            <figure>
-            <img src="img/instllx8.png" width="350"
-            alt="Complements del sistema" />
-            <figcaption aria-hidden="true">Complements del
-            sistema</figcaption>
-            </figure>
-            <ol start="9" type="1">
             <li><strong>Tipus d’instal·lació</strong>. Aquest és un dels
             punts més delicats de la instal·lació, i és on decidirem la
             part de disc dur que anem a dedicar a LliureX. El propi
@@ -892,17 +860,50 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             <p>Una vegada li donem a <em>Continuar</em> el sistema
             començarà a instal·lar-se, mentre segueix l’assistent per
             tal de configurar el sistema.</p>
-            <ol start="10" type="1">
-            <li><strong>Selecció de la ubicació</strong>. La següent
-            finestra ens pregunta la regió on estem, per tal d’establir
-            el fus horari correctament. A la part inferior de la
-            finestra, podrem veure el progrés de la instal·lació.</li>
+            <ol start="8" type="1">
+            <li><strong>Tria de programari addicional</strong>, en
+            principi no haurem d’instal·lar aquest programari per
+            defecte, pel que <strong>no marcarem res i polsarem en
+            Continua</strong>.</li>
             </ol>
             <figure>
-            <img src="img/instllx11.png" width="350"
-            alt="Configuració regional" />
-            <figcaption aria-hidden="true">Configuració
-            regional</figcaption>
+            <img src="img/instllx7.png" width="350"
+            alt="Programari addicional" />
+            <figcaption aria-hidden="true">Programari
+            addicional</figcaption>
+            </figure>
+            <ol start="9" type="1">
+            <li><strong>Complements del sistema</strong>, des d’on
+            podrem habilitar el suport de flash, així com l’enviament
+            d’estadístiques d’ús de LliureX de forma anònima i el servei
+            d’inventari, per recollir informació del maquinari. Al
+            nostre cas, deixarem marcat el suport de flash i l’ús
+            d’estadístiques.</li>
+            </ol>
+            <figure>
+            <img src="img/instllx8.png" width="350"
+            alt="Complements del sistema" />
+            <figcaption aria-hidden="true">Complements del
+            sistema</figcaption>
+            </figure>
+            <ol start="10" type="1">
+            <li><strong>Selecció de la distribució de
+            l’escriptori</strong>, on podrem triar quina aparença volem
+            donar-li al nostre escriptori LliureX. Tenim dues opcions.
+            La primer és la <em>distribució per defecte</em>
+            (<em>Default Layout</em>), amb una barra superior i el
+            <em>dock</em> a la part inferior, tal i com s’ha estat
+            treballant a les últimes versions de LliureX. La segona
+            opció és una distribució més clàssica (<em>Classic
+            Layout</em>) amb una única barra a la part inferior.
+            <strong>En principi escollirem la distribució per
+            defecte</strong>.</li>
+            </ol>
+            <figure>
+            <img src="img/instllx6.png" width="350"
+            alt="Distribució de l’escriptori" />
+            <figcaption aria-hidden="true">Distribució de
+            l’escriptori</figcaption>
             </figure>
             <ol start="11" type="1">
             <li><strong>Configuració de l’usuari primari</strong>. En la
@@ -920,17 +921,18 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             <figcaption aria-hidden="true">Creació de
             l’usuari</figcaption>
             </figure>
-            <p>12 . <strong>Últims passos de la instal·lació</strong>.
-            Una vegada configurat el sistema, aquest segueix amb la seua
-            instal·lació. Mentre ho fa, ens mostra les principals
-            novetats de la versió. Ara haurem d’esperar una estona per
-            tal que el sistema estiga instal·lat per complet.</p>
-            <figure>
-            <img src="img/instllx13.png" width="350"
-            alt="Procés d’instal·lació" />
-            <figcaption aria-hidden="true">Procés
-            d’instal·lació</figcaption>
-            </figure>
+            <ol start="12" type="1">
+            <li><strong>Últims passos de la instal·lació</strong>. Una
+            vegada configurat el sistema, apareix un resum de la
+            configuració realitzada per a la instal·lació i farem clic
+            en “Següent” per a iniciar el procés d’instal·lació. Mentre
+            ho fa, ens mostra les principals novetats de la versió. Ara
+            haurem d’esperar una estona per tal que el sistema estiga
+            instal·lat per complet.</li>
+            </ol>
+            <p><img src="img/instllx13a.png" width="350"
+            alt="Procés d’instal·lació" /> <img src="img/instllx13b.png"
+            width="350" alt="Procés d’instal·lació" /></p>
             <ol start="13" type="1">
             <li>Quan finalitza la instal·lació per complet, ens mostra
             la següent finestra informant-nos, i demanant-nos si volem
@@ -1098,31 +1100,54 @@ class="toc-section-number">4.1.7</span> Més informació</a></li>
             <h2 data-number="3.1" id="lescriptiori"><span
             class="header-section-number">3.1</span> L’escriptiori</h2>
             <p>A la Wiki de LliureX teniu disponible <a
-            href="https://wiki.edu.gva.es/lliurex/tiki-index.php?page=Primers-passos-en-el-nou-entorn-de-LliureX-19">l’article
-            Primers passos en el nou entorn de LliureX 19</a> on se us
-            parla més extensament de l’escriptori de LliureX 19. En
+            href="https://wiki.edu.gva.es/lliurex/tiki-index.php?page=Primeros+pasos+en+el+nuevo+entorno+de+LliureX+23&amp;structure=Informaci%C3%B3n+LliureX+23&amp;page_ref_id=2156">l’article
+            Primers passos en el nou entorn de LliureX 23</a> on se us
+            parla més extensament de l’escriptori de LliureX 23. En
             aquest apartat anem a fer-ne un resum, <strong>basant-nos en
             la configuració d’escriptori per defecte</strong> i posant
             atenció a aquells aspectes que més ens interessaran per al
             desenvolupament del curs.</p>
-            <p>Quan iniciem sessió, l’aspecte del nostre escriptori és
-            el que es mostra a la imatge següent, on podem distingir
-            tres àrees ben diferenciades:</p>
+            <p>Quan iniciem sessió, l’aspecte del nostre escriptori pot
+            tindre dues configuracions:</p>
             <ul>
-            <li>L’<strong>Escriptori</strong>,</li>
-            <li>La <strong>barra superior</strong> o <strong>barra de
-            menú</strong>,</li>
-            <li>El <strong><em>Dock</em></strong> inferior o
-            <strong>barra de tasques</strong>.</li>
+            <li><strong>Configuració per defecte</strong>: semblant a la
+            configuració clàssica, amb la barra de menú amb una
+            llargària i amplària personalitzades per a donar un aspecte
+            més modern a l’escriptori.</li>
             </ul>
             <figure>
-            <img src="img/escriptori1.png" width="500"
-            alt="Escriptori de LliureX" />
-            <figcaption aria-hidden="true">Escriptori de
+            <img src="img/escriptoridefecte.png" width="500"
+            alt="Escritorio de LliureX" />
+            <figcaption aria-hidden="true">Escritorio de
+            LliureX</figcaption>
+            </figure>
+            <ul>
+            <li><strong>Configuració clàssica</strong>: amb la barra de
+            menú en la part inferior de l’escriptori i sense gestor de
+            tasques independent (igual que en LliureX 19).</li>
+            </ul>
+            <figure>
+            <img src="img/escriptoriclassic.png" width="500"
+            alt="Escritorio de LliureX" />
+            <figcaption aria-hidden="true">Escritorio de
             LliureX</figcaption>
             </figure>
             <p>Com podem veure, la barra de menú consta de diverses
             parts:</p>
+            <ul>
+            <li>Menú d’inici (1)</li>
+            <li>Directoris habituals (2)</li>
+            <li>Safata del sistema (3)</li>
+            <li>Calendari (4)</li>
+            <li>Selector d’usuari (5)</li>
+            <li>Gestor de tasques (6)</li>
+            </ul>
+            <figure>
+            <img src="img/escriptori1b.png" width="500"
+            alt="Escritorio de LliureX" />
+            <figcaption aria-hidden="true">Escritorio de
+            LliureX</figcaption>
+            </figure>
             <ul>
             <li>El <strong>Menú d’inici</strong>, a través del qual
             podrem accedir a les aplicacions, organitzades per
