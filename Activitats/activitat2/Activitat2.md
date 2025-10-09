@@ -25,7 +25,7 @@ toc-depth: 2
 # capçalera i peu
 header-left: \thetitle
 header-right: Curs 2025-2026
-footer-left: CEFIRE València
+footer-left: CEFIRE FP
 footer-right: \thepage/\pageref{LastPage}
 
 # Les figures que apareguen on les definim i centrades
